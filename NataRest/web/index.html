@@ -4,13 +4,175 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="en">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Natagora REST API</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+        <!-- Custom styles for this template -->
+        <link href="css/grayscale.min.css" rel="stylesheet">
     </head>
-    <body>
-        <div>TODO write content </div>
+  
+    <body id="page-top">
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Natagora</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#links">API links</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#infra">Infrastructure</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Intro Header -->
+        <header class="masthead">
+            <div class="intro-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <h1 class="brand-heading">Natagora REST API</h1>
+                            <p class="intro-text">An API to manage the Natagora Database for our Web, admin and mobile applications.
+                                <br>Created with Java EE 7 and running on Apache Tomcat 8 Server</p>
+                            <a href="#links" class="btn btn-circle js-scroll-trigger">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Links Section -->
+        <section id="links" class="content-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <a href="/NataRest/webresources/Birds">Birds</a>
+                        <h2>About Grayscale</h2>
+                        <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
+                          <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                        <p>This theme features stock photos by
+                          <a href="http://gratisography.com/">Gratisography</a>
+                          along with a custom Google Maps skin courtesy of
+                          <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
+                        <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infrastructure Section -->
+        <section id="infra" class="download-section content-section text-center">
+            <div class="container-fluid">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Natagora's infrastructure are divided in </h2>
+                </div>
+                
+                <br>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Web Client</h4>
+                        <p>Allow anonymous visitor to see birds observations and authenticated users to see theirs and comments others</p>
+                        <p href="192.168.128.13/~e140577/NataWeb" class="btn btn-primary">Check it!</p>                      
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Administration Managment</h4>
+                        <p>Here Administrators can manage all data. Especially used to check media uploaded by users.</p>
+                        <a href="192.168.128.12:8888/~e140577/NatAdmin" class="btn btn-primary">Check it!</a>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4>Android Application</h4>
+                        <p>Authenticated users use it to do their observation's sessions and upload them into the database.</p>
+                        <a href="192.168.128.13/~e140577/NataMobile.apk" download="NataMobile.apk" class="btn btn-primary">Download it! <i class="fa fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section text-center">
+          <div class="container">
+                <div class="row">
+                  <div class="col-lg-8 mx-auto">
+                        <h2>Contact Us</h2>
+                        <p>Feel free to leave us a comment on the work or ask for information through one of <a href="http://www.gillariel.fr/contact.html">our team contact page</a></p>
+                        <ul class="list-inline banner-social-buttons">
+                          <li class="list-inline-item">
+                                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg">
+                                  <i class="fa fa-twitter fa-fw"></i>
+                                  <span class="network-name">Linkedin</span>
+                                </a>
+                          </li>
+                          <li class="list-inline-item">
+                                <a href="https://github.com/Gillariel/Natagora" class="btn btn-default btn-lg">
+                                  <i class="fa fa-github fa-fw"></i>
+                                  <span class="network-name">Github</span>
+                                </a>
+                          </li>
+                          <li class="list-inline-item">
+                                <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg">
+                                  <i class="fa fa-google-plus fa-fw"></i>
+                                  <span class="network-name">Google+</span>
+                                </a>
+                          </li>
+                        </ul>
+                  </div>
+                </div>
+          </div>
+        </section>
+
+        <!-- Map Section -->
+        <div id="map"></div>
+
+        <!-- Footer -->
+        <footer>
+          <div class="container text-center">
+                <p>Copyright &copy; Natagora 2017</p>
+          </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/popper/popper.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="js/grayscale.min.js"></script>
+
     </body>
 </html>
