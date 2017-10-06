@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
  * @author foers
  */
 @Stateless
-@Path("entities.oauth")
+@Path("Oauth")
 public class OAuthFacadeREST extends AbstractFacade<OAuth> {
 
     @PersistenceContext(unitName = "NatagoraPu")

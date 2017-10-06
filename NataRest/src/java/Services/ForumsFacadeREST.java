@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
  * @author foers
  */
 @Stateless
-@Path("entities.forums")
+@Path("Forums")
 public class ForumsFacadeREST extends AbstractFacade<Forums> {
 
     @PersistenceContext(unitName = "NatagoraPu")

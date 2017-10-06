@@ -27,7 +27,7 @@ import javax.ws.rs.core.PathSegment;
  * @author foers
  */
 @Stateless
-@Path("entities.observationsbirds")
+@Path("Observationsbirds")
 public class ObservationsBirdsFacadeREST extends AbstractFacade<ObservationsBirds> {
 
     @PersistenceContext(unitName = "NatagoraPu")
