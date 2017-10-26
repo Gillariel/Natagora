@@ -15,7 +15,7 @@ Java Projects are made with Netbeans 8 IDE.
 
 # Demo
 
-* NataRest : 192.168.128.13:8081/NataRest
-* NatAdmin : 192.168.128.12:8888/NatAdmin
+* NataRest : http://192.168.128.13:8081/NataRest
+* NatAdmin : http://192.168.128.12:8888/NatAdmin
 * Android : you need to install it (apk : ftp://192.168.128.13/~e140577/NataMobile.apk)
-* NataWeb : 192.168.128.13:~/e140577/NataWeb
+* NataWeb : http://192.168.128.13:~/e140577/NataWeb
