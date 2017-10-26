@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="Natagora Rest Api index links">
+        <meta name="author" content="Foerster Nathan, Montis Patrick">
 
         <title>Natagora REST API</title>
-
+        
         <!-- Bootstrap core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom fonts for this template -->
+        <!-- Custom fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
-        <!-- Custom styles for this template -->
+        <!-- Custom styles -->
         <link href="css/grayscale.min.css" rel="stylesheet">
     </head>
   
@@ -73,16 +68,25 @@ and open the template in the editor.
         <section id="links" class="content-section text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <a href="/NataRest/webresources/Birds">Birds</a>
-                        <h2>About Grayscale</h2>
-                        <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                          <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                        <p>This theme features stock photos by
-                          <a href="http://gratisography.com/">Gratisography</a>
-                          along with a custom Google Maps skin courtesy of
-                          <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                        <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+                    <div class="col-md-4 mx-auto">
+                        <h2>Sessions Managment</h2>
+                        <a href="api/sessions">Sessions Service</a><br>
+                        <a href="api/observations">Observations Service</a><br>
+                        <a href="api/notes">Notes Service</a><br>   
+                        <a href="api/birds">Birds Service</a>
+                    </div>
+                    <div class="col-md-4 mx-auto">
+                        <h2>Social Managment</h2>
+                        <a href="api/forums">Forums Service</a><br>  
+                        <a href="api/comments">Comments Service</a><br>
+                        <a href="api/tags">Tags Service</a><br>   
+                        <a href="api/media">Media Service</a><br>
+                        <a href="api/mediatype">MediaTypes Service</a><br>   
+                    </div>
+                    <div class="col-md-4 mx-auto">
+                        <h2>Users Managment</h2> 
+                        <a href="api/users">Users Service</a><br>
+                        <a href="api/roles">Roles Service</a><br> 
                     </div>
                 </div>
             </div>
@@ -101,18 +105,18 @@ and open the template in the editor.
                     <div class="col-md-4">
                         <h4>Web Client</h4>
                         <p>Allow anonymous visitor to see birds observations and authenticated users to see theirs and comments others</p>
-                        <p href="192.168.128.13/~e140577/NataWeb" class="btn btn-primary">Check it!</p>                      
+                        <a href="http://192.168.128.13/~e140577/NataWeb" class="btn btn-primary">Check it!</a>                      
                     </div>
                     <div class="col-md-4">
                         <h4>Administration Managment</h4>
                         <p>Here Administrators can manage all data. Especially used to check media uploaded by users.</p>
-                        <a href="192.168.128.12:8888/~e140577/NatAdmin" class="btn btn-primary">Check it!</a>
+                        <a href="http://192.168.128.12:8888/~e140577/NatAdmin" class="btn btn-primary">Check it!</a>
                     </div>
 
                     <div class="col-md-4">
                         <h4>Android Application</h4>
                         <p>Authenticated users use it to do their observation's sessions and upload them into the database.</p>
-                        <a href="192.168.128.13/~e140577/NataMobile.apk" download="NataMobile.apk" class="btn btn-primary">Download it! <i class="fa fa-download"></i></a>
+                        <a href="http://192.168.128.13/~e140577/NataMobile.apk" download="NataMobile.apk" class="btn btn-primary">Download it! <i class="fa fa-download"></i></a>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@ and open the template in the editor.
                         <p>Feel free to leave us a comment on the work or ask for information through one of <a href="http://www.gillariel.fr/contact.html">our team contact page</a></p>
                         <ul class="list-inline banner-social-buttons">
                           <li class="list-inline-item">
-                                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg">
+                                <a href="https://www.linkedin.com/in/nathan-foerster-561504119/" class="btn btn-default btn-lg">
                                   <i class="fa fa-twitter fa-fw"></i>
                                   <span class="network-name">Linkedin</span>
                                 </a>
@@ -139,7 +143,7 @@ and open the template in the editor.
                                 </a>
                           </li>
                           <li class="list-inline-item">
-                                <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg">
+                                <a href="https://www.facebook.com/nathan.foerster.1" class="btn btn-default btn-lg">
                                   <i class="fa fa-google-plus fa-fw"></i>
                                   <span class="network-name">Google+</span>
                                 </a>
@@ -168,10 +172,10 @@ and open the template in the editor.
         <!-- Plugin JavaScript -->
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+        <!-- Google Maps API Key -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
-        <!-- Custom scripts for this template -->
+        <!-- Custom scripts -->
         <script src="js/grayscale.min.js"></script>
 
     </body>
