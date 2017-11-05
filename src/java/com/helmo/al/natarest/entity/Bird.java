@@ -26,12 +26,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Birds_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "BirdsDev.findAll", query = "SELECT b FROM BirdsDev b")
     , @NamedQuery(name = "BirdsDev.findById", query = "SELECT b FROM BirdsDev b WHERE b.id = :id")
     , @NamedQuery(name = "BirdsDev.findByName", query = "SELECT b FROM BirdsDev b WHERE b.name = :name")
     , @NamedQuery(name = "BirdsDev.findByLength", query = "SELECT b FROM BirdsDev b WHERE b.length = :length")
-    , @NamedQuery(name = "BirdsDev.findByWeight", query = "SELECT b FROM BirdsDev b WHERE b.weight = :weight")})
+    , @NamedQuery(name = "BirdsDev.findByWeight", query = "SELECT b FROM BirdsDev b WHERE b.weight = :weight")})*/
 public class Bird implements Serializable {
 
     private static final long serialVersionUID = 1L;

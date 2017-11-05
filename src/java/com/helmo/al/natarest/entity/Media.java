@@ -26,13 +26,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Media_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "MediaDev.findAll", query = "SELECT m FROM MediaDev m")
     , @NamedQuery(name = "MediaDev.findById", query = "SELECT m FROM MediaDev m WHERE m.id = :id")
     , @NamedQuery(name = "MediaDev.findByName", query = "SELECT m FROM MediaDev m WHERE m.name = :name")
     , @NamedQuery(name = "MediaDev.findByUrl", query = "SELECT m FROM MediaDev m WHERE m.url = :url")
     , @NamedQuery(name = "MediaDev.findByText", query = "SELECT m FROM MediaDev m WHERE m.text = :text")
-    , @NamedQuery(name = "MediaDev.findByValidated", query = "SELECT m FROM MediaDev m WHERE m.validated = :validated")})
+    , @NamedQuery(name = "MediaDev.findByValidated", query = "SELECT m FROM MediaDev m WHERE m.validated = :validated")})*/
 public class Media implements Serializable {
 
     private static final long serialVersionUID = 1L;

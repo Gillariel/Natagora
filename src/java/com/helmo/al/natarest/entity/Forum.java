@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Forums_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "ForumsDev.findAll", query = "SELECT f FROM ForumsDev f")
     , @NamedQuery(name = "ForumsDev.findById", query = "SELECT f FROM ForumsDev f WHERE f.id = :id")
     , @NamedQuery(name = "ForumsDev.findByLikes", query = "SELECT f FROM ForumsDev f WHERE f.likes = :likes")
-    , @NamedQuery(name = "ForumsDev.findByDislike", query = "SELECT f FROM ForumsDev f WHERE f.dislike = :dislike")})
+    , @NamedQuery(name = "ForumsDev.findByDislike", query = "SELECT f FROM ForumsDev f WHERE f.dislike = :dislike")})*/
 public class Forum implements Serializable {
 
     private static final long serialVersionUID = 1L;

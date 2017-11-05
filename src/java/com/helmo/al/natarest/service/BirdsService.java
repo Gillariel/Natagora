@@ -6,6 +6,7 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Bird;
+import com.helmo.al.natarest.util.GSONParser;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -59,10 +60,12 @@ public class BirdsService extends AbstractDao<Bird> {
     }
 
     @GET
-    @Override
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Bird> findAll() {
-        return super.findAll();
+    public Response findAlll() {
+        List<Bird> birds = super.findAll();
+        if(birds == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(GSONParser.Parse(birds)).build();
     }
 
     @GET

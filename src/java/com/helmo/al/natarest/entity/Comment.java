@@ -41,13 +41,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Comments_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "CommentsDev.findAll", query = "SELECT c FROM CommentsDev c")
     , @NamedQuery(name = "CommentsDev.findById", query = "SELECT c FROM CommentsDev c WHERE c.id = :id")
     , @NamedQuery(name = "CommentsDev.findByMessage", query = "SELECT c FROM CommentsDev c WHERE c.message = :message")
     , @NamedQuery(name = "CommentsDev.findByDate", query = "SELECT c FROM CommentsDev c WHERE c.date = :date")
     , @NamedQuery(name = "CommentsDev.findByLikes", query = "SELECT c FROM CommentsDev c WHERE c.likes = :likes")
-    , @NamedQuery(name = "CommentsDev.findByDislikes", query = "SELECT c FROM CommentsDev c WHERE c.dislikes = :dislikes")})
+    , @NamedQuery(name = "CommentsDev.findByDislikes", query = "SELECT c FROM CommentsDev c WHERE c.dislikes = :dislikes")})*/
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;

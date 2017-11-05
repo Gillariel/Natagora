@@ -33,13 +33,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Sessions_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "SessionsDev.findAll", query = "SELECT s FROM SessionsDev s")
     , @NamedQuery(name = "SessionsDev.findById", query = "SELECT s FROM SessionsDev s WHERE s.id = :id")
     , @NamedQuery(name = "SessionsDev.findByValidated", query = "SELECT s FROM SessionsDev s WHERE s.validated = :validated")
     , @NamedQuery(name = "SessionsDev.findByDate", query = "SELECT s FROM SessionsDev s WHERE s.date = :date")
     , @NamedQuery(name = "SessionsDev.findByLatitude", query = "SELECT s FROM SessionsDev s WHERE s.latitude = :latitude")
-    , @NamedQuery(name = "SessionsDev.findByLongitude", query = "SELECT s FROM SessionsDev s WHERE s.longitude = :longitude")})
+    , @NamedQuery(name = "SessionsDev.findByLongitude", query = "SELECT s FROM SessionsDev s WHERE s.longitude = :longitude")})*/
 public class Session implements Serializable {
 
     private static final long serialVersionUID = 1L;

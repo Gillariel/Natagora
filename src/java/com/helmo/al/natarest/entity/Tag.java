@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Tags_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "TagsDev.findAll", query = "SELECT t FROM TagsDev t")
     , @NamedQuery(name = "TagsDev.findById", query = "SELECT t FROM TagsDev t WHERE t.id = :id")
-    , @NamedQuery(name = "TagsDev.findByName", query = "SELECT t FROM TagsDev t WHERE t.name = :name")})
+    , @NamedQuery(name = "TagsDev.findByName", query = "SELECT t FROM TagsDev t WHERE t.name = :name")})*/
 public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;

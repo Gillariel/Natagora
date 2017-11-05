@@ -27,14 +27,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Users_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "UsersDev.findAll", query = "SELECT u FROM UsersDev u")
     , @NamedQuery(name = "UsersDev.findById", query = "SELECT u FROM UsersDev u WHERE u.id = :id")
     , @NamedQuery(name = "UsersDev.findByPseudo", query = "SELECT u FROM UsersDev u WHERE u.pseudo = :pseudo")
     , @NamedQuery(name = "UsersDev.findByName", query = "SELECT u FROM UsersDev u WHERE u.name = :name")
     , @NamedQuery(name = "UsersDev.findByForname", query = "SELECT u FROM UsersDev u WHERE u.forname = :forname")
     , @NamedQuery(name = "UsersDev.findByMail", query = "SELECT u FROM UsersDev u WHERE u.mail = :mail")
-    , @NamedQuery(name = "UsersDev.findByPassword", query = "SELECT u FROM UsersDev u WHERE u.password = :password")})
+    , @NamedQuery(name = "UsersDev.findByPassword", query = "SELECT u FROM UsersDev u WHERE u.password = :password")})*/
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

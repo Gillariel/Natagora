@@ -22,10 +22,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Observations_Birds_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "ObservationsBirdsDev.findAll", query = "SELECT o FROM ObservationsBirdsDev o")
     , @NamedQuery(name = "ObservationsBirdsDev.findByObservationID", query = "SELECT o FROM ObservationsBirdsDev o WHERE o.observationsBirdsDevPK.observationID = :observationID")
-    , @NamedQuery(name = "ObservationsBirdsDev.findByBirdID", query = "SELECT o FROM ObservationsBirdsDev o WHERE o.observationsBirdsDevPK.birdID = :birdID")})
+    , @NamedQuery(name = "ObservationsBirdsDev.findByBirdID", query = "SELECT o FROM ObservationsBirdsDev o WHERE o.observationsBirdsDevPK.birdID = :birdID")})*/
 public class ObservationBird implements Serializable {
 
     private static final long serialVersionUID = 1L;

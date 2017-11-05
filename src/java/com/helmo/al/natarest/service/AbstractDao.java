@@ -5,6 +5,8 @@
  */
 package com.helmo.al.natarest.service;
 
+import com.helmo.al.natarest.filter.AuthFilter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -14,19 +16,18 @@ import javax.persistence.Persistence;
  * @author foers
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractDao<T> {
+public abstract class AbstractDao<T> extends AuthFilter{
 
     private Class<T> entityClass;
     
-    private final EntityManager EM;
+    private static final EntityManager EM = Persistence.createEntityManagerFactory("NataRestPU2").createEntityManager();
 
     public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;
-        this.EM = Persistence.createEntityManagerFactory("NataRestPU").createEntityManager();
     }
 
-    protected EntityManager getEntityManager(){
-        return this.EM;
+    public static EntityManager getEntityManager(){
+        return EM;
     };
 
     public void create(T entity) {
@@ -72,5 +73,14 @@ public abstract class AbstractDao<T> {
     protected void finalize() throws Throwable {
         this.EM.close();
         super.finalize(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static boolean validApplication(String apikey) {                                              
+        List<com.helmo.al.natarest.entity.Application> results = 
+            EM.createQuery("SELECT a FROM Application a WHERE a.apiKey = :KEY")
+                    .setParameter("KEY", apikey)
+                    .getResultList();
+
+        return (results.size() == 1);
     }
 }

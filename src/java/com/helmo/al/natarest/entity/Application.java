@@ -7,17 +7,16 @@ package com.helmo.al.natarest.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,35 +24,48 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "MediaType_Dev")
+@Table(name = "Application")
 @XmlRootElement
 /*@NamedQueries({
-    @NamedQuery(name = "MediaTypeDev.findAll", query = "SELECT m FROM MediaTypeDev m")
-    , @NamedQuery(name = "MediaTypeDev.findById", query = "SELECT m FROM MediaTypeDev m WHERE m.id = :id")})*/
-public class MediaTypeDB implements Serializable {
+    @NamedQuery(name = "Application.findAll", query = "SELECT a FROM Application a")
+    , @NamedQuery(name = "Application.findById", query = "SELECT a FROM Application a WHERE a.id = :id")
+    , @NamedQuery(name = "Application.findByApiKey", query = "SELECT a FROM Application a WHERE a.apiKey = :apiKey")
+    , @NamedQuery(name = "Application.findByActive", query = "SELECT a FROM Application a WHERE a.active = :active")
+    , @NamedQuery(name = "Application.findByType", query = "SELECT a FROM Application a WHERE a.type = :type")})*/
+public class Application implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
-    
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 512)
+    @Column(name = "ApiKey")
+    private String apiKey;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "Active")
+    private short active;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
     @Column(name = "Type")
     private String type;
 
-
-    public MediaTypeDB() {
+    public Application() {
     }
 
-    public MediaTypeDB(Integer id) {
+    public Application(Integer id) {
         this.id = id;
     }
 
-    public MediaTypeDB(Integer id, String type) {
+    public Application(Integer id, String apiKey, short active, String type) {
         this.id = id;
+        this.apiKey = apiKey;
+        this.active = active;
         this.type = type;
     }
 
@@ -63,6 +75,22 @@ public class MediaTypeDB implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    public short getActive() {
+        return active;
+    }
+
+    public void setActive(short active) {
+        this.active = active;
     }
 
     public String getType() {
@@ -83,10 +111,10 @@ public class MediaTypeDB implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MediaTypeDB)) {
+        if (!(object instanceof Application)) {
             return false;
         }
-        MediaTypeDB other = (MediaTypeDB) object;
+        Application other = (Application) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -95,7 +123,7 @@ public class MediaTypeDB implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.MediaTypeDev[ id=" + id + " ]";
+        return "com.helmo.al.natarest.entity.Application[ id=" + id + " ]";
     }
     
 }

@@ -24,10 +24,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Roles_Dev")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "RolesDev.findAll", query = "SELECT r FROM RolesDev r")
     , @NamedQuery(name = "RolesDev.findById", query = "SELECT r FROM RolesDev r WHERE r.id = :id")
-    , @NamedQuery(name = "RolesDev.findByName", query = "SELECT r FROM RolesDev r WHERE r.name = :name")})
+    , @NamedQuery(name = "RolesDev.findByName", query = "SELECT r FROM RolesDev r WHERE r.name = :name")})*/
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
