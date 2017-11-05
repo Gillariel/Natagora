@@ -13,9 +13,19 @@ Android application (for users)<br />
 Php 5.6 || Angular 4 Website (for users too)<br />
 Java Projects are made with Netbeans 8 IDE.
 
+# Projects
+
+* Api Key Generator : https://github.com/Gillariel/Natagora/tree/ApiKeyGenerator
+* NatAdmin : https://github.com/Gillariel/Natagora/tree/NatAdmin
+* NataMobile : https://github.com/Gillariel/Natagora/tree/NataMobile
+* NataRest : https://github.com/Gillariel/Natagora/tree/NataRest
+* NataWeb :  https://github.com/Gillariel/Natagora/tree/NataWeb
+
 # Demo
 
-* NataRest : http://192.168.128.13:8081/NataRest
+Pay attention that a VPN tunnel to our school is necessary due to sensitive data issue
+
 * NatAdmin : http://192.168.128.12:8888/NatAdmin
-* Android : you need to install it (apk : ftp://192.168.128.13/~e140577/NataMobile.apk)
+* NataMobile : you need to install it (apk : ftp://192.168.128.13/~e140577/NataMobile.apk)
+* NataRest : http://192.168.128.13:8081/NataRest
 * NataWeb : http://192.168.128.13:~/e140577/NataWeb
