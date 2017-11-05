@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <ui:composition template="/resources/template/layout.xhtml">
+
+        <ui:define name="title">
+            Dashboard
+        </ui:define>
+        
+        <ui:define name="css">
+
+        </ui:define>
+        
+        <ui:define name="content">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div class="white-box">
+                        <h3 class="box-title">Current connected users</h3>
+                        <div>
+                            <canvas id="chart4" width="400" height="100"> </canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="white-box">
+                                <h3 class="box-title">media in pending</h3>
+                                <ul class="list-inline m-t-30 p-t-10 two-part">
+                                    <li><i class="icon-folder text-warning"></i></li>
+                                    <li class="text-right"><span class="counter">23</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="white-box">
+                                <h3 class="box-title">content needs approval</h3>
+                                <ul class="list-inline m-t-30 p-t-10 two-part">
+                                    <li><i class="icon-dislike text-danger"></i></li>
+                                    <li class="text-right"><span class="counter">169</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="white-box">
+                                <h3 class="box-title">new users</h3>
+                                <ul class="list-inline m-t-30 p-t-10 two-part">
+                                    <li><i class="icon-people text-info"></i></li>
+                                    <li class="text-right"><span class="">311</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <div class="white-box">
+                                <h3 class="box-title">birds known</h3>
+                                <ul class="list-inline m-t-30 p-t-10 two-part">
+                                    <li><i class="fa fa-paw text-success"></i></li>
+                                    <li class="text-right"><span class="">117</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            <div class="white-box bg-extralight m-b-0">
+                                <h3 class="box-title">Apps Availibity</h3>
+                            </div>
+                            <div class="white-box p-b-0">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="/NatAdmin/server/test.xhtml"><h2 class="text-muted m-t-0">Make a complete test</h2></a>
+                                    </div>
+                                </div>
+                                <div class="row m-t-30 minus-margin">
+                                    <div class="col-sm-12 col-sm-6 b-t b-r">
+                                        <ul class="expense-box">
+                                            <li><i class="fa fa-lock text-success"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12 col-sm-6  b-t">
+                                        <ul class="expense-box">
+                                            <li><i class="ti-android text-danger"></i><span><h2>NataMobile</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row minus-margin">
+                                    <div class="col-sm-12 col-sm-6  b-t b-r">
+                                        <ul class="expense-box">
+                                            <li>
+                                                <c:choose>
+                                                    <c:when test="#{networkHandler.pingNataRest()}">
+                                                        <i class="fa fa-server text-success"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <i class="fa fa-server text-danger"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <!--<i class="fa fa-server text-success"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>-->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12 col-sm-6  b-t">
+                                        <ul class="expense-box">
+                                            <li><i class="ti-world text-danger"></i><span><h2>NataWeb</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">SESSION LAST ACTIVITY</div>
+                        <div class="panel-body">
+                            <div class="steamline">
+                                <div class="sl-item">
+                                    <div class="sl-left bg-success"> <i class="ti-user"></i></div>
+                                    <div class="sl-right">
+                                        <div><a href="#">Tohnathan Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                        <div class="desc">Contrary to popular belief</div>
+                                    </div>
+                                </div>
+                                <div class="sl-item">
+                                    <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
+                                    <div class="sl-right">
+                                        <div><a href="#">Hritik Roshan</a> <span class="sl-date">5 minutes ago</span></div>
+                                        <div class="desc">Lorem Ipsum is simply dummy</div>
+                                        <div class="row inline-photos">
+                                            <div class="col-xs-4"><img class="img-responsive" alt="bird" src="/NatAdmin/resources/img/birds/1.jpg"/></div>
+                                            <div class="col-xs-4"><img class="img-responsive" alt="bird" src="/NatAdmin/resources/img/birds/2.jpg"/></div>
+                                            <div class="col-xs-4"><img class="img-responsive" alt="bird" src="/NatAdmin/resources/img/birds/3.jpg"/></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sl-item">
+                                    <div class="sl-left"> <img class="img-circle" alt="user" src="/NatAdmin/resources/img/user-avatar/boy-1.png"/> </div>
+                                    <div class="sl-right">
+                                        <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                        <div class="desc">The standard chunk of ipsum </div>
+                                    </div>
+                                </div>
+                                <div class="sl-item">
+                                    <div class="sl-left"> <img class="img-circle" alt="user" src="/NatAdmin/resources/img/user-avatar/girl-1.png"/> </div>
+                                    <div class="sl-right">
+                                        <div><a href="#">Varun Dhavan</a> <span class="sl-date">5 minutes ago</span></div>
+                                        <div class="desc">Contrary to popular belief</div>
+                                    </div>
+                                </div>
+                                <div class="sl-item">
+                                    <div class="sl-left"> <img class="img-circle" alt="user" src="/NatAdmin/resources/img/user-avatar/man-2.png"/> </div>
+                                    <div class="sl-right">
+                                        <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span></div>
+                                        <div class="desc">The generated lorem ipsum
+                                            <br /><a href="javascript:void(0)" class="btn m-t-10 m-r-5 btn-rounded btn-outline btn-success">Apporve</a> <a href="javascript:void(0)" class="btn m-t-10 btn-rounded btn-outline btn-danger">Refuse</a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+        
+        <ui:define name="js">
+            <script src="/NatAdmin/resources/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+            <script src="/NatAdmin/resources/plugins/bower_components/Chart.js/chartjs.init.js"></script>
+            <script src="/NatAdmin/resources/plugins/bower_components/Chart.js/Chart.min.js"></script>
+        </ui:define>
+        
+    </ui:composition>
+</html>
+

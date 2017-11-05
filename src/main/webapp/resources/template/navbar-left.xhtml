@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav slimscrollsidebar">
+                    <div class="sidebar-head">
+                        <h3>
+                            <span class="fa-fw open-close">
+                                <i class="ti-close ti-menu"></i>
+                            </span> 
+                            <span class="hide-menu">Navigation</span>
+                        </h3> 
+                    </div>
+                    <div class="user-profile">
+                        <div class="dropdown user-pro-body">
+                            <div>
+                                <img src="/NatAdmin/resources/img/me.jpg" alt="user-img" class="img-circle"/>
+                            </div>
+                            <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Foerster Nathan
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu animated flipInY">
+                                <li>
+                                    <a href="/NatAdmin/users/profile.xhtml">
+                                        <i class="ti-user"></i>
+                                        My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/NatAdmin/users/inbox.xhtml">
+                                        <i class="ti-email"></i>
+                                        Inbox
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="/NatAdmin/users/account.xhtml">
+                                        <i class="ti-settings"></i>
+                                        Account Setting
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="/NatAdmin/users/logout.xhtml">
+                                        <i class="fa fa-power-off"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="nav" id="side-menu">
+                        <li> 
+                            <a id="dashboard" href="/NatAdmin/dashboard.xhtml" class="waves-effect"><i class="fa fa-dashboard fa-fw"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> 
+                            <a id="data" href="#" class="waves-effect"><i class="fa fa-database fa-fw"></i> <span class="hide-menu">Data Administration<span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="/NatAdmin/data/birds.xhtml"><i class="fa fa-paw fa-fw"></i> <span class="hide-menu">Birds</span></a></li>
+                                <li><a href="/NatAdmin/data/pending.xhtml"><i class="fa fa-spinner fa-fw"></i> <span class="hide-menu">Pending Media</span></a></li>
+                                <li><a href="/NatAdmin/data/reported.xhtml"><i class="fa fa-flag fa-fw"></i> <span class="hide-menu">Reported Content</span></a></li>
+                                <li><a href="/NatAdmin/data/sessions.xhtml"><i class="mdi mdi-binoculars fa-fw"></i> <span class="hide-menu">Sessions</span></a></li>
+                                <li><a href="/NatAdmin/data/users.xhtml"><i class="ti-user fa-fw"></i> <span class="hide-menu">Users</span></a></li>
+                            </ul>
+                        </li>
+                        <li> 
+                            <a id="statistics" href="#" class="waves-effect"><i class="mdi mdi-chart-bar fa-fw"></i> <span class="hide-menu">Statistics<span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="/NatAdmin/statistics/birds.xhtml"><i class="mdi mdi-chart-line fa-fw"></i> <span class="hide-menu">Birds</span></a></li>
+                                <li><a href="/NatAdmin/statistics/forums.xhtml"><i class="mdi mdi-chart-scatterplot-hexbin fa-fw"></i> <span class="hide-menu">Forums</span></a></li>
+                                <li><a href="/NatAdmin/statistics/media.xhtml"><i class="mdi mdi-chart-arc fa-fw"></i> <span class="hide-menu">Media</span></a></li>
+                                <li><a href="/NatAdmin/statistics/users.xhtml"><i class="mdi mdi-chart-areaspline fa-fw"></i> <span class="hide-menu">Users</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a id="server" href="#" class="waves-effect"><i class="fa fa-server fa-fw"></i> <span class="hide-menu">Infrastructure<span class="fa arrow"></span></span></a>
+                            <ul class="nav nav-second-level">
+                                <li> <a href="/NatAdmin/server/overview.xhtml"><i class="ti-blackboard fa-fw"></i><span class="hide-menu">Global Overview</span></a></li>
+                                <li><a href="javascript:void(0)" class="waves-effect"><i class="fa fa-lock fa-fw"></i><span class="hide-menu">NatAdmin</span><span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li> <a href="/NatAdmin/server/admin/overview.xhtml"><i class="ti-blackboard fa-fw"></i><span class="hide-menu">Overview</span></a></li>
+                                        <li> <a href="/NatAdmin/server/admin/test.xhtml"><i class="mdi mdi-pulse fa-fw"></i><span class="hide-menu">Availability</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-android fa-fw"></i><span class="hide-menu">NataMobile</span><span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li> <a href="/NatAdmin/server/mobile/overview.xhtml"><i class="ti-blackboard fa-fw"></i><span class="hide-menu">Overview</span></a></li>
+                                        <li> <a href="/NatAdmin/server/mobile/test.xhtml"><i class="mdi mdi-pulse fa-fw"></i><span class="hide-menu">Availability</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)" class="waves-effect"><i class="mdi mdi-server-network fa-fw"></i><span class="hide-menu">NataRest</span><span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li> <a href="/NatAdmin/server/rest/overview.xhtml"><i class="ti-blackboard fa-fw"></i><span class="hide-menu">Overview</span></a></li>
+                                        <li> <a href="/NatAdmin/server/rest/test.xhtml"><i class="mdi mdi-pulse fa-fw"></i><span class="hide-menu">Availability</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-world fa-fw"></i><span class="hide-menu">NataWeb</span><span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li> <a href="/NatAdmin/server/web/overview.xhtml"><i class="ti-blackboard fa-fw"></i><span class="hide-menu">Overview</span></a></li>
+                                        <li> <a href="/NatAdmin/server/web/test.xhtml"><i class="mdi mdi-pulse fa-fw"></i><span class="hide-menu">Availability</span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="devider"></li>
+                        <li> 
+                            <a id="demo" href="#" class="waves-effect"><i class="mdi mdi-test-tube fa-fw"></i> <span class="hide-menu">Demo purpose<span class="fa arrow"></span></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#" class="waves-effect"><i class="ti-info-alt fa-fw"></i><span class="hide-menu">Error Pages</span><span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li><a href="/NatAdmin/error/400.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 400</span></a></li>
+                                        <li><a href="/NatAdmin/error/401.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 401</span></a></li>
+                                        <li><a href="/NatAdmin/error/403.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 403</span></a></li>
+                                        <li><a href="/NatAdmin/error/404.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 404</span></a></li>
+                                        <li><a href="/NatAdmin/error/418.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 418</span></a></li>
+                                        <li><a href="/NatAdmin/error/500.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 500</span></a></li>
+                                        <li><a href="/NatAdmin/error/501.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 501</span></a></li>
+                                        <li><a href="/NatAdmin/error/503.xhtml"><i class="ti-info-alt fa-fw"></i> <span class="hide-menu">Error 503</span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/NatAdmin/users/logout.xhtml" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </ui:composition>
+    </body>
+</html>
+
