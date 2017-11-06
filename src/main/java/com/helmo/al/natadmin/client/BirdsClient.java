@@ -33,7 +33,7 @@ public class BirdsClient {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8081/NataRest/api";
+    private static final String BASE_URI = "http://192.168.128.13:8081/NataRest/api";
     private static final Gson GSON = new Gson();
     
     
@@ -74,48 +74,12 @@ public class BirdsClient {
 
     public List<Bird> findAlll() throws ClientErrorException {
         WebTarget resource = webTarget;
-        String stringResult = RequestBuilder.Build(resource).get().readEntity(String.class);
+        //String stringResult = RequestBuilder.Build(resource).get().readEntity(String.class);
+        String stringResult = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get().readEntity(String.class);
         return GSON.fromJson(stringResult, new TypeToken<List<Bird>>(){}.getType());
     }
 
     public void close() {
         client.close();
     }
-
-    /*private HostnameVerifier getHostnameVerifier() {
-        return new HostnameVerifier() {
-            @Override
-            public boolean verify(String hostname, javax.net.ssl.SSLSession sslSession) {
-                return true;
-            }
-        };
-    }
-
-    private SSLContext getSSLContext() {
-        // for alternative implementation checkout org.glassfish.jersey.SslConfigurator
-        javax.net.ssl.TrustManager x509 = new javax.net.ssl.X509TrustManager() {
-            @Override
-            public void checkClientTrusted(java.security.cert.X509Certificate[] arg0, String arg1) throws java.security.cert.CertificateException {
-                return;
-            }
-
-            @Override
-            public void checkServerTrusted(java.security.cert.X509Certificate[] arg0, String arg1) throws java.security.cert.CertificateException {
-                return;
-            }
-
-            @Override
-            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                return null;
-            }
-        };
-        SSLContext ctx = null;
-        try {
-            ctx = SSLContext.getInstance("SSL");
-            ctx.init(null, new javax.net.ssl.TrustManager[]{x509}, null);
-        } catch (java.security.GeneralSecurityException ex) {
-        }
-        return ctx;
-    }
-    */
 }
