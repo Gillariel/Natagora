@@ -55,16 +55,12 @@ public class Observation implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     
-    /*@ManyToMany(cascade = { 
+    @OneToOne(cascade = { 
         CascadeType.PERSIST, 
-        CascadeType.MERGE,   
+        CascadeType.MERGE,
     })
-    
-    @JoinTable(name = "Observations_Birds_Dev",
-        joinColumns = @JoinColumn(name = "Observation_ID"),
-        inverseJoinColumns = @JoinColumn(name = "ID")
-    )
-    private Set<Bird> birds = new HashSet<Bird>();*/
+    @JoinColumn(name = "Bird_ID", referencedColumnName = "ID")
+    private Bird bird;
     
     @OneToOne()
     @JoinTable(name = "Media_Dev", 
@@ -112,13 +108,13 @@ public class Observation implements Serializable {
         this.date = date;
     }
 
-    /*public Set<Bird> getBirds() {
-        return birds;
+    public Bird getBird() {
+        return bird;
     }
 
-    public void setBirds(Set<Bird> birds) {
-        this.birds = birds;
-    }*/
+    public void setBird(Bird bird) {
+        this.bird = bird;
+    }
     
     
     public Media getMediaDev() {

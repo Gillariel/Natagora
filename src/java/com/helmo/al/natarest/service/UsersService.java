@@ -10,6 +10,7 @@ import com.helmo.al.natarest.util.ResponseBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -49,6 +50,17 @@ public class UsersService extends AbstractDao<User> {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
 
+    @GET
+    @Path("login/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(@HeaderParam("passwd") String password, @PathParam("username") String username){
+        return ResponseBuilder.buildBlank(getEntityManager().createQuery(
+            "SELECT u FROM User u WHERE u.pseudo = :username AND u.password = :password"
+        ).setParameter("username", username)
+        .setParameter("password", password)
+        .getResultList().size() == 1);
+    }
+    
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})

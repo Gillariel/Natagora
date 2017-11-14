@@ -58,7 +58,7 @@ public class ForumsService extends AbstractDao<Forum> {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response findAll() {
-        return ResponseBuilder.buildGet(super.getAll());
+        return ResponseBuilder.buildCircularGet(super.getAll());
     }
 
     @GET

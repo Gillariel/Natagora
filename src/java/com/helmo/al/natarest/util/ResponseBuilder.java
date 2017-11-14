@@ -13,6 +13,12 @@ import javax.ws.rs.core.Response;
  * @author foers
  */
 public class ResponseBuilder {
+    public static Response buildBlank(boolean condition) {
+        return (!condition)
+            ? Response.status(Response.Status.NOT_FOUND).build()
+            : Response.ok().build();
+    }
+    
     public static Response buildGet(Object entity) {
         return (entity == null) 
             ? Response.status(Response.Status.NOT_FOUND).build()

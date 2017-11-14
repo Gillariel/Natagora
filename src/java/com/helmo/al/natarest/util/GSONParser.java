@@ -42,7 +42,7 @@ public class GSONParser {
     public static Response buildCircularResponse(Object entity){
         GsonBuilder b = new GsonBuilder()
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                        .setExclusionStrategies(new JsonExcludeStrategy(Observation.class))
+                        .setExclusionStrategies(new JsonExcludeStrategy(entity.getClass()))
                         .serializeNulls();
         
         new GraphAdapterBuilder()
@@ -55,7 +55,7 @@ public class GSONParser {
     public static Response buildCircularResponse(Collection<Object> entities){
         GsonBuilder b = new GsonBuilder()
                         .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                        .setExclusionStrategies(new JsonExcludeStrategy(Observation.class))
+                        .setExclusionStrategies(new JsonExcludeStrategy(entities.getClass()))
                         .serializeNulls();
         
         new GraphAdapterBuilder()
