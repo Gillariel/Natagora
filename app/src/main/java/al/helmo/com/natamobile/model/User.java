@@ -1,16 +1,11 @@
 package al.helmo.com.natamobile.model;
 
-/**
- * Created by patri on 12/11/2017.
- */
-
 public class User {
     private String name;
     private String email;
     private String password;
 
     public User(){
-
     }
 
     public User (User user){
@@ -18,7 +13,6 @@ public class User {
         this.email = user.getEmail();
         this.password = user.getPassword();
     }
-
 
     public String getName() {
         return name;
