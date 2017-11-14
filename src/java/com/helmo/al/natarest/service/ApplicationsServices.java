@@ -6,9 +6,7 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Application;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import com.helmo.al.natarest.util.ResponseBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -33,23 +31,22 @@ public class ApplicationsServices extends AbstractDao<Application> {
     }
 
     @POST
-    @Override
     @Consumes({MediaType.APPLICATION_JSON})
-    public void create(Application entity) {
-        super.create(entity);
+    public Response create(Application entity) {
+        return ResponseBuilder.buildPost(super.save(entity));
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Application entity) {
-        super.edit(entity);
+    public Response edit(@PathParam("id") Integer id, Application entity) {
+        return ResponseBuilder.buildPut(super.update(entity));
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    public Response remove(@PathParam("id") Integer id) {
+        return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
 
     @GET
@@ -60,29 +57,28 @@ public class ApplicationsServices extends AbstractDao<Application> {
         if(!valid)
             return Response.status(Response.Status.FORBIDDEN).build();
         else{
-            return Response.ok().build();
+            return Response.ok("Valid").build();
         }
     }
 
     @GET
-    @Override
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Application> findAll() {
-        return super.findAll();
+    public Response findAll() {
+        return ResponseBuilder.buildGet(super.getAll());
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Application> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
+    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
     }
 
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
+    public Response countREST() {
+        return ResponseBuilder.buildGet(String.valueOf(super.count()));
     }
     
 }

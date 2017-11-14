@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helmo.al.natarest.entity;
+/*package com.helmo.al.natarest.entity;
 
 import java.io.Serializable;
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -19,64 +21,61 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author foers
  */
-@Entity
+/*@Entity
 @Table(name = "Observations_Birds_Dev")
+@AssociationOverrides({
+    @AssociationOverride(name = "Observations_Dev",
+        joinColumns = @JoinColumn(name = "Observation_ID")),
+    @AssociationOverride(name = "Birds_Dev",
+        joinColumns = @JoinColumn(name = "Bird_ID")) })
 @XmlRootElement
 /*@NamedQueries({
     @NamedQuery(name = "ObservationsBirdsDev.findAll", query = "SELECT o FROM ObservationsBirdsDev o")
     , @NamedQuery(name = "ObservationsBirdsDev.findByObservationID", query = "SELECT o FROM ObservationsBirdsDev o WHERE o.observationsBirdsDevPK.observationID = :observationID")
     , @NamedQuery(name = "ObservationsBirdsDev.findByBirdID", query = "SELECT o FROM ObservationsBirdsDev o WHERE o.observationsBirdsDevPK.birdID = :birdID")})*/
-public class ObservationBird implements Serializable {
+/*public class ObservationBird implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected ObservationBirdPK observationsBirdsDevPK;
-    @JoinColumn(name = "Bird_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    protected ObservationBirdPK pk = new ObservationBirdPK();
+    /*@JoinColumn(name = "Bird_ID", referencedColumnName = "ID", insertable = false, updatable = false)
     @OneToOne(optional = false)
-    private Bird birdsDev;
+    private Bird bird;
     @JoinColumn(name = "Observation_ID", referencedColumnName = "ID", insertable = false, updatable = false)
     @OneToOne(optional = false)
-    private Observation observationsDev;
+    private Observation observation;*/
 
-    public ObservationBird() {
+    /*public ObservationBird() {
     }
 
-    public ObservationBird(ObservationBirdPK observationsBirdsDevPK) {
-        this.observationsBirdsDevPK = observationsBirdsDevPK;
+    public ObservationBirdPK getPk() {
+        return pk;
     }
 
-    public ObservationBird(int observationID, int birdID) {
-        this.observationsBirdsDevPK = new ObservationBirdPK(observationID, birdID);
+    public void setPk(ObservationBirdPK pk) {
+        this.pk = pk;
     }
 
-    public ObservationBirdPK getObservationsBirdsDevPK() {
-        return observationsBirdsDevPK;
+    public Bird getBird() {
+        return pk.getBird();
     }
 
-    public void setObservationsBirdsDevPK(ObservationBirdPK observationsBirdsDevPK) {
-        this.observationsBirdsDevPK = observationsBirdsDevPK;
+    public void setBird(Bird bird) {
+        pk.setBird(bird);
     }
 
-    public Bird getBirdsDev() {
-        return birdsDev;
+    public Observation getObservation() {
+        return pk.getObservation();
     }
 
-    public void setBirdsDev(Bird birdsDev) {
-        this.birdsDev = birdsDev;
-    }
-
-    public Observation getObservationsDev() {
-        return observationsDev;
-    }
-
-    public void setObservationsDev(Observation observationsDev) {
-        this.observationsDev = observationsDev;
+    public void setObservation(Observation observation) {
+        pk.setObservation(observation);
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (observationsBirdsDevPK != null ? observationsBirdsDevPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -87,7 +86,7 @@ public class ObservationBird implements Serializable {
             return false;
         }
         ObservationBird other = (ObservationBird) object;
-        if ((this.observationsBirdsDevPK == null && other.observationsBirdsDevPK != null) || (this.observationsBirdsDevPK != null && !this.observationsBirdsDevPK.equals(other.observationsBirdsDevPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -95,7 +94,7 @@ public class ObservationBird implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.ObservationsBirdsDev[ observationsBirdsDevPK=" + observationsBirdsDevPK + " ]";
+        return "com.helmo.al.natarest.entity.ObservationsBirdsDev[ observationsBirdsDevPK=" + pk + " ]";
     }
     
-}
+}*/

@@ -6,7 +6,6 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.filter.AuthFilter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -18,9 +17,15 @@ import javax.persistence.Persistence;
 @SuppressWarnings("unchecked")
 public abstract class AbstractDao<T> extends AuthFilter{
 
+    public static enum Operation {
+        CREATE,
+        UPDATE,
+        DELETE
+    }
+    
     private Class<T> entityClass;
     
-    private static final EntityManager EM = Persistence.createEntityManagerFactory("NataRestPU2").createEntityManager();
+    private static final EntityManager EM = Persistence.createEntityManagerFactory("NataRest").createEntityManager();
 
     public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -30,29 +35,29 @@ public abstract class AbstractDao<T> extends AuthFilter{
         return EM;
     };
 
-    public void create(T entity) {
-        getEntityManager().persist(entity);
+    public boolean save(T entity) {
+        return this.exec(Operation.CREATE, entity);
     }
 
-    public void edit(T entity) {
-        getEntityManager().merge(entity);
+    public boolean update(T entity) {
+        return this.exec(Operation.UPDATE, entity);
     }
 
-    public void remove(T entity) {
-        getEntityManager().remove(getEntityManager().merge(entity));
+    public boolean delete(T entity) {
+        return this.exec(Operation.DELETE, entity);
     }
 
-    public T find(Object id) {
+    public T get(Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<T> findAll() {
+    public List<T> getAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
-    public List<T> findRange(int[] range) {
+    public List<T> getRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
@@ -75,6 +80,28 @@ public abstract class AbstractDao<T> extends AuthFilter{
         super.finalize(); //To change body of generated methods, choose Tools | Templates.
     }
     
+    private boolean exec(Operation type, T entity){
+        if(isNull(entity))
+            return false;
+        try{
+            switch(type){
+                case CREATE : 
+                    getEntityManager().persist(entity);
+                case UPDATE : 
+                    getEntityManager().merge(entity);
+                case DELETE : 
+                    getEntityManager().remove(getEntityManager().merge(entity));
+            }
+            return true;
+        } catch(Exception e){
+            return false;
+        }
+    }
+    
+    private boolean isNull(T entity){
+        return (entity == null);
+    }
+            
     public static boolean validApplication(String apikey) {                                              
         List<com.helmo.al.natarest.entity.Application> results = 
             EM.createQuery("SELECT a FROM Application a WHERE a.apiKey = :KEY")
@@ -83,4 +110,6 @@ public abstract class AbstractDao<T> extends AuthFilter{
 
         return (results.size() == 1);
     }
+    
+    
 }

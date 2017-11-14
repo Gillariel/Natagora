@@ -6,8 +6,7 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Bird;
-import com.helmo.al.natarest.util.GSONParser;
-import java.util.List;
+import com.helmo.al.natarest.util.ResponseBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,61 +29,48 @@ public class BirdsService extends AbstractDao<Bird> {
     }
 
     @POST
-    @Override
     @Consumes({MediaType.APPLICATION_JSON})
-    public void create(Bird entity) {
-        super.create(entity);
+    public Response create(Bird entity) {
+        return ResponseBuilder.buildPost(super.save(entity));
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Bird entity) {
-        super.edit(entity);
+    public Response edit(@PathParam("id") Integer id, Bird entity) {
+        return ResponseBuilder.buildPut(super.update(entity));
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    public Response remove(@PathParam("id") Integer id) {
+        return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response find(@PathParam("id") Integer id) {
-        Bird birds = super.find(id);
-        if(birds == null)
-            return Response.status(Response.Status.NOT_FOUND).entity(birds).build();
-        return Response.ok(birds).build();
+        return ResponseBuilder.buildGet(super.get(id));
     }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response findAlll() {
-        List<Bird> birds = super.findAll();
-        if(birds == null)
-            return Response.status(Response.Status.NOT_FOUND).build();
-        return Response.ok(GSONParser.Parse(birds)).build();
+    public Response findAll() {
+        return ResponseBuilder.buildGet(super.getAll());
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Bird> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
+    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
     }
 
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        this.getEntityManager().close();
-        super.finalize(); //To change body of generated methods, choose Tools | Templates.
+    public Response countREST() {
+        return ResponseBuilder.buildGet(String.valueOf(super.count()));
     }
 }

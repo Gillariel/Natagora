@@ -8,16 +8,19 @@ package com.helmo.al.natarest.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -52,21 +55,35 @@ public class Observation implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "observationsDev")
-    private ObservationBird observationsBirdsDev;
+    /*@ManyToMany(cascade = { 
+        CascadeType.PERSIST, 
+        CascadeType.MERGE,   
+    })
     
-    /* DONT KNOW HOW TO GET IT WITHOUT THE KEY
-    @JoinColumn(name = "M")
-    private MediaDev mediaDev;
-    */
+    @JoinTable(name = "Observations_Birds_Dev",
+        joinColumns = @JoinColumn(name = "Observation_ID"),
+        inverseJoinColumns = @JoinColumn(name = "ID")
+    )
+    private Set<Bird> birds = new HashSet<Bird>();*/
+    
+    @OneToOne()
+    @JoinTable(name = "Media_Dev", 
+            joinColumns = @JoinColumn(name = "Observation_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ID")
+    )
+    private Media media;
     
     @JoinColumn(name = "Session_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private Session session;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "obervation")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Notes_Dev",
+            joinColumns = @JoinColumn(name = "Observation_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ID")
+    )
     private Collection<Note> notes;
-
+    
     public Observation() {
     }
 
@@ -95,23 +112,23 @@ public class Observation implements Serializable {
         this.date = date;
     }
 
-    public ObservationBird getObservationsBirdsDev() {
-        return observationsBirdsDev;
+    /*public Set<Bird> getBirds() {
+        return birds;
     }
 
-    public void setObservationsBirdsDev(ObservationBird observationsBirdsDev) {
-        this.observationsBirdsDev = observationsBirdsDev;
-    }
-
-    /*public MediaDev getMediaDev() {
-        return mediaDev;
-    }
-
-    public void setMediaDev(MediaDev mediaDev) {
-        this.mediaDev = mediaDev;
+    public void setBirds(Set<Bird> birds) {
+        this.birds = birds;
     }*/
+    
+    
+    public Media getMediaDev() {
+        return media;
+    }
 
-    @XmlTransient
+    public void setMediaDev(Media media) {
+        this.media = media;
+    }
+
     public Session getSession() {
         return session;
     }
@@ -129,6 +146,16 @@ public class Observation implements Serializable {
         this.notes = notes;
     }
 
+    /*public void addBird(Bird b) {
+        birds.add(b);
+        b.getObservations().add(this);
+    }
+ 
+    public void removeBird(Bird b) {
+        birds.remove(b);
+        b.getObservations().remove(this);
+    }*/
+    
     @Override
     public int hashCode() {
         int hash = 0;

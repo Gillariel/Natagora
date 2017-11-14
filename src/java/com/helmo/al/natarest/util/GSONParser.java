@@ -6,6 +6,8 @@
 package com.helmo.al.natarest.util;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.helmo.al.natarest.entity.Observation;
 import java.util.Collection;
 import javax.ws.rs.core.Response;
 
@@ -15,19 +17,51 @@ import javax.ws.rs.core.Response;
  */
 public class GSONParser {
     
+    private static final Gson GSON = new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .setExclusionStrategies(new JsonExcludeStrategy(Observation.class))
+            .serializeNulls()
+            .create();
+    
     public static String Parse(Object entity){
-        return new Gson().toJson(entity, entity.getClass());
+        return GSON.toJson(entity, entity.getClass());
     }
     
     public static String Parse(Collection<Object> entities){
-        return new Gson().toJson(entities, entities.getClass());
+        return GSON.toJson(entities, entities.getClass());
     }
     
     public static Response BuildRepsonse(Object entity){
-        return Response.ok(new Gson().toJson(entity, entity.getClass())).build();
+        return Response.ok(GSON.toJson(entity, entity.getClass())).build();
     }
     
     public static Response BuildRepsonse(Collection<Object> entities){
-        return Response.ok(new Gson().toJson(entities, entities.getClass())).build();
+        return Response.ok(GSON.toJson(entities, entities.getClass())).build();
+    }
+    
+    public static Response buildCircularResponse(Object entity){
+        GsonBuilder b = new GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                        .setExclusionStrategies(new JsonExcludeStrategy(Observation.class))
+                        .serializeNulls();
+        
+        new GraphAdapterBuilder()
+                    .addType(entity.getClass())
+                    .registerOn(b);
+        
+        return Response.ok(b.create().toJson(entity)).build();
+    }
+    
+    public static Response buildCircularResponse(Collection<Object> entities){
+        GsonBuilder b = new GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                        .setExclusionStrategies(new JsonExcludeStrategy(Observation.class))
+                        .serializeNulls();
+        
+        new GraphAdapterBuilder()
+                    .addType(entities.getClass())
+                    .registerOn(b);
+        
+        return Response.ok(b.create().toJson(entities)).build();
     }
 }

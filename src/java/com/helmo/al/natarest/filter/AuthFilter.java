@@ -14,12 +14,16 @@ import javax.ws.rs.ext.Provider;
 public class AuthFilter implements ContainerRequestFilter {
     
     public void filter(ContainerRequestContext ctx) throws IOException {
-        String authHeader = ctx.getHeaderString("api-key");
-        if (authHeader == null)
-            throw new NotAuthorizedException("Api Key not present.");
-        else {
-            if(!AbstractDao.validApplication(authHeader))
-                throw new NotAuthorizedException("Api Key not correct.");
+        
+        //Cookie check is implemented only for web demonstration !
+        if(ctx.getCookies().get("helmo") == null){
+            String authHeader = ctx.getHeaderString("api-key");
+            if (authHeader == null)
+                throw new NotAuthorizedException("Api Key not present.");
+            else {
+                if(!AbstractDao.validApplication(authHeader))
+                    throw new NotAuthorizedException("Api Key not correct.");
+            }
         }
     }
 }

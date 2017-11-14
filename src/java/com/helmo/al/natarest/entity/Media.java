@@ -13,11 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -62,10 +61,6 @@ public class Media implements Serializable {
     @JoinColumn(name = "MediaType_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private MediaTypeDB mediaType;
-    
-    @JoinColumn(name = "Observation_ID", referencedColumnName = "ID")
-    @OneToOne(optional = false)
-    private Observation observationID;
 
     
     public Media() {
@@ -127,14 +122,6 @@ public class Media implements Serializable {
 
     public void setMediaTypeID(MediaTypeDB mediaTypeID) {
         this.mediaType = mediaTypeID;
-    }
-
-    public Observation getObservationID() {
-        return observationID;
-    }
-
-    public void setObservationID(Observation observationID) {
-        this.observationID = observationID;
     }
 
     @Override

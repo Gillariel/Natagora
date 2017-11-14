@@ -5,19 +5,22 @@
  */
 package com.helmo.al.natarest.entity;
 
+
+import com.helmo.al.natarest.util.InvisibleJson;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -47,8 +50,9 @@ public class Bird implements Serializable {
     private Integer length;
     @Column(name = "Weight")
     private Integer weight;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "birdsDev")
-    private ObservationBird observationsBirdsDev;
+    
+    /*@ManyToMany(mappedBy = "birds", fetch=FetchType.LAZY)
+    private Set<Observation> observations = new HashSet<Observation>();*/
 
     public Bird() {
     }
@@ -94,13 +98,14 @@ public class Bird implements Serializable {
         this.weight = weight;
     }
 
-    public ObservationBird getObservationsBirdsDev() {
-        return observationsBirdsDev;
+    /*@XmlTransient
+    public Set<Observation> getObservations() {
+        return observations;
     }
 
-    public void setObservationsBirdsDev(ObservationBird observationsBirdsDev) {
-        this.observationsBirdsDev = observationsBirdsDev;
-    }
+    public void setObservations(Set<Observation> observation) {
+        this.observations = observation;
+    }*/
 
     @Override
     public int hashCode() {

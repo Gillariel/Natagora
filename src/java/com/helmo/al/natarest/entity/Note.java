@@ -42,9 +42,6 @@ public class Note implements Serializable {
     @Basic(optional = false)
     @Column(name = "Message")
     private String message;
-    @JoinColumn(name = "Obervation_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Observation obervation;
 
     public Note() {
     }
@@ -72,15 +69,6 @@ public class Note implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    @XmlTransient
-    public Observation getObervation() {
-        return obervation;
-    }
-
-    public void setObervation(Observation obervation) {
-        this.obervation = obervation;
     }
 
     @Override
