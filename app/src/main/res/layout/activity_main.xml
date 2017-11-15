@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="al.helmo.com.natamobile.activity.MainActivity">
 
+    <TextView
+        android:id="@+id/txtUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        />
+
 </android.support.constraint.ConstraintLayout>

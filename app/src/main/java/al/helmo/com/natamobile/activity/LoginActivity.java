@@ -1,5 +1,6 @@
 package al.helmo.com.natamobile.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.model.APIUtils;
-import al.helmo.com.natamobile.model.User;
 import al.helmo.com.natamobile.model.remote.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,10 +36,10 @@ public class LoginActivity extends AppCompatActivity {
                 String username = edtUsername.getText().toString();
                 String password = edtPassword.getText().toString();
 
-                if(validateLogIn(username, password)){
+                if(!validateLogIn(username, password)){
                     Toast.makeText(getApplicationContext(), "Please fill the fields", Toast.LENGTH_SHORT).show();
                 }else{
-                    doLogin(username, password);
+                    doLogin(username, password, APIUtils.KEYAPI);
                 }
             }
         });
@@ -57,19 +57,29 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    private void doLogin(String username, String password) {
-        Call<User> call = userService.login(username);
-        call.enqueue(new Callback<User>() {
+    private void doLogin(final String username, String password, String apiKey) {
+        Call<Void> call = userService.login(username,apiKey,password);
+
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()){
-                    //User user = new response.body();
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                if(response.code() == 200){
+                    if(true){
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        i.putExtra("username", username);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(LoginActivity.this,"The username or password is incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(LoginActivity.this, "Error, Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(LoginActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
