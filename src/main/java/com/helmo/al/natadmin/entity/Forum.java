@@ -16,9 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,11 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Forums_Dev")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "ForumsDev.findAll", query = "SELECT f FROM ForumsDev f")
-    , @NamedQuery(name = "ForumsDev.findById", query = "SELECT f FROM ForumsDev f WHERE f.id = :id")
-    , @NamedQuery(name = "ForumsDev.findByLikes", query = "SELECT f FROM ForumsDev f WHERE f.likes = :likes")
-    , @NamedQuery(name = "ForumsDev.findByDislike", query = "SELECT f FROM ForumsDev f WHERE f.dislike = :dislike")})*/
 public class Forum implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,10 +51,10 @@ public class Forum implements Serializable {
         @JoinColumn(name = "Forum_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "Tag_ID", referencedColumnName = "ID")})
     @ManyToMany
-    private Collection<Tag> tagsDevCollection;
+    private Collection<Tag> tags;
     
-    @ManyToMany(mappedBy = "forumsDevCollection")
-    private Collection<Comment> commentsDevCollection;
+    @OneToMany(mappedBy = "forum")
+    private Collection<Comment> comments;
     
     @JoinColumn(name = "Session_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
@@ -84,7 +77,6 @@ public class Forum implements Serializable {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -92,7 +84,6 @@ public class Forum implements Serializable {
     public int getLikes() {
         return likes;
     }
-
     public void setLikes(int likes) {
         this.likes = likes;
     }
@@ -100,33 +91,28 @@ public class Forum implements Serializable {
     public int getDislike() {
         return dislike;
     }
-
     public void setDislike(int dislike) {
         this.dislike = dislike;
     }
-
-    
-    public Collection<Tag> getTagsDevCollection() {
-        return tagsDevCollection;
+ 
+    public Collection<Tag> getTags() {
+        return tags;
+    }
+    public void setTags(Collection<Tag> tags) {
+        this.tags = tags;
+    }
+ 
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 
-    public void setTagsDevCollection(Collection<Tag> tagsDevCollection) {
-        this.tagsDevCollection = tagsDevCollection;
-    }
-
-    
-    public Collection<Comment> getCommentsDevCollection() {
-        return commentsDevCollection;
-    }
-
-    public void setCommentsDevCollection(Collection<Comment> commentsDevCollection) {
-        this.commentsDevCollection = commentsDevCollection;
-    }
-
+    @XmlTransient
     public Session getSession() {
         return session;
     }
-
     public void setSession(Session session) {
         this.session = session;
     }
@@ -153,7 +139,7 @@ public class Forum implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.ForumsDev[ id=" + id + " ]";
+        return "Forum for session " + this.session.getId();
     }
     
 }

@@ -5,8 +5,8 @@
  */
 package com.helmo.al.natadmin.servlet;
 
-import com.helmo.al.natadmin.client.BirdsClient;
-import com.helmo.al.natadmin.entity.Bird;
+import com.helmo.al.natadmin.client.MediaTypeClient;
+import com.helmo.al.natadmin.entity.MediaTypeDB;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,16 +18,12 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class BirdsHandler {
-    public List<Bird> all() {
-        return new BirdsClient().findAll();
+public class MediaTypeHandler {
+    public List<MediaTypeDB> all() {
+        return new MediaTypeClient().findAll();
     }
     
-    public Bird get(int id) {
-        return new BirdsClient().find(id);
-    }
-    
-    public String count() {
-        return new BirdsClient().count();
+    public MediaTypeDB find(int id) {
+        return new MediaTypeClient().find(id);
     }
 }

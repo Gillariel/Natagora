@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,18 +22,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Roles_Dev")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "RolesDev.findAll", query = "SELECT r FROM RolesDev r")
-    , @NamedQuery(name = "RolesDev.findById", query = "SELECT r FROM RolesDev r WHERE r.id = :id")
-    , @NamedQuery(name = "RolesDev.findByName", query = "SELECT r FROM RolesDev r WHERE r.name = :name")})*/
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "Name")
     private String name;
@@ -55,7 +51,6 @@ public class Role implements Serializable {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -63,7 +58,6 @@ public class Role implements Serializable {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -90,7 +84,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.RolesDev[ id=" + id + " ]";
+        return this.name;
     }
     
 }

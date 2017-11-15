@@ -13,8 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,13 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Media_Dev")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "MediaDev.findAll", query = "SELECT m FROM MediaDev m")
-    , @NamedQuery(name = "MediaDev.findById", query = "SELECT m FROM MediaDev m WHERE m.id = :id")
-    , @NamedQuery(name = "MediaDev.findByName", query = "SELECT m FROM MediaDev m WHERE m.name = :name")
-    , @NamedQuery(name = "MediaDev.findByUrl", query = "SELECT m FROM MediaDev m WHERE m.url = :url")
-    , @NamedQuery(name = "MediaDev.findByText", query = "SELECT m FROM MediaDev m WHERE m.text = :text")
-    , @NamedQuery(name = "MediaDev.findByValidated", query = "SELECT m FROM MediaDev m WHERE m.validated = :validated")})*/
 public class Media implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,12 +53,7 @@ public class Media implements Serializable {
     @JoinColumn(name = "MediaType_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private MediaTypeDB mediaType;
-    
-    @JoinColumn(name = "Observation_ID", referencedColumnName = "ID")
-    @OneToOne(optional = false)
-    private Observation observationID;
 
-    
     public Media() {
     }
 
@@ -84,7 +70,6 @@ public class Media implements Serializable {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -92,7 +77,6 @@ public class Media implements Serializable {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -100,7 +84,6 @@ public class Media implements Serializable {
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }
@@ -108,7 +91,6 @@ public class Media implements Serializable {
     public String getText() {
         return text;
     }
-
     public void setText(String text) {
         this.text = text;
     }
@@ -116,7 +98,6 @@ public class Media implements Serializable {
     public short getValidated() {
         return validated;
     }
-
     public void setValidated(short validated) {
         this.validated = validated;
     }
@@ -124,17 +105,8 @@ public class Media implements Serializable {
     public MediaTypeDB getMediaTypeID() {
         return mediaType;
     }
-
     public void setMediaTypeID(MediaTypeDB mediaTypeID) {
         this.mediaType = mediaTypeID;
-    }
-
-    public Observation getObservationID() {
-        return observationID;
-    }
-
-    public void setObservationID(Observation observationID) {
-        this.observationID = observationID;
     }
 
     @Override
@@ -159,7 +131,7 @@ public class Media implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.MediaDev[ id=" + id + " ]";
+        return this.name + " (" + this.mediaType.getType() + ")";
     }
     
 }

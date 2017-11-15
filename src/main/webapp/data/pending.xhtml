@@ -1,6 +1,9 @@
 <ui:composition template="/WEB-INF/template/layout.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <!-- All content outside an ui:define will be considered as a comment and not be rendered -->
 
@@ -14,7 +17,29 @@
     </ui:define>
 
     <ui:define name="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0">Birds</h3>
+                    <p class="text-muted m-b-30">All birds</p>
+                    <div class="table-responsive">
+                        <h:dataTable id="example" class="table display" value="#{mediaTypeHandler.all()}" var="m">
+                            <h:column>    				
+                                <f:facet name = "header">Id</f:facet>    				
+                                #{m.id}
+                            </h:column>
 
+                            <h:column>    				
+                                <f:facet name = "header">Type</f:facet>    				
+                                #{m.type}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h1>#{mediaTypeHandler.find(1).type}</h1>
     </ui:define>
 
     <!-- Custom Script for this page -->

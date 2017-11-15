@@ -27,23 +27,23 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Tags_Dev")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "TagsDev.findAll", query = "SELECT t FROM TagsDev t")
-    , @NamedQuery(name = "TagsDev.findById", query = "SELECT t FROM TagsDev t WHERE t.id = :id")
-    , @NamedQuery(name = "TagsDev.findByName", query = "SELECT t FROM TagsDev t WHERE t.name = :name")})*/
 public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "Name")
     private String name;
-    @ManyToMany(mappedBy = "tagsDevCollection")
-    private Collection<Forum> forumsDevCollection;
+    
+    @XmlTransient
+    @ManyToMany(mappedBy = "tags")
+    private Collection<Forum> forums;
 
     public Tag() {
     }
@@ -60,7 +60,6 @@ public class Tag implements Serializable {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -68,18 +67,16 @@ public class Tag implements Serializable {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
     @XmlTransient
-    public Collection<Forum> getForumsDevCollection() {
-        return forumsDevCollection;
+    public Collection<Forum> getForums() {
+        return forums;
     }
-
-    public void setForumsDevCollection(Collection<Forum> forumsDevCollection) {
-        this.forumsDevCollection = forumsDevCollection;
+    public void setForums(Collection<Forum> forums) {
+        this.forums = forums;
     }
 
     @Override
@@ -104,7 +101,7 @@ public class Tag implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.TagsDev[ id=" + id + " ]";
+        return this.name;
     }
     
 }

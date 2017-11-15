@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,29 +24,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Application")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "Application.findAll", query = "SELECT a FROM Application a")
-    , @NamedQuery(name = "Application.findById", query = "SELECT a FROM Application a WHERE a.id = :id")
-    , @NamedQuery(name = "Application.findByApiKey", query = "SELECT a FROM Application a WHERE a.apiKey = :apiKey")
-    , @NamedQuery(name = "Application.findByActive", query = "SELECT a FROM Application a WHERE a.active = :active")
-    , @NamedQuery(name = "Application.findByType", query = "SELECT a FROM Application a WHERE a.type = :type")})*/
 public class Application implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 512)
     @Column(name = "ApiKey")
     private String apiKey;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "Active")
     private short active;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -72,7 +68,6 @@ public class Application implements Serializable {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -80,7 +75,6 @@ public class Application implements Serializable {
     public String getApiKey() {
         return apiKey;
     }
-
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
     }
@@ -88,7 +82,6 @@ public class Application implements Serializable {
     public short getActive() {
         return active;
     }
-
     public void setActive(short active) {
         this.active = active;
     }
@@ -96,7 +89,6 @@ public class Application implements Serializable {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -123,7 +115,7 @@ public class Application implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.Application[ id=" + id + " ]";
+        return this.type + "(Api Key are distributed by global admin only)";
     }
     
 }

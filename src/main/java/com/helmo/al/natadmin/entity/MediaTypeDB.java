@@ -7,16 +7,11 @@ package com.helmo.al.natadmin.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,9 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "MediaType_Dev")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "MediaTypeDev.findAll", query = "SELECT m FROM MediaTypeDev m")
-    , @NamedQuery(name = "MediaTypeDev.findById", query = "SELECT m FROM MediaTypeDev m WHERE m.id = :id")})*/
 public class MediaTypeDB implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,7 +52,6 @@ public class MediaTypeDB implements Serializable {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -68,7 +59,6 @@ public class MediaTypeDB implements Serializable {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -95,7 +85,7 @@ public class MediaTypeDB implements Serializable {
 
     @Override
     public String toString() {
-        return "com.helmo.al.natarest.entity.MediaTypeDev[ id=" + id + " ]";
+        return this.type;
     }
     
 }
