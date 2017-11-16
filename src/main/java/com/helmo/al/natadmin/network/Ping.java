@@ -8,7 +8,6 @@ package com.helmo.al.natadmin.network;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -37,7 +36,7 @@ public class Ping {
             connection.setReadTimeout(timeout.getTimeout());
             connection.setRequestMethod("HEAD");
             int responseCode = connection.getResponseCode();
-            return (200 <= responseCode && responseCode <= 399);
+            return ((200 <= responseCode && responseCode <= 399) || responseCode == 401);
         } catch (IOException e) {
             return false;
         }
@@ -56,7 +55,7 @@ public class Ping {
                 int responseCode = connection.getResponseCode();
                 result.put(
                         url.replaceFirst(".*/([^/?]+).*", "$1"),
-                        (200 <= responseCode && responseCode <= 399)
+                        ((200 <= responseCode && responseCode <= 399) || responseCode == 401)
                 );
             } catch (IOException e) {
                 result.put(

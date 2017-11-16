@@ -5,15 +5,12 @@
  */
 package com.helmo.al.natadmin.servlet;
 
+import com.helmo.al.natadmin.network.AdminUrls;
 import com.helmo.al.natadmin.network.NetworkTimeOut;
 import com.helmo.al.natadmin.network.Ping;
-import com.helmo.al.natadmin.network.Urls;
-import java.util.ArrayList;
+import com.helmo.al.natadmin.network.RESTUrls;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -41,8 +38,18 @@ public class NetworkHandler {
         return Ping.pingURL("http://192.168.128.13:8081/NataRest", NetworkTimeOut.NORMAL);
     }
     
-    public boolean completeTestNatAdmin() {
-        return true;
+    public String completeTestNatAdmin() {
+        StringBuilder htmlResult = new StringBuilder();
+        List<String> urls = AdminUrls.getAsList();
+        Map<String, Boolean> pingsResults = Ping.multiplePingURL(urls, NetworkTimeOut.NORMAL);
+        for(Map.Entry<String, Boolean> pingResult : pingsResults.entrySet()){
+            htmlResult.append(
+                pingResult.getValue()
+                    ? "<h4><p>" + pingResult.getKey()/*.split(".")[0]*/ + " <i class=\"fa fa-check-circle-o text-success fa-2x\"></i></p></h4>"
+                    : "<h4><p>" + pingResult.getKey()/*.split(".")[0]*/ + " <i class=\"fa fa-times-circle-o text-danger fa-2x\"></i></p></h4>"
+            );
+        }
+        return htmlResult.toString();
     }
     
     /**
@@ -53,13 +60,13 @@ public class NetworkHandler {
     
     public String completeTestNataRest() {
         StringBuilder htmlResult = new StringBuilder();
-        List<String> urls = Urls.getAsList();
+        List<String> urls = RESTUrls.getAsList();
         Map<String, Boolean> pingsResults = Ping.multiplePingURL(urls, NetworkTimeOut.NORMAL);
         for(Map.Entry<String, Boolean> pingResult : pingsResults.entrySet()){
             htmlResult.append(
                 pingResult.getValue()
                     ? "<h4><p>" + pingResult.getKey() + " <i class=\"fa fa-check-circle-o text-success fa-2x\"></i></p></h4>"
-                    : "<h4><p>" + pingResult.getKey() + " <i class=\"fa fa-check-circle-o text-danger fa-2x\"></i></p></h4>"
+                    : "<h4><p>" + pingResult.getKey() + " <i class=\"fa fa-times-circle-o text-danger fa-2x\"></i></p></h4>"
             );
         }
         return htmlResult.toString();

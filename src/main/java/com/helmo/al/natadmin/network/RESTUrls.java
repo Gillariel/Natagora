@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author foers
  */
-public enum Urls {
+public enum RESTUrls {
     
     INDEX(""),
     BIRDS("api/birds"),
@@ -33,7 +33,7 @@ public enum Urls {
     
     private final String url;
     
-    Urls(String url) {
+    RESTUrls(String url) {
         this.url = BASE + url;
     }
 
@@ -43,8 +43,8 @@ public enum Urls {
     
     public static List<String> getAsList() {
         List<String> results = new ArrayList<>();
-        List<Urls> urls = Arrays.asList(Urls.values());
-        for(Urls u : urls)
+        List<RESTUrls> urls = Arrays.asList(RESTUrls.values());
+        for(RESTUrls u : urls)
             results.add(u.getUrl());
         return results;
     }
