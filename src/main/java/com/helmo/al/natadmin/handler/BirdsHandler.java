@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helmo.al.natadmin.servlet;
+package com.helmo.al.natadmin.handler;
 
 import com.helmo.al.natadmin.client.BirdsClient;
 import com.helmo.al.natadmin.entity.Bird;

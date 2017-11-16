@@ -102,4 +102,8 @@
         <param-value>/WEB-INF/faces-config.xml</param-value>
     </context-param>
     
+    <context-param>
+        <param-name>org.omnifaces.FACES_VIEWS_SCAN_PATHS</param-name>
+        <param-value>/*.xhtml</param-value>
+    </context-param>
 </web-app>

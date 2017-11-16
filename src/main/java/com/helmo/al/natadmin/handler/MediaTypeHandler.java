@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helmo.al.natadmin.servlet;
+package com.helmo.al.natadmin.handler;
 
 import com.helmo.al.natadmin.client.MediaTypeClient;
 import com.helmo.al.natadmin.entity.MediaTypeDB;
@@ -22,15 +22,5 @@ public class MediaTypeHandler extends BaseHandler<MediaTypeDB> {
 
     public MediaTypeHandler() {
         super(MediaTypeDB.class, new MediaTypeClient());
-    }
-    
-    @Override
-    public List<MediaTypeDB> all() {
-        return super.all();
-    }
-    
-    @Override
-    public MediaTypeDB find(String id) {
-        return super.find(id);
     }
 }

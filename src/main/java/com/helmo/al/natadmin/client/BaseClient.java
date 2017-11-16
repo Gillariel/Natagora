@@ -25,7 +25,14 @@ public abstract class BaseClient<T> {
     private final Client client;
     private static final String BASE_URI = "http://192.168.128.13:8081/NataRest/api/";
 
+    /**
+     *  The java class of the entity
+     */
     private final Class<T> entityClass;
+    
+    /**
+     * The generic Type of the entity implemented List, use for deserialize
+     */
     private final GenericType listClass;
     
     public BaseClient(Class<T> entityClass, GenericType g, String path) {
@@ -35,22 +42,55 @@ public abstract class BaseClient<T> {
         webTarget = client.target(BASE_URI + path);
     }
     
-    
+    /**
+     * @param id Th ID of the entity in the database
+     * @return The entity matching or null
+     * @throws ClientErrorException 
+     */
     public T get(String id) throws ClientErrorException {
         webTarget.path("/" + id);
         return RequestBuilder.execute(webTarget, this.getTypeClass());
     }
     
+    /**
+     * @return Simply all entities of this type, no matter any conditions
+     * @throws ClientErrorException 
+     */
     public List<T> getAll() throws ClientErrorException {
         return RequestBuilder.execute(webTarget, listClass);
     }
     
+    /**
+     * @return The number of existing entities of this type
+     * @throws ClientErrorException 
+     */
     public String count() throws ClientErrorException {
         webTarget.path("/count");
         return String.valueOf(RequestBuilder.executeCount(webTarget));
     }
     
-    protected <T> T ValidateHTTP(Response r, Class<T> type){
+    /**
+     * @param id The ID of the entity in the database
+     * @param path The custom resource's path (beginning with "/") 
+     * @return The matching entity
+     * @throws ClientErrorException 
+     */
+    public T getCustomFromId(String id, String path) throws ClientErrorException {
+        webTarget.path(path);
+        return RequestBuilder.execute(webTarget, this.getTypeClass());
+    }
+    
+    /**
+     * @param path The custom resource's path beginning with "/"
+     * @return The List of result
+     * @throws ClientErrorException 
+     */
+    public List<T> getAllFromCustomPath(String path) throws ClientErrorException {
+        webTarget.path(path);
+        return RequestBuilder.execute(webTarget, listClass);
+    }
+    
+    protected <T> T ValidateHTTP(Response r, Class<T> type) {
         return(r.getStatusInfo() == Response.Status.OK)
             ? r.readEntity(type)
             : null;
@@ -60,10 +100,16 @@ public abstract class BaseClient<T> {
         return this.webTarget;
     }
     
+    /**
+     * @return The java class of the entity
+     */
     protected Class<T> getTypeClass() {
         return this.entityClass;
     }
     
+    /**
+     * @return The generic Type of the entity implemented List, use for deserialize
+     */
     public GenericType getListClass() {
         return this.listClass;
     }
