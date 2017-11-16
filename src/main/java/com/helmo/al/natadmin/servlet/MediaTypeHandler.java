@@ -18,12 +18,19 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class MediaTypeHandler {
-    public List<MediaTypeDB> all() {
-        return new MediaTypeClient().findAll();
+public class MediaTypeHandler extends BaseHandler<MediaTypeDB> {
+
+    public MediaTypeHandler() {
+        super(MediaTypeDB.class, new MediaTypeClient());
     }
     
-    public MediaTypeDB find(int id) {
-        return new MediaTypeClient().find(id);
+    @Override
+    public List<MediaTypeDB> all() {
+        return super.all();
+    }
+    
+    @Override
+    public MediaTypeDB find(String id) {
+        return super.find(id);
     }
 }

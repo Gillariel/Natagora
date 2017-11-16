@@ -38,7 +38,7 @@ public abstract class BaseClient<T> {
     
     public T get(String id) throws ClientErrorException {
         webTarget.path("/" + id);
-        return RequestBuilder.execute(webTarget, entityClass);
+        return RequestBuilder.execute(webTarget, this.getTypeClass());
     }
     
     public List<T> getAll() throws ClientErrorException {
@@ -59,7 +59,15 @@ public abstract class BaseClient<T> {
     protected WebTarget getRessource(){
         return this.webTarget;
     }
-                
+    
+    protected Class<T> getTypeClass() {
+        return this.entityClass;
+    }
+    
+    public GenericType getListClass() {
+        return this.listClass;
+    }
+    
     public void close(){
         client.close();
     }

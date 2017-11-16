@@ -23,11 +23,13 @@ public class MediaTypeClient extends BaseClient<MediaTypeDB>{
         super(MediaTypeDB.class, new GenericType<List<MediaTypeDB>>(){}, "mediatype");
     }
     
-    public List<MediaTypeDB> findAll() {
+    @Override
+    public List<MediaTypeDB> getAll() {
         return super.getAll();
     }
     
-    public MediaTypeDB find(int id) {
+    @Override
+    public MediaTypeDB get(String id) {
         return RequestBuilder.execute(getRessource().path("/"+id), MediaTypeDB.class);
     }
 }
