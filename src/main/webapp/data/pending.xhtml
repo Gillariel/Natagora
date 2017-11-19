@@ -36,7 +36,7 @@
                         <div id="gallery-content">
                             <div id="gallery-content-center">
                                 <c:forEach var="m" items="#{pendingHandler.all()}">
-                                    <a href="#{m.url}" data-toggle="lightbox" data-gallery="multiimages" data-title="#{m.name}">
+                                    <a href="#{m.url}" id="#{m.id}" data-toggle="lightbox" data-gallery="multiimages" data-title="#{m.name}">
                                         <img src="#{m.url}" class="all #{m.mediaTypeID.type}" alt="gallery" />
                                     </a>
                                 </c:forEach>
@@ -47,8 +47,6 @@
                 </div>
             </div>
         </div>
-        
-        <h1>#{mediaTypeHandler.find(1).type}</h1>
     </ui:define>
 
     <!-- Custom Script for this page -->
@@ -62,10 +60,18 @@
                 $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(event) {
                     event.preventDefault();
                     return $(this).ekkoLightbox({
+                        footer: '<a href="#" onclick="ajaxValidate(id, false)" class="pull-left "><i class="fa fa-times-circle-o fa-3x text-danger"></i></a><a href="#" onclick="ajaxValidate(id, true)" class="pull-right"><i class="fa fa-check-circle-o fa-3x text-success"></i></a>',
                         onShown: function() {
                             if (window.console) {
                                 return console.log('Checking our the events huh?');
                             }
+                        },
+                        onContentLoaded: function() {
+                            var url = $(".img-responsive").attr('src');
+                            var id = $('a[href="'+url+'"]').attr("id");
+                            alert(id);
+                            $(".modal-footer").html('<a href="#" onclick="ajaxValidate(' + id + ', false)" class="pull-left "><i class="fa fa-times-circle-o fa-3x text-danger"></i></a><a href="#" onclick="ajaxValidate(' + id + ', true)" class="pull-right"><i class="fa fa-check-circle-o fa-3x text-success"></i></a>');
+                            $(".modal-footer").removeAttr('style');
                         },
                         onNavigate: function(direction, itemIndex) {
                             if (window.console) {
@@ -98,6 +104,33 @@
                     });
                 });
             });
+            
+            function ajaxValidate(id, result) {
+                var url = (result) ? 'http://127.0.0.1:8081/NataRest/api/media/validate/' + id
+                                        : 'http://192.168.128.13:8081/NataRest/api/media/delete/' + id ;
+                $.ajax({
+                    url: url,
+                    type: 'PUT',
+                    crossDomain: true, 
+                    data: { },
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080/NatAdmin");
+                    },
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        
+                    },
+                    xhrFields: {withCredentials: true },
+                    dataType: 'json',
+                    success: function (data) {
+                        alert("Success");
+                        console.info(data);
+                    },
+                    error: function (data) {
+                        alert("Error");
+                    }
+                });
+            }
         </script>
     </ui:define>
 

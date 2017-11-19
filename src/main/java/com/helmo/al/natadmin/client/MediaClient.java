@@ -47,12 +47,6 @@ public class MediaClient extends BaseClient {
     /*******************************************/
     /*****             PENDING            ******/
     /*******************************************/
-    public Media pending(int id) {
-        return RequestBuilder.execute(getRessource().path("/pending/" + id), Media.class);
-        /*Response r = RequestBuilder.Build(getRessource().path("pending/" + mediaID))
-                .get();
-        return ValidateHTTP(r, Media.class);*/
-    }
     
     public List<Media> pending() {
         return RequestBuilder.execute(getRessource().path("/pending"), getListClass());

@@ -28,6 +28,12 @@ public class RequestBuilder {
                 .acceptEncoding("UTF-8");
     }
     
+    public static Long execute(WebTarget target){
+        return Build(target)
+                .get(Response.class)
+                .readEntity(Long.class);
+    }
+    
     public static <T> T execute(WebTarget target, Class<T> t){
         T result = Build(target)
                     .get(Response.class)

@@ -5,7 +5,6 @@
  */
 package com.helmo.al.natadmin.handler;
 
-import com.helmo.al.natadmin.client.BaseClient;
 import com.helmo.al.natadmin.client.MediaClient;
 import com.helmo.al.natadmin.entity.Media;
 import java.util.List;
@@ -25,11 +24,15 @@ public class PendingHandler extends BaseHandler<Media> {
         super(Media.class, new MediaClient());
     }
     
+    @Override
+    public List<Media> all(){
+        return ((MediaClient) client).pending();
+    }
+    
     /**
      * If Error of type "BaseHandler attribute modifier public is not accessible"
      * Override the method from BaseHandler to return explicit type like commented example below
-     */
-    
+     */ 
     /*@Override
     public List<Media> all() {
         /**

@@ -72,18 +72,36 @@
                         <div class="white-box p-b-0">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <a href="/NatAdmin/server/test.xhtml"><h2 class="text-muted m-t-0">Make a complete test</h2></a>
+                                    <a href="/NatAdmin/server/overview.xhtml"><h2 class="text-muted m-t-0">Make a complete test</h2></a>
                                 </div>
                             </div>
                             <div class="row m-t-30 minus-margin">
                                 <div class="col-sm-12 col-sm-6 b-t b-r">
                                     <ul class="expense-box">
-                                        <li><i class="fa fa-lock text-success"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span></li>
+                                        <li>
+                                            <c:choose>
+                                                <c:when test="#{networkHandler.pingNatAdmin()}">
+                                                    <i class="fa fa-lock text-success"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <i class="fa fa-lock text-danger"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-12 col-sm-6  b-t">
                                     <ul class="expense-box">
-                                        <li><i class="ti-android text-danger"></i><span><h2>NataMobile</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span></li>
+                                        <li>
+                                            <c:choose>
+                                                <c:when test="#{networkHandler.pingNataMobile()}">
+                                                    <i class="fa ti-android text-success"></i><span><h2>NataMobile</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <i class="fa ti-android text-danger"></i><span><h2>NataMobile</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,13 +117,21 @@
                                                     <i class="fa fa-server text-danger"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
                                                 </c:otherwise>
                                             </c:choose>
-                                            <!--<i class="fa fa-server text-success"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>-->
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-12 col-sm-6  b-t">
                                     <ul class="expense-box">
-                                        <li><i class="ti-world text-danger"></i><span><h2>NataWeb</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span></li>
+                                        <li>
+                                            <c:choose>
+                                                <c:when test="#{networkHandler.pingNataWeb()}">
+                                                    <i class="fa ti-world text-success"></i><span><h2>NataWeb</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <i class="fa ti-world text-danger"></i><span><h2>NataWeb</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@
 package com.helmo.al.natadmin.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -43,7 +44,7 @@ public class Session implements Serializable {
     @Basic(optional = false)
     @Column(name = "Date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private String date;
     
     @Basic(optional = false)
     @Column(name = "Latitude")
@@ -64,10 +65,11 @@ public class Session implements Serializable {
         this.id = id;
     }
 
-    public Session(Integer id, boolean validated, Date date, float latitude, float longitude) {
+    public Session(Integer id, boolean validated, String date, float latitude, float longitude) {
         this.id = id;
         this.validated = validated;
-        this.date = date;
+        this.date = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss")
+                          .format(new Date(Long.valueOf(date)));
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -86,11 +88,12 @@ public class Session implements Serializable {
         this.validated = validated;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(String date) {
+        this.date = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss")
+                          .format(new Date(Long.valueOf(date)));
     }
 
     public float getLatitude() {

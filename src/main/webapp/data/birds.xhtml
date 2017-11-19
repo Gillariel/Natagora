@@ -18,6 +18,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <h3 class="box-title m-b-0">Birds</h3>
+                    <a href="birds/new" class="pull-right btn btn-info">Create New</a>
                     <p class="text-muted m-b-30">All birds</p>
                     <div class="table-responsive">
                         <h:dataTable id="example" class="table display" value="#{birdsHandler.all()}" var="b">
@@ -40,7 +41,11 @@
                                 <f:facet name = "header">Weigth</f:facet>    				
                                 #{b.weight}
                             </h:column>
-
+                            <h:column headerClass="sorting_disabled">
+                                <f:facet name = "header">Actions</f:facet>
+                                <a href="birds/edit/#{b.id}"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
+                                <a href="birds/delete/#{b.id}"><i class="fa fa-trash-o fa-2x"></i> </a>
+                            </h:column>
                         </h:dataTable>
                     </div>
                 </div>

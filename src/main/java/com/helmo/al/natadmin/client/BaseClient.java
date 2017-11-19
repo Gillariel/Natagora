@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
 public abstract class BaseClient<T> {
     private final WebTarget webTarget;
     private final Client client;
-    private static final String BASE_URI = "http://192.168.128.13:8081/NataRest/api/";
+    private static final String BASE_URI = "http://127.0.0.1:8081/NataRest/api/";
 
     /**
      *  The java class of the entity
@@ -90,20 +90,20 @@ public abstract class BaseClient<T> {
         return RequestBuilder.execute(webTarget, listClass);
     }
     
-    protected <T> T ValidateHTTP(Response r, Class<T> type) {
+    public <T> T ValidateHTTP(Response r, Class<T> type) {
         return(r.getStatusInfo() == Response.Status.OK)
             ? r.readEntity(type)
             : null;
     }
     
-    protected WebTarget getRessource(){
+    public WebTarget getRessource(){
         return this.webTarget;
     }
     
     /**
      * @return The java class of the entity
      */
-    protected Class<T> getTypeClass() {
+    public Class<T> getTypeClass() {
         return this.entityClass;
     }
     

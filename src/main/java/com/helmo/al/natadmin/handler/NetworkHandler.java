@@ -23,7 +23,7 @@ import javax.faces.bean.RequestScoped;
 public class NetworkHandler {
 
     public boolean pingNatAdmin() {
-        return Ping.pingURL("http://192.168.128.13:8081/NataRest", NetworkTimeOut.NORMAL);
+        return Ping.pingURL("http://192.168.128.12:8888/NatAdmin", NetworkTimeOut.NORMAL);
     }
     
     public boolean pingNataMobile() {
@@ -35,7 +35,7 @@ public class NetworkHandler {
     }
     
     public boolean pingNataWeb() {
-        return Ping.pingURL("http://192.168.128.13:8081/NataRest", NetworkTimeOut.NORMAL);
+        return Ping.pingURL("http://192.168.128.13/~e140577/NataWeb", NetworkTimeOut.NORMAL);
     }
     
     public String completeTestNatAdmin() {

@@ -12,7 +12,11 @@ $(document).ready(function() {
             lengthChange: false,
             buttons: [
                 'copy', 'excel', 'pdf', 'print', 'colvis'
-            ]
+            ],
+            "aoColumnDefs" : [{
+                "bSortable" : false,
+                "aTargets" : ["sorting_disabled"]
+            }]
         });
 
         
