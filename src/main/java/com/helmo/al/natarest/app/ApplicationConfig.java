@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.helmo.al.natarest.filter.AuthFilter.class);
+        resources.add(com.helmo.al.natarest.filter.CorsFilter.class);
         resources.add(com.helmo.al.natarest.service.ApplicationsServices.class);
         resources.add(com.helmo.al.natarest.service.BirdsService.class);
         resources.add(com.helmo.al.natarest.service.CommentsService.class);
@@ -40,6 +41,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.helmo.al.natarest.service.ObservationsService.class);
         resources.add(com.helmo.al.natarest.service.RolesService.class);
         resources.add(com.helmo.al.natarest.service.SessionsService.class);
+        resources.add(com.helmo.al.natarest.service.StatisticsService.class);
         resources.add(com.helmo.al.natarest.service.TagsService.class);
         resources.add(com.helmo.al.natarest.service.UsersService.class);
     }

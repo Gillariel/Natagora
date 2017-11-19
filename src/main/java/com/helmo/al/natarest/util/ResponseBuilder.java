@@ -19,6 +19,12 @@ public class ResponseBuilder {
             : Response.ok().build();
     }
     
+    public static Response buildGet(Long l) {
+        return (l <= 0) 
+            ? Response.ok(JacksonParser.Parse(0)).build()
+            : Response.ok(JacksonParser.Parse(l)).build();
+    }
+    
     public static Response buildGet(Object entity) {
         return (entity == null) 
             ? Response.status(Response.Status.NOT_FOUND).build()
@@ -30,18 +36,6 @@ public class ResponseBuilder {
             ? Response.status(Response.Status.NOT_FOUND).build()
             : Response.ok(JacksonParser.Parse(entities)).build();
     }
-    
-    /*public static Response buildCircularGet(Object entity) {
-        return (entity == null) 
-            ? Response.status(Response.Status.NOT_FOUND).build()
-            : GSONParser.buildCircularResponse(entity);
-    }
-    
-    public static Response buildCircularGet(Collection<Object> entities) {
-        return (entities == null || entities.isEmpty()) 
-            ? Response.status(Response.Status.NOT_FOUND).build()
-            : GSONParser.buildCircularResponse(entities);
-    }*/
     
     public static Response buildDelete(boolean result) {
         return (!result) 

@@ -6,7 +6,9 @@
 package com.helmo.al.natarest.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +48,7 @@ public class Bird implements Serializable {
     private Integer weight;
     
     @ManyToMany(mappedBy = "birds")
-    private Collection<Observation> observations;
+    private Collection<Observation> observations = new ArrayList<>();
 
     public Bird() {
     }

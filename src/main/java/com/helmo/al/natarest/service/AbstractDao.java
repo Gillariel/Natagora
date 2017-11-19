@@ -36,15 +36,42 @@ public abstract class AbstractDao<T> extends AuthFilter{
     };
 
     public boolean save(T entity) {
-        return this.exec(Operation.CREATE, entity);
+        //return this.exec(Operation.CREATE, entity);
+        if(isNull(entity))
+            return false;
+        try{
+            getEntityManager().getTransaction().begin();
+            getEntityManager().persist(entity);
+            getEntityManager().flush();
+            getEntityManager().getTransaction().commit();
+            return true;
+        } catch(Exception e){ return false; }       
     }
 
     public boolean update(T entity) {
-        return this.exec(Operation.UPDATE, entity);
+        //return this.exec(Operation.UPDATE, entity);
+        if(isNull(entity))
+            return false;
+        try{
+            getEntityManager().getTransaction().begin();
+            getEntityManager().merge(entity);
+            getEntityManager().flush();
+            getEntityManager().getTransaction().commit();
+            return true;
+        } catch(Exception e){ return false; }    
     }
 
     public boolean delete(T entity) {
-        return this.exec(Operation.DELETE, entity);
+        //return this.exec(Operation.DELETE, entity);
+        if(isNull(entity))
+            return false;
+        try{
+            getEntityManager().getTransaction().begin();
+            getEntityManager().remove(getEntityManager().merge(entity));
+            getEntityManager().flush();
+            getEntityManager().getTransaction().commit();
+            return true;
+        } catch(Exception e){ return false; }    
     }
 
     public T get(Object id) {
@@ -73,24 +100,35 @@ public abstract class AbstractDao<T> extends AuthFilter{
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+    /**
+     *  Working only for delete, Create and Update doesn't work that way
+     *  (Don't know why)
+     */
+    /*
     private boolean exec(Operation type, T entity){
         if(isNull(entity))
             return false;
         try{
+            getEntityManager().getTransaction().begin();
             switch(type){
-                case CREATE : 
+                case CREATE : {
                     getEntityManager().persist(entity);
-                case UPDATE : 
+                }
+                case UPDATE : {
                     getEntityManager().merge(entity);
-                case DELETE : 
+                }
+                case DELETE : {
                     getEntityManager().remove(getEntityManager().merge(entity));
+                }
             }
+            getEntityManager().flush();
+            getEntityManager().getTransaction().commit();
             return true;
         } catch(Exception e){
             return false;
         }
     }
+    */
     
     private boolean isNull(T entity){
         return (entity == null);

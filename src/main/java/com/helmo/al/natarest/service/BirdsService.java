@@ -27,7 +27,7 @@ public class BirdsService extends AbstractDao<Bird> {
     public BirdsService() {
         super(Bird.class);
     }
-
+    
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Bird entity) {

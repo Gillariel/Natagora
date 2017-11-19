@@ -50,6 +50,10 @@ public class Media implements Serializable {
     @Column(name = "Validated")
     private short validated;
     
+    @Basic(optional = false)
+    @Column(name = "Deleted")
+    private short deleted;
+    
     @JoinColumn(name = "MediaType_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private MediaTypeDB mediaType;
@@ -102,6 +106,13 @@ public class Media implements Serializable {
         this.validated = validated;
     }
 
+    public short getDeleted() {
+        return deleted;
+    }
+    public void setDeleted(short deleted) {
+        this.deleted = deleted;
+    }
+    
     public MediaTypeDB getMediaTypeID() {
         return mediaType;
     }
