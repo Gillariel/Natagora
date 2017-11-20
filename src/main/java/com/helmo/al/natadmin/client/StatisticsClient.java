@@ -24,13 +24,13 @@ public class StatisticsClient {
         webTarget = client.target(BASE_URI);
     }
 
-    public Long get(String path) throws ClientErrorException {
-        webTarget.path(path);
-        return RequestBuilder.execute(webTarget);
+    public String get(String path) throws ClientErrorException {
+        WebTarget t = webTarget.path(path);
+        return RequestBuilder.execute(t);
     }
     
-    public Long getByID(String path, int ID) throws ClientErrorException {
-        webTarget.path(path + ID);
-        return RequestBuilder.execute(webTarget);
+    public String getByID(String path, int ID) throws ClientErrorException {
+        WebTarget t = webTarget.path(path + ID);
+        return RequestBuilder.execute(t);
     }
 }

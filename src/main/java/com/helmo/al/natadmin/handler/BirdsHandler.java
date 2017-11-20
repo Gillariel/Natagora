@@ -19,15 +19,26 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class BirdsHandler {
+    
+    private static final BirdsClient CLIENT = new BirdsClient();
+    
     public List<Bird> all() {
-        return new BirdsClient().findAll();
+        return CLIENT.findAll();
     }
     
     public Bird get(int id) {
-        return new BirdsClient().find(id);
+        return CLIENT.find(id);
     }
     
     public String count() {
-        return new BirdsClient().count();
+        return CLIENT.count();
+    }
+    
+    public String top5(){
+        return CLIENT.top5();
+    }
+    
+    public String history() {
+        return CLIENT.history();
     }
 }

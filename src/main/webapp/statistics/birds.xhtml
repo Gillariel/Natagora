@@ -15,12 +15,46 @@
     </ui:define>
 
     <ui:define name="content">
-
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Most seen birds</h3>
+                    <div>
+                        <canvas id="seeBirds" data-values="#{birdsHandler.top5()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">New Birds</h3>
+                    <div>
+                        <canvas id="newBirds" data-values="#{birdsHandler.history()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Don't know what else</h3>
+                    <div>
+                        <canvas id="nope" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Don't know what else</h3>
+                    <div>
+                        <canvas id="nope2" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ui:define>
 
     <!-- Custom Script for this page -->
     <ui:define name="js">
-
+        <h:outputScript name="plugins/bower_components/Chart.js/Chart.min.js"/>
+        <h:outputScript name="ample/js/birdsCharts.js"/>
     </ui:define>
 
 </ui:composition>

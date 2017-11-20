@@ -22,17 +22,17 @@ public class StatisticHandler {
     
     public StatisticHandler() { }
     
-    public Long birds() { return client.get("birds"); }
-    public Long comments() { return client.get("comments"); }
-    public Long media() { return client.get("media"); }
-    public Long observations() { return client.get("observations"); }
-    public Long sessions() { return client.get("sessions"); }
-    public Long users() { return client.get("users"); }
-    public Long lastUsers() { return client.get("lastUsers"); }
-    public Long commentsByForum(int id) { return client.getByID("comments/", id); }
-    public Long mediaByType(int id) { return client.getByID("media/", id); }
-    public Long seeBirds(int id) { return client.getByID("birds/", id); }
-    public Long observationsBySession(int id) { return client.getByID("observations/", id); }
-    public Long observationsByUser(int id) { return client.getByID("observations/byUser/", id); }
-    public Long sessionsByUser(int id) { return client.getByID("sessions/", id); }
+    public String birds() { return client.get("birds"); }
+    public String comments() { return client.get("comments"); }
+    public String media() { return client.get("media"); }
+    public String observations() { return client.get("observations"); }
+    public String sessions() { return client.get("sessions"); }
+    public String users() { return client.get("users"); }
+    public String lastUsers() { return client.get("lastUsers"); }
+    public String commentsByForum(int id) { return client.getByID("comments/", id); }
+    public String mediaByType(int id) { return client.getByID("media/", id); }
+    public String seeBirds(int id) { return client.getByID("birds/", id); }
+    public String observationsBySession(int id) { return client.getByID("observations/", id); }
+    public String observationsByUser(int id) { return client.getByID("observations/byUser/", id); }
+    public String sessionsByUser(int id) { return client.getByID("sessions/", id); }
 }

@@ -24,7 +24,11 @@ public class ReportedHandler extends BaseHandler<Comment> {
         super(Comment.class, new CommentsClient());
     }
     
+    public String countReported() {
+        return ((CommentsClient) client).countReported();
+    }
+    
     public List<Comment> allReported() {
-        return ((CommentsClient) client).getAllReported();
+        return ((CommentsClient) client).allReported();
     }
 }

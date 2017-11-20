@@ -16,14 +16,14 @@
 
     <ui:define name="content">
         <div class="row">
-            <c:forEach items="#{reportedHandler.all()}" var="r">
+            <c:forEach items="#{reportedHandler.allReported()}" var="r">
                 <div class="col-md-3">
                     <div class="white-box">
                         <h3 class="box-title text-center">Comment #{r.id}</h3>
                         <p style="overflow-wrap: break-word;" class="box-label text-center">#{r.message}</p>
                         <div class="col-md-12">
-                            <a class="pull-left" href="/NatAdmin/dashboard.xhtml"><i class="fa fa-times-circle-o fa-3x text-danger"></i></a>
-                            <a class="pull-right" href="/NatAdmin/dashboard.xhtml"><i class="fa fa-check-circle-o fa-3x text-success"></i></a>
+                            <a class="pull-left" onclick="ajaxValidate(#{r.id}), false" href="#"><i class="fa fa-times-circle-o fa-3x text-danger"></i></a>
+                            <a class="pull-right" onclick="ajaxValidate(#{r.id}), true" href="#"><i class="fa fa-check-circle-o fa-3x text-success"></i></a>
                         </div>
                         <br />
                     </div>
@@ -34,7 +34,55 @@
 
     <!-- Custom Script for this page -->
     <ui:define name="js">
-
+        <script>
+            function ajaxValidate(id, result) {
+                if(result){
+                    $.ajax({
+                        url: 'http://127.0.0.1:8081/NataRest/api/comments/validate/' + id,
+                        type: 'PUT',
+                        crossDomain: true, 
+                        data: { },
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080/NatAdmin");
+                        },
+                        headers: {
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        xhrFields: {withCredentials: true },
+                        dataType: 'json',
+                        success: function (data) {
+                            alert("Success");
+                            console.info(data);
+                        },
+                        error: function (data) {
+                            alert("Error");
+                        }
+                    });
+                }else{
+                    $.ajax({
+                        url: 'http://192.168.128.13:8081/NataRest/api/comments/delete/' + id ,
+                        type: 'DELETE',
+                        crossDomain: true, 
+                        data: { },
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080/NatAdmin");
+                        },
+                        headers: {
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        xhrFields: {withCredentials: true },
+                        dataType: 'json',
+                        success: function (data) {
+                            alert("Success");
+                            console.info(data);
+                        },
+                        error: function (data) {
+                            alert("Error");
+                        }
+                    });
+                }
+            };
+        </script>
     </ui:define>
 
 </ui:composition>

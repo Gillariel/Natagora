@@ -14,13 +14,10 @@
         <title>
             <ui:insert name="title">Natagora Admin</ui:insert>
         </title>
-        <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/favicon.ico']}" />
+        <link rel="icon" type="image/x-icon" href="#{resource['img/favicon.ico']}" />
         
         <h:outputStylesheet name="ample/bootstrap/dist/css/bootstrap.min.css"/>
-        <h:outputStylesheet name="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css"/>
-        <h:outputStylesheet name="ample/css/animate.css"/>
         <h:outputStylesheet name="ample/css/style.css"/>
-        <h:outputStylesheet name="ample/css/colors/default.css" role="myTheme"/>
         
         <!-- Custom CSS Will be places here outside the template -->
         <ui:insert name="css" />
@@ -63,7 +60,7 @@
                                 <h4 id="breadcumb-title" class="page-title"></h4>
                             </div>
                             <div class="col-lg-4 col-sm-3 col-md-3 col-xs-12">
-                                <h4 id="breadcumb-message" class="page-title text-center"></h4>
+                                <h4 id="breadcumb-message" class="page-title text-center">#{userSession}</h4>
                             </div>
                             <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12">
                                 <button class="right-side-toggle waves-effect waves-light btn-info btn-circle pull-right m-l-20"><i class="ti-settings text-white"></i></button>

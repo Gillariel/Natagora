@@ -34,5 +34,7 @@ public class UserHandler extends BaseHandler<User>{
         return super.find(id); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
+    public User login(String username, String pwd){
+        return new UserClient().login(username, pwd);
+    }
 }

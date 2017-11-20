@@ -29,6 +29,17 @@ public class PendingHandler extends BaseHandler<Media> {
         return ((MediaClient) client).pending();
     }
     
+    public String history() {
+        return ((MediaClient) client).history();
+    }
+    
+    public String historyPending() {
+        return ((MediaClient) client).historyPending();
+    }
+    
+    public String countByType() {
+        return ((MediaClient) client).countByType();
+    }
     /**
      * If Error of type "BaseHandler attribute modifier public is not accessible"
      * Override the method from BaseHandler to return explicit type like commented example below

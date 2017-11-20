@@ -48,8 +48,7 @@ public abstract class BaseClient<T> {
      * @throws ClientErrorException 
      */
     public T get(String id) throws ClientErrorException {
-        webTarget.path("/" + id);
-        return RequestBuilder.execute(webTarget, this.getTypeClass());
+        return RequestBuilder.execute(setPath("/" + id), this.getTypeClass());
     }
     
     /**
@@ -65,8 +64,16 @@ public abstract class BaseClient<T> {
      * @throws ClientErrorException 
      */
     public String count() throws ClientErrorException {
-        webTarget.path("/count");
-        return String.valueOf(RequestBuilder.executeCount(webTarget));
+        return String.valueOf(RequestBuilder.executeCount(setPath("/count")));
+    }
+    
+    /**
+     * @param path the path
+     * @return The entity matching or null
+     * @throws ClientErrorException 
+     */
+    public String getLong(String path) throws ClientErrorException {
+        return RequestBuilder.execute(setPath("/" + path), String.class);
     }
     
     /**
@@ -76,8 +83,7 @@ public abstract class BaseClient<T> {
      * @throws ClientErrorException 
      */
     public T getCustomFromId(String id, String path) throws ClientErrorException {
-        webTarget.path(path);
-        return RequestBuilder.execute(webTarget, this.getTypeClass());
+        return RequestBuilder.execute(setPath(path), this.getTypeClass());
     }
     
     /**
@@ -86,8 +92,7 @@ public abstract class BaseClient<T> {
      * @throws ClientErrorException 
      */
     public List<T> getAllFromCustomPath(String path) throws ClientErrorException {
-        webTarget.path(path);
-        return RequestBuilder.execute(webTarget, listClass);
+        return RequestBuilder.execute(setPath(path), listClass);
     }
     
     public <T> T ValidateHTTP(Response r, Class<T> type) {
@@ -98,6 +103,14 @@ public abstract class BaseClient<T> {
     
     public WebTarget getRessource(){
         return this.webTarget;
+    }
+    /**
+     * Path of WebTarget cannot be change o the instance, need to create a new one based on the previous
+     * @param path the appending path
+     * @return 
+     */
+    public WebTarget setPath(String path) {
+        return this.getRessource().path(path);
     }
     
     /**

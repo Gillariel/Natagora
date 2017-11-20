@@ -21,6 +21,6 @@ $(document).ready(function() {
 
         
         table.buttons().container()
-            .appendTo( '#example_wrapper .col-sm-6 .btn .btn-default' );
+            .appendTo( '#example_wrapper .col-sm-6 .btn .btn-info' );
     });
 });

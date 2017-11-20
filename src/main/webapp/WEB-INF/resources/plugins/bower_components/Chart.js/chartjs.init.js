@@ -1,24 +1,21 @@
 $( document ).ready(function() {
     
     var ctx4 = document.getElementById("chart4").getContext("2d");
+    var all = $("#chart4").data("all");
+    var newU = $("#chart4").data("number");
+    var diff = all - newU;
     var data4 = [
         {
-            value: 300,
+            value: diff,
             color:"#2cabe3",
             highlight: "#2cabe3",
-            label: "Blue"
+            label: "Old Users"
         },
         {
-            value: 50,
-            color: "#53e69d",
-            highlight: "#53e69d",
-            label: "Green"
-        },
-        {
-            value: 100,
+            value: newU,
             color: "#ff7676",
             highlight: "#ff7676",
-            label: "Orange"
+            label: "New Users"
         }
     ];
     

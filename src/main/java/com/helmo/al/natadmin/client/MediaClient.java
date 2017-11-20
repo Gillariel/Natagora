@@ -60,6 +60,17 @@ public class MediaClient extends BaseClient {
         return RequestBuilder.execute(getRessource().path("pending/" + userID), getListClass());
     }
     
+    public String history() {
+        return RequestBuilder.execute(getRessource().path("history/created"));
+    }
+    
+    public String historyPending() {
+        return RequestBuilder.execute(getRessource().path("history/pending"));
+    }
+    
+    public String countByType() {
+        return RequestBuilder.execute(getRessource().path("count/type"));
+    }
     
     /******************************************/
     /*****   Enum Helper For MediaType   ******/

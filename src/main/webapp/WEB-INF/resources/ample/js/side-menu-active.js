@@ -6,8 +6,8 @@ $(document).ready(function () {
     
     $("#breadcumb-title").text(document.title);
     
-    if(current === "dashboard"){
-        $("#breadcumb-message").text("Welcome Nathan !");
+    if(current !== "dashboard"){
+        $("#breadcumb-message").text("");
     }
     
     // 0 is server name, 1 is project name

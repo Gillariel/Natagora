@@ -17,15 +17,15 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <div class="white-box">
-                    <h3 class="box-title">Current connected users</h3>
+                    <h3 class="box-title">New users for this month</h3>
                     <div>
-                        <canvas id="chart4" width="400" height="100"> </canvas>
+                        <canvas id="chart4" data-all="#{statisticHandler.users()}" data-number="#{statisticHandler.lastUsers()}" width="400" height="100"> </canvas>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3"></div>
         </div>
-
+        
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12">
                 <div class="row">
@@ -34,25 +34,25 @@
                             <h3 class="box-title">media in pending</h3>
                             <ul class="list-inline m-t-30 p-t-10 two-part">
                                 <li><i class="icon-folder text-warning"></i></li>
-                                <li class="text-right"><span class="counter">23</span></li>
+                                <li class="text-right"><span class="counter">#{pendingHandler.all().size()}</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12">
                         <div class="white-box">
-                            <h3 class="box-title">content needs approval</h3>
+                            <h3 class="box-title">comments reported</h3>
                             <ul class="list-inline m-t-30 p-t-10 two-part">
                                 <li><i class="icon-dislike text-danger"></i></li>
-                                <li class="text-right"><span class="counter">169</span></li>
+                                <li class="text-right"><span class="counter">#{reportedHandler.countReported()}</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12">
                         <div class="white-box">
-                            <h3 class="box-title">new users</h3>
+                            <h3 class="box-title">Number of Observations</h3>
                             <ul class="list-inline m-t-30 p-t-10 two-part">
                                 <li><i class="icon-people text-info"></i></li>
-                                <li class="text-right"><span class="">311</span></li>
+                                <li class="text-right"><span class="">#{statisticHandler.observations()}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <h3 class="box-title">birds known</h3>
                             <ul class="list-inline m-t-30 p-t-10 two-part">
                                 <li><i class="fa fa-paw text-success"></i></li>
-                                <li class="text-right"><span class="">117</span></li>
+                                <li class="text-right"><span class="">#{statisticHandler.birds()}</span></li>
                             </ul>
                         </div>
                     </div>

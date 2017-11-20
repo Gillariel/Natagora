@@ -15,12 +15,48 @@
     </ui:define>
 
     <ui:define name="content">
-
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Media By Type</h3>
+                    <div>
+                        <canvas id="byType" data-values="#{pendingHandler.countByType()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">New Media</h3>
+                    <div>
+                        <canvas id="newMedia" data-values="#{pendingHandler.history()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Pending Over Time</h3>
+                    <div>
+                        <canvas id="pendingMedia" data-values="#{pendingHandler.historyPending()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Don't know what else</h3>
+                    <div>
+                        <canvas id="nope2" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ui:define>
 
     <!-- Custom Script for this page -->
     <ui:define name="js">
-
+        <h:outputScript name="plugins/bower_components/Chart.js/Chart.min.js"/>
+        <h:outputScript name="ample/js/mediaCharts.js"/>
     </ui:define>
         
 </ui:composition>

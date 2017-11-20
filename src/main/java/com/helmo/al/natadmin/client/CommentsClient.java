@@ -30,8 +30,12 @@ public class CommentsClient extends BaseClient<Comment> {
         return super.get(id);
     }
     
-    public List<Comment> getAllReported() {
-        return super.getAllFromCustomPath("/reported");
+    public String countReported() {
+        return super.getLong("reported/count");
+    }
+    
+    public List<Comment> allReported() {
+        return super.getAllFromCustomPath("reported");
     }
     
     public Comment getReportedById(String id) {
