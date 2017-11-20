@@ -6,6 +6,7 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.util.ResponseBuilder;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.ws.rs.GET;
@@ -120,6 +121,8 @@ public class StatisticsService {
     public Response sessionsByUser(@PathParam("user_id") Integer id) {
         return ResponseBuilder.buildGet(trySearch(StatQueries.SESSIONS_BY_USER, id));
     }
+    
+    
     
     private long trySearch(StatQueries query, int id){
         try{

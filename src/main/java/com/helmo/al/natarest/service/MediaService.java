@@ -6,7 +6,11 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Media;
+import static com.helmo.al.natarest.service.AbstractDao.getEntityManager;
 import com.helmo.al.natarest.util.ResponseBuilder;
+import com.helmo.al.natarest.view.BirdByMonth;
+import java.util.List;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -65,6 +69,30 @@ public class MediaService extends AbstractDao<Media> {
     @Path("{id}")
     public Response remove(@PathParam("id") Integer id) {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
+    }
+    
+    @GET
+    @Path("count/type")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Response CountByType() {
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Type FROM Count_Media_By_Type");
+        return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
+    }
+    
+    @GET
+    @Path("history/pending")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Response historyPending() {
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM History_New_Media WHERE Has_Been_Pended = 1");
+        return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
+    }
+    
+    @GET
+    @Path("history/created")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Response history() {
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM History_New_Media");
+        return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
     }
     
     @GET

@@ -7,6 +7,10 @@ package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Bird;
 import com.helmo.al.natarest.util.ResponseBuilder;
+import com.helmo.al.natarest.view.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -47,6 +51,22 @@ public class BirdsService extends AbstractDao<Bird> {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
 
+    @GET
+    @Path("history")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response history() {
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM History_New_Birds");
+        return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
+    }
+    
+    @GET
+    @Path("top")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response topBirds() {
+        Query q = getEntityManager().createNativeQuery("SELECT Name, Number FROM TOP5_Birds");
+        return ResponseBuilder.buildGet((List<topBird>) q.getResultList());
+    }
+    
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})

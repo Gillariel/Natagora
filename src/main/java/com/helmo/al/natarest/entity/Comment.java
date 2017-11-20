@@ -55,6 +55,10 @@ public class Comment implements Serializable {
     @Column(name = "Dislikes")
     private int dislikes;
 
+    @Basic(optional = false)
+    @Column(name = "Reported")
+    private boolean reported;
+    
     @ManyToOne
     private Forum forum;
     
@@ -108,6 +112,13 @@ public class Comment implements Serializable {
         this.dislikes = dislikes;
     }
 
+    public boolean isReported() {
+        return reported;
+    }
+    public void setReported(boolean reported) {
+        this.reported = reported;
+    } 
+    
     @XmlTransient
     public Forum getForum() {
         return forum;

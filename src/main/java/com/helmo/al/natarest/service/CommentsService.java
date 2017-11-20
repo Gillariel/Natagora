@@ -7,6 +7,7 @@ package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Comment;
 import com.helmo.al.natarest.util.ResponseBuilder;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -33,7 +34,16 @@ public class CommentsService extends AbstractDao<Comment> {
     public Response create(Comment entity) {
         return ResponseBuilder.buildPost(super.save(entity));
     }
-
+    
+    @PUT
+    @Path("validate/{id}")
+    @Consumes({ MediaType.APPLICATION_JSON})
+    public Response setValid(@PathParam("id") Integer id) {
+        Comment c = super.get(id);
+        c.setReported(false);
+        return ResponseBuilder.buildPut(super.update(c));
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -47,6 +57,27 @@ public class CommentsService extends AbstractDao<Comment> {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
 
+    @GET
+    @Path("reported")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response allReported(){
+        return ResponseBuilder.buildGet((getEntityManager().createQuery("SELECT c FROM Comment c WHERE c.reported = true").getResultList()));
+    }
+    
+    @GET
+    @Path("reported/count")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response countReported(){
+        long result;
+        try{
+            Query q = getEntityManager().createNativeQuery("SELECT Number FROM Count_Reported_Comments");
+            result = (long) q.getSingleResult();
+        } catch(Exception e){
+            result =  0;
+        }
+        return ResponseBuilder.buildGet(result);
+    }
+    
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
