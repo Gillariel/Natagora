@@ -54,6 +54,17 @@ public class UsersService extends AbstractDao<User> {
     @Path("login/{username}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response login(@HeaderParam("passwd") String password, @PathParam("username") String username){
+        return ResponseBuilder.buildGet(getEntityManager().createQuery(
+            "SELECT u FROM User u WHERE u.pseudo = :username AND u.password = :password"
+        ).setParameter("username", username)
+        .setParameter("password", password)
+        .getSingleResult());
+    }
+    
+    @GET
+    @Path("trylogin/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response trylogin(@HeaderParam("passwd") String password, @PathParam("username") String username){
         return ResponseBuilder.buildBlank(getEntityManager().createQuery(
             "SELECT u FROM User u WHERE u.pseudo = :username AND u.password = :password"
         ).setParameter("username", username)
