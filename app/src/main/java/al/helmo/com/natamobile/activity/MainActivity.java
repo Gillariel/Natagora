@@ -7,7 +7,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,8 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import al.helmo.com.natamobile.R;
-import al.helmo.com.natamobile.fragment.FragmentMySession;
-import al.helmo.com.natamobile.fragment.FragmentSessionPhoto;
+import al.helmo.com.natamobile.fragment.main.GalleryFragment;
+import al.helmo.com.natamobile.fragment.main.SettingsFragment;
 import al.helmo.com.natamobile.res.ItemSlideMenu;
 import al.helmo.com.natamobile.res.MenuBurgerAdapter;
 
@@ -85,11 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(actionBarDrawerToggle.onOptionsItemSelected(item)){
@@ -108,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment;
         switch (i){
             case 0:
-                fragment = new FragmentMySession();
+                fragment = new GalleryFragment();
                 break;
             case 1:
-                fragment = new FragmentSessionPhoto();
+                fragment = new SettingsFragment();
                 break;    
             default:
-                fragment = new FragmentMySession();
+                fragment = new GalleryFragment();
                 break;
         }
         if(null!= fragment){

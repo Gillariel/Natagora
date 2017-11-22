@@ -39,21 +39,24 @@ public class LoginActivity extends AppCompatActivity {
                 if(!validateLogIn(username, password)){
                     Toast.makeText(getApplicationContext(), "Please fill the fields", Toast.LENGTH_SHORT).show();
                 }else{
-                    doLogin(username, password, APIUtils.KEYAPI);
+                    //doLogin(username, password, APIUtils.KEYAPI);
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    i.putExtra("username", username);
+                    startActivity(i);
                 }
             }
         });
     }
 
     private boolean validateLogIn(String username, String password) {
-        if(username == null || username.trim().length()==0){
+        /*if(username == null || username.trim().length()==0){
             Toast.makeText(this, "Username is required",Toast.LENGTH_SHORT).show();
             return false;
         }
         if(password == null || password.trim().length()==0){
             Toast.makeText(this, "Password is required",Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
         return true;
     }
 
