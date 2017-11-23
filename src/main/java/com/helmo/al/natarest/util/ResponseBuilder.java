@@ -6,6 +6,7 @@
 package com.helmo.al.natarest.util;
 
 import java.util.Collection;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -40,18 +41,18 @@ public class ResponseBuilder {
     public static Response buildDelete(boolean result) {
         return (!result) 
             ? Response.status(Response.Status.NOT_FOUND).build()
-            : Response.status(Response.Status.CREATED).build();
+            : Response.ok("{}", MediaType.APPLICATION_JSON).build();
     }
     
     public static Response buildPut(boolean result) {
         return (!result) 
             ? Response.status(Response.Status.NOT_FOUND).build()
-            : Response.status(Response.Status.CREATED).build();
+            : Response.status(Response.Status.NO_CONTENT).build();
     }
     
     public static Response buildPost(boolean result) {
         return (!result) 
             ? Response.status(Response.Status.NOT_FOUND).build()
-            : Response.status(Response.Status.CREATED).build();
+            : Response.status(Response.Status.NO_CONTENT).build();
     }
 }

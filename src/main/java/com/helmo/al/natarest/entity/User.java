@@ -53,6 +53,10 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "Password")
     private String password;   
+
+    @Basic(optional = false)
+    @Column(name = "Picture")
+    private String picture;
     
     @JoinColumn(name = "Role_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
@@ -65,13 +69,14 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String pseudo, String name, String forname, String mail, String password) {
+    public User(Integer id, String pseudo, String name, String forname, String mail, String password, String pic) {
         this.id = id;
         this.pseudo = pseudo;
         this.name = name;
         this.forname = forname;
         this.mail = mail;
         this.password = password;
+        this.picture = pic;
     }
 
     public Integer getId() {
@@ -114,6 +119,13 @@ public class User implements Serializable {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public Role getRole() {

@@ -8,8 +8,10 @@ package com.helmo.al.natarest.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +19,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -47,10 +51,16 @@ public class Bird implements Serializable {
     @Column(name = "Weight")
     private Integer weight;
     
-    @ManyToMany(mappedBy = "birds")
+    @Basic(optional = false)
+    @Column(name = "Creation_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+    
+    @ManyToMany(mappedBy = "birds", cascade = { CascadeType.REMOVE })
     private Collection<Observation> observations = new ArrayList<>();
 
     public Bird() {
+        
     }
 
     public Bird(Integer id) {
@@ -90,6 +100,13 @@ public class Bird implements Serializable {
         this.weight = weight;
     }
 
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
     @XmlTransient
     public Collection<Observation> getObservations() {
         return observations;

@@ -47,6 +47,7 @@ public class BirdsService extends AbstractDao<Bird> {
 
     @DELETE
     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response remove(@PathParam("id") Integer id) {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
