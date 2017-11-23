@@ -6,6 +6,7 @@
 package com.helmo.al.natadmin.client;
 
 import com.helmo.al.natadmin.entity.Media;
+import com.helmo.al.natadmin.security.Global;
 import com.helmo.al.natadmin.security.RequestBuilder;
 import java.util.List;
 import javax.ws.rs.ClientErrorException;
@@ -23,7 +24,6 @@ import javax.ws.rs.core.Response;
 public abstract class BaseClient<T> {
     private final WebTarget webTarget;
     private final Client client;
-    private static final String BASE_URI = "http://127.0.0.1:8081/NataRest/api/";
 
     /**
      *  The java class of the entity
@@ -39,7 +39,7 @@ public abstract class BaseClient<T> {
         this.entityClass = entityClass;
         this.listClass = g;
         client = javax.ws.rs.client.ClientBuilder.newBuilder().build();
-        webTarget = client.target(BASE_URI + path);
+        webTarget = client.target(Global.BASE_URL + path);
     }
     
     /**

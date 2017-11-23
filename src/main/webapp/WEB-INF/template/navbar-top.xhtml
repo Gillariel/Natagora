@@ -6,7 +6,7 @@
     <nav class="navbar navbar-default navbar-static-top m-b-0">
         <div class="navbar-header">
             <div class="top-left-part">
-                <a class="logo" href="/NatAdmin/dashboard.xhtml">
+                <a class="logo" href="/NatAdmin/dashboard">
                     <b>
                         <h:graphicImage name="img/logo-light.png" alt="home" styleClass="dark-logo" />
                         <h:graphicImage name="img/logo-light.png" alt="home" styleClass="light-logo" />
@@ -35,7 +35,7 @@
                             <div class="message-center">
                                 <a href="#">
                                     <div class="user-img">
-                                        <h:graphicImage name="img/me.jpg" alt="user" styleClass="img-circle" />
+                                        <h:graphicImage url='#{session.getAttribute("picture")}' alt="user" styleClass="img-circle" />
                                         <span class="profile-status online pull-right"></span>
                                     </div>
                                     <div class="mail-contnet">
@@ -46,7 +46,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="user-img">
-                                        <h:graphicImage name="img/me.jpg" alt="user" styleClass="img-circle" />
+                                        <h:graphicImage url='#{session.getAttribute("picture")}' alt="user" styleClass="img-circle" />
                                         <span class="profile-status busy pull-right"></span>
                                     </div>
                                     <div class="mail-contnet">
@@ -57,7 +57,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="user-img">
-                                        <h:graphicImage name="img/me.jpg" alt="user" styleClass="img-circle" />
+                                        <h:graphicImage url='#{session.getAttribute("picture")}' alt="user" styleClass="img-circle" />
                                         <span class="profile-status away pull-right"></span>
                                     </div>
                                     <div class="mail-contnet">
@@ -68,7 +68,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="user-img">
-                                        <h:graphicImage name="img/me.jpg" alt="user" styleClass="img-circle" />
+                                        <h:graphicImage url='#{session.getAttribute("picture")}' alt="user" styleClass="img-circle" />
                                         <span class="profile-status offline pull-right"></span>
                                     </div>
                                     <div class="mail-contnet">
@@ -176,43 +176,43 @@
                         <li class="col-sm-3">
                             <ul>
                                 <li class="dropdown-header"><i class="fa fa-database fa-fw"></i>Data administrations</li>
-                                <li><a href="/NatAdmin/data/birds.xhtml"><i class="fa fa-paw fa-fw"></i>Birds</a></li>
-                                <li><a href="/NatAdmin/data/pending.xhtml"><i class="fa fa-spinner fa-fw"></i>Pending Media</a></li>
-                                <li><a href="/NatAdmin/data/reported.xhtml"><i class="fa fa-flag fa-fw"></i>Reported Content</a></li>
-                                <li><a href="/NatAdmin/data/sessions.xhtml"><i class="mdi mdi-binoculars fa-fw"></i>Sessions</a></li>
-                                <li><a href="/NatAdmin/data/users.xhtml"><i class="ti-user fa-fw"></i>Users</a></li>
+                                <li><a href="/NatAdmin/data/birds"><i class="fa fa-paw fa-fw"></i>Birds</a></li>
+                                <li><a href="/NatAdmin/data/pending"><i class="fa fa-spinner fa-fw"></i>Pending Media</a></li>
+                                <li><a href="/NatAdmin/data/reported"><i class="fa fa-flag fa-fw"></i>Reported Content</a></li>
+                                <li><a href="/NatAdmin/data/sessions"><i class="mdi mdi-binoculars fa-fw"></i>Sessions</a></li>
+                                <li><a href="/NatAdmin/data/users"><i class="ti-user fa-fw"></i>Users</a></li>
                             </ul>
                         </li>
                         <li class="col-sm-3">
                             <ul>
                                 <li class="dropdown-header"><i class="mdi mdi-chart-bar fa-fw"></i>Statistics</li>
-                                <li><a href="/NatAdmin/statistics/birds.xhtml"><i class="mdi mdi-chart-line fa-fw"></i>Birds</a></li>
-                                <li><a href="/NatAdmin/statistics/forums.xhtml"><i class="mdi mdi-chart-scatterplot-hexbin fa-fw"></i>Forums</a></li>
-                                <li><a href="/NatAdmin/statistics/media.xhtml"><i class="mdi mdi-chart-arc fa-fw"></i>Media</a></li>
+                                <li><a href="/NatAdmin/statistics/birds"><i class="mdi mdi-chart-line fa-fw"></i>Birds</a></li>
+                                <li><a href="/NatAdmin/statistics/forums"><i class="mdi mdi-chart-scatterplot-hexbin fa-fw"></i>Forums</a></li>
+                                <li><a href="/NatAdmin/statistics/media"><i class="mdi mdi-chart-arc fa-fw"></i>Media</a></li>
                                 <li><a href="/NatAdmin/statistics/users.xhtml"><i class="mdi mdi-chart-areaspline fa-fw"></i>Users</a></li>
                             </ul>
                         </li>
                         <li class="col-sm-3">
                             <ul>
                                 <li class="dropdown-header"><i class="fa fa-server fa-fw"></i>Infrastructure</li>
-                                <li><a href="/NatAdmin/server/overview.xhtml"><i class="ti-blackboard fa-fw"></i>Global Overview</a></li>
-                                <li><a href="/NatAdmin/server/admin.xhtml"><i class="fa fa-lock fa-fw"></i>NatAdmin</a></li>
-                                <li><a href="/NatAdmin/server/mobile.xhtml"><i class="ti-android fa-fw"></i>NataMobile</a></li>
-                                <li><a href="/NatAdmin/server/rest.xhtml"><i class="mdi mdi-server-network fa-fw"></i>NataRest</a></li>
-                                <li><a href="/NatAdmin/server/web.xhtml"><i class="ti-world fa-fw"></i>NataWeb</a></li>
+                                <li><a href="/NatAdmin/server/overview"><i class="ti-blackboard fa-fw"></i>Global Overview</a></li>
+                                <li><a href="/NatAdmin/server/admin"><i class="fa fa-lock fa-fw"></i>NatAdmin</a></li>
+                                <li><a href="/NatAdmin/server/mobile"><i class="ti-android fa-fw"></i>NataMobile</a></li>
+                                <li><a href="/NatAdmin/server/rest"><i class="mdi mdi-server-network fa-fw"></i>NataRest</a></li>
+                                <li><a href="/NatAdmin/server/web"><i class="ti-world fa-fw"></i>NataWeb</a></li>
                             </ul>
                         </li>
                         <li class="col-sm-3">
                             <ul>
                                 <li class="dropdown-header"><i class="mdi mdi-test-tube fa-fw"></i>Demo Purpose</li>
-                                <li><a href="/NatAdmin/error/400.xhtml"><i class="ti-info-alt fa-fw"></i>Error 400</a></li>
-                                <li><a href="/NatAdmin/error/401.xhtml"><i class="ti-info-alt fa-fw"></i>Error 401</a></li>
-                                <li><a href="/NatAdmin/error/403.xhtml"><i class="ti-info-alt fa-fw"></i>Error 403</a></li>
-                                <li><a href="/NatAdmin/error/404.xhtml"><i class="ti-info-alt fa-fw"></i>Error 404</a></li>
-                                <li><a href="/NatAdmin/error/418.xhtml"><i class="ti-info-alt fa-fw"></i>Error 418</a></li>
-                                <li><a href="/NatAdmin/error/500.xhtml"><i class="ti-info-alt fa-fw"></i>Error 500</a></li>
-                                <li><a href="/NatAdmin/error/501.xhtml"><i class="ti-info-alt fa-fw"></i>Error 501</a></li>
-                                <li><a href="/NatAdmin/error/503.xhtml"><i class="ti-info-alt fa-fw"></i>Error 503</a></li>
+                                <li><a href="/NatAdmin/error/400"><i class="ti-info-alt fa-fw"></i>Error 400</a></li>
+                                <li><a href="/NatAdmin/error/401"><i class="ti-info-alt fa-fw"></i>Error 401</a></li>
+                                <li><a href="/NatAdmin/error/403"><i class="ti-info-alt fa-fw"></i>Error 403</a></li>
+                                <li><a href="/NatAdmin/error/404"><i class="ti-info-alt fa-fw"></i>Error 404</a></li>
+                                <li><a href="/NatAdmin/error/418"><i class="ti-info-alt fa-fw"></i>Error 418</a></li>
+                                <li><a href="/NatAdmin/error/500"><i class="ti-info-alt fa-fw"></i>Error 500</a></li>
+                                <li><a href="/NatAdmin/error/501"><i class="ti-info-alt fa-fw"></i>Error 501</a></li>
+                                <li><a href="/NatAdmin/error/503"><i class="ti-info-alt fa-fw"></i>Error 503</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -229,30 +229,30 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
-                    <h:graphicImage name="img/me.jpg" alt="user-img" width="36" styleClass="img-circle" />
-                    <b class="hidden-xs">Nathan</b>
+                    <h:graphicImage url='#{session.getAttribute("picture")}' alt="user-img" width="36" styleClass="img-circle" />
+                    <b class="hidden-xs">#{session.getAttribute("username")}</b>
                     <span class="caret"></span> </a>
 
                     <ul class="dropdown-menu dropdown-user animated flipInY">
                         <li>
                             <div class="dw-user-box">
                                 <div class="u-img">
-                                    <h:graphicImage name="img/me.jpg" alt="user" />
+                                    <h:graphicImage url='#{session.getAttribute("picture")}' alt="user" />
                                 </div>
                                 <div class="u-text">
-                                    <h4>Foerster Nathan</h4>
-                                    <p class="text-muted">foerster.nathan@hotmail.com</p>
-                                    <a href="/NatAdmin/users/profile.xhtml" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                    <h4>#{session.getAttribute("fullname")}</h4>
+                                    <p class="text-muted">#{session.getAttribute("mail")}</p>
+                                    <a href="/NatAdmin/users/profile" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                                 </div>
                             </div>
                         </li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/NatAdmin/users/profile.xhtml"><i class="ti-user"></i> My Profile</a></li>
-                        <li><a href="/NatAdmin/users/inbox.xhtml"><i class="ti-email"></i> Inbox</a></li>
+                        <li><a href="/NatAdmin/users/profile"><i class="ti-user"></i> My Profile</a></li>
+                        <li><a href="/NatAdmin/users/inbox"><i class="ti-email"></i> Inbox</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/NatAdmin/users/account.xhtml"><i class="ti-settings"></i> Account Setting</a></li>
+                        <li><a href="/NatAdmin/users/account"><i class="ti-settings"></i> Account Setting</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/NatAdmin/users/logout.xhtml"><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li><a href="/NatAdmin/users/logout"><i class="fa fa-power-off"></i> Logout</a></li>
                     </ul>
                 </li>
             </ul>

@@ -27,7 +27,7 @@ public class LoginHandler {
      */
     private String username;
     private String passwd;
-    private String rememberMe;
+    private boolean rememberMe;
 
     public LoginHandler() {
     }
@@ -36,31 +36,49 @@ public class LoginHandler {
     public void setUsername(String username) { this.username = username; }
     public String getPasswd() { return passwd; }
     public void setPasswd(String passwd) { this.passwd = passwd; }
-    public String getRememberMe() { return rememberMe; }
-    public void setRememberMe(String rememberMe) { this.rememberMe = rememberMe; }
+    public boolean isRememberMe() { return rememberMe; }
+    public void setRememberMe(boolean rememberMe) { this.rememberMe = rememberMe; }
 
     public void login() {
         User loggedUser = new UserClient().login(username, passwd);
+        //System.out.println(loggedUser.BetterStringView());
         if(loggedUser != null){
             
             FacesContext context = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
             
-            UserSession user = (session != null) ? (UserSession)session.getAttribute("user") : new UserSession();
+            /*UserSession user = (session != null) ? (UserSession)session.getAttribute("user") : new UserSession();
             if(user == null)
-                user = new UserSession(loggedUser);
+                user = new UserSession(loggedUser.getId(), loggedUser.getPseudo(), loggedUser.getFullName(), loggedUser.getMail(), rememberMe);*/
             try{
-                user.setUser(loggedUser);
-                session.setAttribute("user", user);
+                /**
+                 * 
+                 *  Using a SessionScoped always return null when calling from a view, don't realy know why :( 
+                 */
+                //session.setAttribute("user", user);
+                session.setAttribute("id", loggedUser.getId());
+                session.setAttribute("username", loggedUser.getPseudo());
+                session.setAttribute("fullname", loggedUser.getFullName());
+                session.setAttribute("mail", loggedUser.getMail());
+                session.setAttribute("picture", loggedUser.getPicture());
+                
+                /**
+                 * Remember Me will be used through a cookie, not priority right now
+                 */
+                
             } catch(Exception e) { e.printStackTrace(); }
 
             HttpServletRequest origRequest = (HttpServletRequest) context.getExternalContext().getRequest();
             String contextPath = origRequest.getContextPath();
             try {
                 FacesContext.getCurrentInstance().getExternalContext()
-                        .redirect(contextPath  + "/dashboard.xhtml");
+                        .redirect(contextPath  + "/dashboard");
             } catch (IOException e) { e.printStackTrace(); }
         } else {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext()
+                        .redirect("192.168.128.12:8888/NatAdmin/data/birds");
+            } catch (IOException e) { e.printStackTrace(); }
             return;
         }
     }

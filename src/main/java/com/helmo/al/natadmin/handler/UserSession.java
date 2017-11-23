@@ -10,6 +10,8 @@ import com.helmo.al.natadmin.entity.User;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,18 +21,24 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class UserSession implements Serializable {
-    User currentUser;
+    int id;
+    String username = "";
+    String fullName = "";
+    String mail = "";
     boolean rememberMe;
     
     public UserSession() {
-        this.currentUser = new User();
     }
 
-    public UserSession(User u) {
-        this.currentUser = u;
+    public UserSession(int id, String u, String f, String m, boolean r) {
+        this.id = id;
+        username = u;
+        fullName = f;
+        mail = m;
+        rememberMe = r;
     }
 
-    public User getUser() {
+    /*public User getUser() {
         return currentUser;
     }
 
@@ -64,5 +72,47 @@ public class UserSession implements Serializable {
         } else {
             throw new IllegalArgumentException("FullName must be of format \"{Name} space {forname}\"!");
         }
+    }*/
+
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
+    }
+    
+    
 }

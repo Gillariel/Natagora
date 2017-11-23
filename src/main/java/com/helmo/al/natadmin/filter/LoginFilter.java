@@ -12,12 +12,18 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@ WebFilter(asyncSupported = true, urlPatterns = { "/*" })
 public class LoginFilter implements Filter{
 
+    public LoginFilter() {
+    }
+
+    
     @Override
     public void destroy() { }
 
@@ -29,9 +35,19 @@ public class LoginFilter implements Filter{
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession(false);
         
-        UserSession user = (session != null) ? (UserSession)session.getAttribute("user") : null;
+        if(req.getRequestURL().toString().contains("users/logout")){
+            try{
+                session.removeAttribute("id");
+                session.removeAttribute("username");
+                session.removeAttribute("fullname");
+                session.removeAttribute("mail");
+                session.removeAttribute("picture");
+            } catch(Exception e) { }
+        }
         
-        String loginUrl = req.getContextPath() + "/users/login.xhtml";
+        Object user = (session != null) ? session.getAttribute("username") : null;
+        
+        String loginUrl = req.getContextPath() + "/users/login";
         
         boolean loginRequest = req.getRequestURL().toString().contains("users/login");
         boolean resourceRequest = req.getServletPath().startsWith(ResourceHandler.RESOURCE_IDENTIFIER);

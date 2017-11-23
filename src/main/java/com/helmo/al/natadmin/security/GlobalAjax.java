@@ -18,4 +18,12 @@ public class GlobalAjax {
     public String apiKey(){
         return Global.API_KEY;
     }
+    
+    public String baseUrl(){
+        return Global.BASE_URL;
+    }
+    
+    public String localUrl(){
+        return Global.LOCAL_URL;
+    }
 }

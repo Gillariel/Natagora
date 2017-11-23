@@ -41,9 +41,10 @@ public class UserClient extends BaseClient<User> {
     
     public User login(String username, String passwd) {
         WebTarget t = getRessource().path("/login/" + username);
-        return t.request(MediaType.APPLICATION_JSON)
+        return t.request()
                     .header("api-key", Global.API_KEY)
                     .header("passwd", passwd)
+                    .accept("Content-Type", "application/json")
                     .get(Response.class)
                     .readEntity(User.class);
     }

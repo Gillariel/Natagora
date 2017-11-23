@@ -7,6 +7,7 @@ package com.helmo.al.natadmin.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -44,6 +47,11 @@ public class Bird implements Serializable {
     
     @Column(name = "Weight")
     private Integer weight;
+    
+    @Basic(optional = false)
+    @Column(name = "Creation_Date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
     
     @ManyToMany(mappedBy = "birds")
     private Collection<Observation> observations;
@@ -86,6 +94,13 @@ public class Bird implements Serializable {
     }
     public void setWeight(Integer weight) {
         this.weight = weight;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @XmlTransient

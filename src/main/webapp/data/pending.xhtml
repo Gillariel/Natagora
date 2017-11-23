@@ -107,20 +107,20 @@
             
             function ajaxValidate(id, result) {
                 var url = (result) ? 'http://127.0.0.1:8081/NataRest/api/media/validate/' + id
-                                        : 'http://192.168.128.13:8081/NataRest/api/media/delete/' + id ;
+                                        : 'http://127.0.0.1:8081/NataRest/api/media/delete/' + id ;
                 $.ajax({
                     url: url,
                     type: 'PUT',
-                    crossDomain: true, 
+                    //crossDomain: true, 
                     data: { },
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080/NatAdmin");
-                    },
+                    /*beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+                    },*/
                     headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        
+                        //'Access-Control-Allow-Origin': '*',
+                        'api-key': "#{globalAjax.apiKey()}"
                     },
-                    xhrFields: {withCredentials: true },
+                    //xhrFields: {withCredentials: true },
                     dataType: 'json',
                     success: function (data) {
                         alert("Success");

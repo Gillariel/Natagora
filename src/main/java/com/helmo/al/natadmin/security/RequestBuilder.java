@@ -24,8 +24,7 @@ public class RequestBuilder {
      */
     private static Builder Build(WebTarget t){
         return t.request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-                .header("api-key", Global.API_KEY)
-                .acceptEncoding("UTF-8");
+                .header("api-key", Global.API_KEY);
     }
     
     public static String execute(WebTarget target){

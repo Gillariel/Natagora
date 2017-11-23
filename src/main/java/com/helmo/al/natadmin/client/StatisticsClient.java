@@ -5,6 +5,7 @@
  */
 package com.helmo.al.natadmin.client;
 
+import com.helmo.al.natadmin.security.Global;
 import com.helmo.al.natadmin.security.RequestBuilder;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
@@ -17,11 +18,10 @@ import javax.ws.rs.client.WebTarget;
 public class StatisticsClient {
     private final WebTarget webTarget;
     private final Client client;
-    private static final String BASE_URI = "http://127.0.0.1:8081/NataRest/api/stats/";
 
     public StatisticsClient() {
         client = javax.ws.rs.client.ClientBuilder.newBuilder().build();
-        webTarget = client.target(BASE_URI);
+        webTarget = client.target(Global.BASE_URL + "stats/");
     }
 
     public String get(String path) throws ClientErrorException {
