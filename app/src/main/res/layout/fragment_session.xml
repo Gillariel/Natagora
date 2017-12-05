@@ -4,10 +4,23 @@
     android:layout_height="match_parent"
     tools:context="al.helmo.com.natamobile.fragment.main.SessionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent" />
 
+    <Button
+        android:id="@+id/startStopSession"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@mipmap/ic_start"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="75dp"/>
+
+    <Button
+        android:id="@+id/newObservation"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@mipmap/ic_camera"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="275dp"/>
 </FrameLayout>

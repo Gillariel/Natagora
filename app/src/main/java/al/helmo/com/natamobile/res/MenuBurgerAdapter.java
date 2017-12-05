@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import al.helmo.com.natamobile.R;
@@ -18,9 +19,9 @@ public class MenuBurgerAdapter extends BaseAdapter {
     private Context context;
     private List<ItemSlideMenu> listItem;
 
-    public MenuBurgerAdapter(Context context, List<ItemSlideMenu> listItem) {
+    public MenuBurgerAdapter(Context context) {
         this.context = context;
-        this.listItem = listItem;
+        createMenu();
     }
 
     @Override
@@ -50,4 +51,17 @@ public class MenuBurgerAdapter extends BaseAdapter {
 
         return v;
     }
+
+    public void createMenu(){
+        listItem = new ArrayList<>();
+        listItem.add(new ItemSlideMenu("My Session"));
+        listItem.add(new ItemSlideMenu("My Photos"));
+        listItem.add(new ItemSlideMenu("Save "));
+        listItem.add(new ItemSlideMenu("Settings"));
+        listItem.add(new ItemSlideMenu("Log Out"));
+    }
+    public List<ItemSlideMenu> getListItem() {
+        return listItem;
+    }
+
 }

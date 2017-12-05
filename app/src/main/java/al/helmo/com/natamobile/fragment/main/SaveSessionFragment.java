@@ -2,16 +2,14 @@ package al.helmo.com.natamobile.fragment.main;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import al.helmo.com.natamobile.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class SaveSessionFragment extends Fragment {
 
 

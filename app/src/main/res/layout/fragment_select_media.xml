@@ -1,13 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="al.helmo.com.natamobile.fragment.main.SelectMediaFragment">
+    tools:context="al.helmo.com.natamobile.fragment.main.SelectMediaFragment"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
 
-</FrameLayout>
+        <Button
+            android:id="@+id/photoButton"
+            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:background="@mipmap/ic_camera" />
+
+        <Button
+            android:id="@+id/cameraButton"
+            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:background="@mipmap/ic_video"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/audioButton"
+            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:background="@mipmap/ic_sound" />
+
+        <Button
+            android:id="@+id/commentButton"
+            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:background="@mipmap/ic_comment"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

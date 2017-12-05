@@ -1,8 +1,5 @@
 package al.helmo.com.natamobile.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,47 +8,53 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import al.helmo.com.natamobile.R;
-import al.helmo.com.natamobile.fragment.main.GalleryFragment;
+import al.helmo.com.natamobile.fragment.login.LogOutFragment;
+import al.helmo.com.natamobile.fragment.main.GalleryGridFragment;
+import al.helmo.com.natamobile.fragment.main.SaveSessionFragment;
+import al.helmo.com.natamobile.fragment.main.SessionFragment;
 import al.helmo.com.natamobile.fragment.main.SettingsFragment;
+import al.helmo.com.natamobile.fragment.FragmentHandler;
+import al.helmo.com.natamobile.model.APIUtils;
+import al.helmo.com.natamobile.model.SessionManager;
+import al.helmo.com.natamobile.model.User;
+import al.helmo.com.natamobile.model.remote.UserService;
 import al.helmo.com.natamobile.res.ItemSlideMenu;
 import al.helmo.com.natamobile.res.MenuBurgerAdapter;
+import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtUsername;
     private List<ItemSlideMenu> listMenu;
     private MenuBurgerAdapter adapter;
     private ListView listView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private FragmentHandler fragmentHandler;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtUsername = (TextView) findViewById(R.id.txtUsername);
-
-        Bundle extras = getIntent().getExtras();
-        String username;
-        if(extras != null){
-            username = extras.getString("username");
-            txtUsername.setText(username);
-        }
-
+        Bundle extra = getIntent().getExtras();
+        User user = new User(extra.getString("username"));
+        sessionManager = new SessionManager(user);
         listView = (ListView)findViewById(R.id.menuBurger);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
         listMenu = new ArrayList<>();
-        listMenu.add(new ItemSlideMenu("My Session"));
-        listMenu.add(new ItemSlideMenu("My Photos"));
-        adapter = new MenuBurgerAdapter(this, listMenu);
-        listView.setAdapter(adapter);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        fragmentHandler = new FragmentHandler();
 
+        adapter = new MenuBurgerAdapter(this);
+        listView.setAdapter(adapter);
+        listMenu = adapter.getListItem();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(listMenu.get(0).getTitle());
         listView.setItemChecked(0,true);
         drawerLayout.closeDrawer(listView);
@@ -100,25 +103,30 @@ public class MainActivity extends AppCompatActivity {
     }
     
     private void replaceFragment(int i){
-        Fragment fragment;
         switch (i){
             case 0:
-                fragment = new GalleryFragment();
+                fragmentHandler.replaceFragment(new SessionFragment(), getFragmentManager());
                 break;
             case 1:
-                fragment = new SettingsFragment();
-                break;    
+                fragmentHandler.replaceFragment(new GalleryGridFragment(), getFragmentManager());
+                break;
+            case 2:
+                fragmentHandler.replaceFragment(new SaveSessionFragment(), getFragmentManager());
+                break;
+            case 3:
+                fragmentHandler.replaceFragment(new SettingsFragment(), getFragmentManager());
+                break;
+            case 4:
+                fragmentHandler.replaceFragment(new LogOutFragment(), getFragmentManager());
+                break;
             default:
-                fragment = new GalleryFragment();
+                fragmentHandler.replaceFragment(new SessionFragment(), getFragmentManager());
                 break;
         }
-        if(null!= fragment){
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.mainContent, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }
-    } 
+    }
+
+    public SessionManager getSessionManager() {
+        return sessionManager;
+    }
 
 }
