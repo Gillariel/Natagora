@@ -7,14 +7,14 @@ class Session {
 
     private List<Observation> observations;
     private int id;
-    //private double longitude;
-    //private double latitude;
+    private double longitude;
+    private double latitude;
 
     Session(int id, double latitude, double longitude){
         observations = new ArrayList<>();
         this.id = id;
-        //this.latitude = latitude;
-        //this.longitude = longitude;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     void addObservation(Observation observation) {
@@ -23,5 +23,17 @@ class Session {
 
     List<Observation> getObservations() {
         return observations;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
     }
 }

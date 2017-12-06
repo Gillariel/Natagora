@@ -19,13 +19,10 @@ import al.helmo.com.natamobile.fragment.main.SaveSessionFragment;
 import al.helmo.com.natamobile.fragment.main.SessionFragment;
 import al.helmo.com.natamobile.fragment.main.SettingsFragment;
 import al.helmo.com.natamobile.fragment.FragmentHandler;
-import al.helmo.com.natamobile.model.APIUtils;
 import al.helmo.com.natamobile.model.SessionManager;
 import al.helmo.com.natamobile.model.User;
-import al.helmo.com.natamobile.model.remote.UserService;
 import al.helmo.com.natamobile.res.ItemSlideMenu;
 import al.helmo.com.natamobile.res.MenuBurgerAdapter;
-import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -128,5 +125,4 @@ public class MainActivity extends AppCompatActivity {
     public SessionManager getSessionManager() {
         return sessionManager;
     }
-
 }

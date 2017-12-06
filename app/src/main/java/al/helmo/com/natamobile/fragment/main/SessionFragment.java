@@ -10,6 +10,7 @@ import android.widget.Button;
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.MainActivity;
 import al.helmo.com.natamobile.fragment.FragmentHandler;
+import al.helmo.com.natamobile.model.GPS;
 
 import static al.helmo.com.natamobile.R.mipmap.ic_start;
 import static al.helmo.com.natamobile.R.mipmap.ic_stop;
@@ -42,8 +43,8 @@ public class SessionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!mainActivity.getSessionManager().getStatus()){
-                    // need to check GPS information to get latitude and longitude
-                    mainActivity.getSessionManager().startNewSession(0, 0);
+                    GPS gps = new GPS(getActivity());
+                    mainActivity.getSessionManager().startNewSession(gps.getLocation().getLatitude(), gps.getLocation().getLongitude());
                     startStopButton.setBackgroundResource(ic_stop);
                     newObservation.setVisibility(View.VISIBLE);
                 }else{

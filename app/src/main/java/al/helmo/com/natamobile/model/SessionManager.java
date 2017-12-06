@@ -20,8 +20,8 @@ public class SessionManager {
     }
 
     public void startNewSession(final double latitude,final double longitude){
-
-        Call<Integer> idRequest = userService.getNextSessionID(APIUtils.KEYAPI);
+        session = new Session(1, latitude, longitude);
+        /*Call<Integer> idRequest = userService.getNextSessionID(APIUtils.KEYAPI);
         int id = 0;
         idRequest.enqueue(new Callback<Integer>() {
             @Override
@@ -34,7 +34,7 @@ public class SessionManager {
                        public void onFailure(Call<Integer> call, Throwable t) {
 
                        }
-                   });
+                   });*/
         Status = true;
     }
 
