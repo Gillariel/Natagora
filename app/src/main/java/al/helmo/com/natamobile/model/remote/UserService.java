@@ -13,4 +13,8 @@ public interface UserService {
 
     @GET("api/users/{username}")
     Call<User> getUser(@Path("username")String username, @Header("api-key") String apiKey);
+
+    @GET("api/sessions/nextID")
+    Call<Integer> getNextSessionID(@Header("api-key") String apiKey);
+
 }

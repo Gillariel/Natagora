@@ -1,20 +1,40 @@
 package al.helmo.com.natamobile.model;
 
-import java.io.File;
 import java.util.List;
+
+import al.helmo.com.natamobile.model.remote.UserService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SessionManager {
 
     private Session session;
     private User connectedUser;
     private boolean Status = false;
+    private UserService userService;
 
     public SessionManager(User user){
         connectedUser = user;
+        userService = APIUtils.getUserService();
     }
 
-    public void startNewSession(double latitude, double longitude){
-        session = new Session(latitude, longitude);
+    public void startNewSession(final double latitude,final double longitude){
+
+        Call<Integer> idRequest = userService.getNextSessionID(APIUtils.KEYAPI);
+        int id = 0;
+        idRequest.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                          if( response.code() >= 200 && response.code() <= 207  ){
+                              session = new Session(response.body(), latitude, longitude);
+                          }
+        }
+                       @Override
+                       public void onFailure(Call<Integer> call, Throwable t) {
+
+                       }
+                   });
         Status = true;
     }
 
@@ -24,10 +44,9 @@ public class SessionManager {
     }
 
     public void deleteAllMedia(){
-        /*for (Observation o : session.getObservations()) {
-            File file = new File(o.getMediaLocalUrl());
-            file.delete();
-        }*/
+        for (Observation o : session.getObservations()) {
+            o.getMediaLocalUri().delete();
+        }
     }
 
     public boolean getStatus() {

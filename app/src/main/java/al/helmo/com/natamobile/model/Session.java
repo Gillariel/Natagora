@@ -3,23 +3,25 @@ package al.helmo.com.natamobile.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Session {
+class Session {
 
     private List<Observation> observations;
-    private double longitude;
-    private double latitude;
+    private int id;
+    //private double longitude;
+    //private double latitude;
 
-    public Session(double latitude, double longitude){
+    Session(int id, double latitude, double longitude){
         observations = new ArrayList<>();
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.id = id;
+        //this.latitude = latitude;
+        //this.longitude = longitude;
     }
 
-    public void addObservation(Observation observation) {
+    void addObservation(Observation observation) {
         observations.add(observation);
     }
 
-    public List<Observation> getObservations() {
+    List<Observation> getObservations() {
         return observations;
     }
 }

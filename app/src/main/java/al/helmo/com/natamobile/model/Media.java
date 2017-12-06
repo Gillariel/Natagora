@@ -8,15 +8,15 @@ public class Media {
 
     // url = Cloud adress + idClient + n°session + n°of observation + extension;
     private String url ;
-    private File localURI;
+    private File localFile;
 
-    public Media (File localURI){
+    public Media (File localFile){
 
-        this.localURI = localURI;
+        this.localFile = localFile;
     }
 
-    public File getLocalURI() {
-        return localURI;
+    public File getLocalFile() {
+        return localFile;
     }
 
 }

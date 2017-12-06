@@ -1,7 +1,5 @@
 package al.helmo.com.natamobile.fragment.main;
 
-import android.location.GpsSatellite;
-import android.location.GpsStatus;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,9 +19,7 @@ public class SessionFragment extends Fragment {
     private MainActivity mainActivity;
     private Button startStopButton, newObservation;
 
-
     public SessionFragment() {
-
     }
 
     @Override
@@ -34,6 +30,14 @@ public class SessionFragment extends Fragment {
         fragmentHandler = new FragmentHandler();
         mainActivity = (MainActivity) this.getActivity();
 
+        if(!mainActivity.getSessionManager().getStatus()){
+            startStopButton.setBackgroundResource(ic_start);
+            newObservation.setVisibility(View.INVISIBLE);
+        }else{
+            startStopButton.setBackgroundResource(ic_stop);
+            newObservation.setVisibility(View.VISIBLE);
+        }
+
         startStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,9 +45,12 @@ public class SessionFragment extends Fragment {
                     // need to check GPS information to get latitude and longitude
                     mainActivity.getSessionManager().startNewSession(0, 0);
                     startStopButton.setBackgroundResource(ic_stop);
+                    newObservation.setVisibility(View.VISIBLE);
                 }else{
                     mainActivity.getSessionManager().endSession();
+                    mainActivity.getSessionManager().deleteAllMedia();
                     startStopButton.setBackgroundResource(ic_start);
+                    newObservation.setVisibility(View.INVISIBLE);
                 }
             }
         });

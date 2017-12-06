@@ -1,14 +1,12 @@
 package al.helmo.com.natamobile.fragment.main;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,7 @@ import java.io.File;
 
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.MainActivity;
+import al.helmo.com.natamobile.fragment.FragmentHandler;
 import al.helmo.com.natamobile.model.Media;
 import al.helmo.com.natamobile.model.Observation;
 
@@ -29,6 +28,7 @@ public class CommentMediaFragment extends Fragment {
     private String mediaType;
     private MainActivity mainActivity;
     private EditText txtObservationComment;
+    private FragmentHandler fragmentHandler;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,31 +39,35 @@ public class CommentMediaFragment extends Fragment {
         txtObservationComment = (EditText)view.findViewById(R.id.txtObservationComment);
         Drawable d = new BitmapDrawable(getResources(), bitMap);
         mainActivity = (MainActivity) this.getActivity();
+        fragmentHandler = new FragmentHandler();
 
         imageButton.setBackground(d);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mediaType == "photo"){
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.parse(localURI.toString()), "image/*");
-                    startActivity(intent);
-
-                }else if (mediaType == "video"){
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.parse(localURI.toString()), "video/*");
-                    startActivity(intent);
-
-                }else if (mediaType == "audio"){
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.parse(localURI.toString()), "video/*");
-                    startActivity(intent);
-                }else{
-
+                switch (mediaType) {
+                    case "photo": {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.setDataAndType(Uri.parse(localURI.toString()), "image/*");
+                        startActivity(intent);
+                        break;
+                    }
+                    case "video": {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.setDataAndType(Uri.parse(localURI.toString()), "video/*");
+                        startActivity(intent);
+                        break;
+                    }
+                    case "audio": {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.setDataAndType(Uri.parse(localURI.toString()), "video/*");
+                        startActivity(intent);
+                        break;
+                    }
                 }
             }
         });
@@ -71,13 +75,13 @@ public class CommentMediaFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Media media = new Media(localURI);
+                Media media = new Media(localURI);
                 Observation o= new Observation(media, txtObservationComment.getText().toString());
-
                 mainActivity.getSessionManager().addObservation(o);
+                Fragment fragment = new SessionFragment();
+                fragmentHandler.replaceFragment(fragment, getFragmentManager());
             }
         });
-
         return view;
     }
 

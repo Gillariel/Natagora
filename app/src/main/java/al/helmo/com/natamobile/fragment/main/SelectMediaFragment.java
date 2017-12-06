@@ -1,6 +1,5 @@
 package al.helmo.com.natamobile.fragment.main;
 
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -73,7 +72,7 @@ public class SelectMediaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent takeVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-
+                takeVideo.putExtra("android.intent.extra.durationLimit", 10);
                 if(takeVideo.resolveActivity(getActivity().getPackageManager())!= null){
                     startActivityForResult(takeVideo, CAPTURE_VIDEO_FRAGMENT_REQUEST_CODE);
                 }
@@ -171,8 +170,7 @@ public class SelectMediaFragment extends Fragment {
         }
     }
 
-    public String getRealPathFromURI(Uri contentUri)
-    {
+    public String getRealPathFromURI(Uri contentUri) {
         String res = null;
         String[] proj = { MediaStore.Images.Media.DATA };
         Cursor cursor = getActivity().getContentResolver().query(contentUri, proj, null, null, null);
