@@ -22,13 +22,15 @@ import retrofit2.Response;
 public class LogInFragment extends Fragment {
 
     private EditText edtUsername, edtPassword;
+    private Button btnLogin, btnRegister;
     private UserService userService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_log_in, container, false);
 
-        Button btnLogin = (Button) view.findViewById(R.id.btnLogin);
+        btnLogin = (Button) view.findViewById(R.id.btnLogin);
+        btnRegister = (Button) view.findViewById(R.id.btnRegister);
         edtUsername = (EditText) view.findViewById(R.id.edtUsername);
         edtPassword = (EditText) view.findViewById(R.id.edtPassword);
         userService = APIUtils.getUserService();

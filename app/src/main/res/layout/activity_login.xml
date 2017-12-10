@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="al.helmo.com.natamobile.activity.LoginActivity"
-    android:id="@+id/mainContentLog">
+    android:id="@+id/mainContentLog"
+    android:background="@drawable/background">
 
 
 

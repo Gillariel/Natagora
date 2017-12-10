@@ -1,7 +1,6 @@
 package al.helmo.com.natamobile.res;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,7 +11,7 @@ import java.util.List;
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.model.Observation;
 
-public class GalleryGridAdapter extends RecyclerView.Adapter<GalleryGridAdapter.ViewHolder> {
+public class GalleryGridAdapter {
 
     private Context context;
     private List<ItemGalleryGrid> list;
@@ -29,7 +28,7 @@ public class GalleryGridAdapter extends RecyclerView.Adapter<GalleryGridAdapter.
         }
     }
 
-    @Override
+    /*@Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
     }
@@ -50,5 +49,5 @@ public class GalleryGridAdapter extends RecyclerView.Adapter<GalleryGridAdapter.
             super(view);
             img = (ImageView) view.findViewById(R.id.img);
         }
-    }
+    }*/
 }
