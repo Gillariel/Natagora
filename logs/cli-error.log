@@ -1,0 +1,140 @@
+2017-12-11 15:28:00 Error: [Cake\Database\Exception] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*' at line 1 in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', '*', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('*', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('*')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), '*', '*')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('*')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(507): Bake\Shell\Task\ModelTask->main('*')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#12 {main}
+
+
+2017-12-11 15:28:15 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.application' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'application', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('application', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('application')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'application', 'Application')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('Application')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(170): Bake\Shell\Task\ModelTask->main('Application')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(493): Bake\Shell\Task\ModelTask->all()
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#12 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#13 {main}
+
+
+2017-12-11 15:30:29 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.application' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'application', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('application', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('application')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'application', 'Application')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('Application')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(507): Bake\Shell\Task\ModelTask->main('application')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#12 {main}
+
+
+2017-12-11 15:30:38 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.application' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'application', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('application', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('application')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'application', 'Application')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('Application')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(507): Bake\Shell\Task\ModelTask->main('Application')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#12 {main}
+
+
+2017-12-11 15:54:05 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.tags_dev' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'tags_dev', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('tags_dev', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('tags_dev')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'tags_dev', 'TagsDev')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('TagsDev')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(507): Bake\Shell\Task\ModelTask->main('tags_Dev')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#12 {main}
+
+
+2017-12-11 16:49:21 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.count_birds' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'count_birds', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('count_birds', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('count_birds')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'count_birds', 'CountBirds')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('CountBirds')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(170): Bake\Shell\Task\ModelTask->main('Count_Birds')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(493): Bake\Shell\Task\ModelTask->all()
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#12 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#13 {main}
+
+
+2017-12-11 16:57:59 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.o_auth' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'o_auth', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('o_auth', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('o_auth')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'o_auth', 'OAuth')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('OAuth')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(170): Bake\Shell\Task\ModelTask->main('OAuth')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(493): Bake\Shell\Task\ModelTask->all()
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#12 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#13 {main}
+
+
+2017-12-11 17:01:26 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'in15b1169.observations_media_by_session_i_d' doesn't exist in C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'observations_me...', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('observations_me...', Array)
+#2 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(532): Cake\Database\Schema\CachedCollection->describe('observations_me...')
+#3 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\ORM\Table.php(653): Cake\ORM\Table->getSchema()
+#4 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#5 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'observations_me...', 'ObservationsMed...')
+#7 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('ObservationsMed...')
+#8 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(170): Bake\Shell\Task\ModelTask->main('observations_me...')
+#9 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(493): Bake\Shell\Task\ModelTask->all()
+#10 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#11 C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\Console\CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#12 C:\Users\foers\Downloads\cakephp\NataWeb\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#13 {main}
+
+

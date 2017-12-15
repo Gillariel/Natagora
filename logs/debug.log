@@ -1,0 +1,637 @@
+2017-12-12 14:59:06 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 111]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 111
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:06 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 116]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 116
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:06 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 121]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 121
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:06 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 126]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 126
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:08 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 111]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 111
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:08 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 116]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 116
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:08 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 121]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 121
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 14:59:08 Notice: Notice (8): Trying to get property of non-object in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 126]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 126
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 15:02:42 Notice: Notice (8): Undefined index: sessions in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 121]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 121
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-12 15:06:04 Notice: Notice (8): Undefined index: sessions in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 121]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 121
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-13 14:49:12 Notice: Notice (8): Undefined variable: fb in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Controller\LoginController.php, line 75]
+Request URL: /login/FBsignin?fb=true&name=Foerster&forname=Nathan&mail=foerster.nathan@hotmail.com
+Referer URL: http://localhost:8765/login
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+App\Controller\LoginController::FBsignin() - APP/Controller\LoginController.php, line 75
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 440
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 119
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-13 18:01:01 Notice: Deprecated (8192): Non-static method Cake\View\Helper\SessionHelper::check() should not be called statically, assuming $this from incompatible context in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Layout\base.ctp, line 65]
+Request URL: /home
+Referer URL: http://localhost:8765/login
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Layout\base.ctp, line 65
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-13 18:04:11 Notice: Deprecated (16384): SessionHelper has been deprecated. Use request->session() instead. in [C:\Users\foers\Downloads\cakephp\NataWeb\vendor\cakephp\cakephp\src\View\Helper\SessionHelper.php, line 39]
+Request URL: /home
+Referer URL: http://localhost:8765/login
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+Cake\View\Helper\SessionHelper::__construct() - CORE\src\View\Helper\SessionHelper.php, line 39
+Cake\View\HelperRegistry::_create() - CORE\src\View\HelperRegistry.php, line 146
+Cake\Core\ObjectRegistry::load() - CORE\src\Core\ObjectRegistry.php, line 96
+Cake\View\HelperRegistry::__isset() - CORE\src\View\HelperRegistry.php, line 67
+Cake\View\View::__get() - CORE\src\View\View.php, line 1087
+include - APP/Template\Layout\base.ctp, line 65
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 812
+Cake\View\View::render() - CORE\src\View\View.php, line 770
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 18:06:51 Notice: Notice (8): Undefined index: observations in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\My\index.ctp, line 98]
+Request URL: /my
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\My\index.ctp, line 98
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 18:06:51 Notice: Notice (8): Undefined index: observations in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\My\index.ctp, line 98]
+Request URL: /my
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\My\index.ctp, line 98
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 18:07:30 Notice: Notice (8): Undefined index: observations in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\My\index.ctp, line 98]
+Request URL: /my
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\My\index.ctp, line 98
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 18:07:31 Notice: Notice (8): Undefined index: observations in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\My\index.ctp, line 98]
+Request URL: /my
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\My\index.ctp, line 98
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 18:33:25 Notice: Notice (8): Use of undefined constant username - assumed 'username' in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Controller\MyController.php, line 42]
+Request URL: /my
+Referer URL: http://localhost:8765/home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+App\Controller\MyController::getUser() - APP/Controller\MyController.php, line 42
+App\Controller\MyController::index() - APP/Controller\MyController.php, line 32
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 440
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 119
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 22:59:07 Notice: Notice (8): Undefined property: stdClass::$url in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Home\index.ctp, line 55]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Home\index.ctp, line 55
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 22:59:07 Notice: Notice (8): Undefined property: stdClass::$url in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Home\index.ctp, line 62]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Home\index.ctp, line 62
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 22:59:07 Notice: Notice (8): Undefined property: stdClass::$url in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Home\index.ctp, line 62]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Home\index.ctp, line 62
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 22:59:07 Notice: Notice (8): Undefined property: stdClass::$url in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Home\index.ctp, line 62]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Home\index.ctp, line 62
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
+2017-12-14 22:59:07 Notice: Notice (8): Undefined property: stdClass::$url in [C:\Users\foers\Downloads\cakephp\NataWeb\src\Template\Home\index.ctp, line 62]
+Request URL: /home
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 153
+include - APP/Template\Home\index.ctp, line 62
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 1196
+Cake\View\View::_render() - CORE\src\View\View.php, line 1157
+Cake\View\View::render() - CORE\src\View\View.php, line 765
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 623
+Cake\Http\ActionDispatcher::_invoke() - CORE\src\Http\ActionDispatcher.php, line 125
+Cake\Http\ActionDispatcher::dispatch() - CORE\src\Http\ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE\src\Http\BaseApplication.php, line 108
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE\src\Routing\Middleware\RoutingMiddleware.php, line 104
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE\src\Routing\Middleware\AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE\src\Error\Middleware\ErrorHandlerMiddleware.php, line 96
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+DebugKit\Middleware\DebugKitMiddleware::__invoke() - ROOT\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 52
+Cake\Http\Runner::__invoke() - CORE\src\Http\Runner.php, line 65
+Cake\Http\Runner::run() - CORE\src\Http\Runner.php, line 51
+Cake\Http\Server::run() - CORE\src\Http\Server.php, line 81
+[main] - ROOT\webroot\index.php, line 40
+
+
+
