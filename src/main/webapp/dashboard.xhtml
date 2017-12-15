@@ -144,45 +144,45 @@
                     <div class="panel-heading">SESSION LAST ACTIVITY</div>
                     <div class="panel-body">
                         <div class="steamline">
-                            <div class="sl-item">
-                                <div class="sl-left bg-success"> <i class="ti-user"></i></div>
-                                <div class="sl-right">
-                                    <div><a href="#">Tohnathan Doe</a> <span class="sl-date">5 minutes ago</span></div>
-                                    <div class="desc">Contrary to popular belief</div>
+                            
+                            <!-- Order by Date from db should be better, + top 5 and not all of them -->
+                            <c:forEach var="s" items="#{sessionHandler.all()}">
+                            
+                                <div class="sl-item">
+                                    <div class="sl-left bg-success"> <h:graphicImage styleClass="img-circle" alt="user" url="#{s.user.picture}"/></div>
+                                    <div class="sl-right">
+                                        <div><a href="#">#{s.user.pseudo}</a> <span class="sl-date timeago">#{s.date}</span></div>
+                                        <div class="desc">
+                                            <!-- Get all media from observations of this sessions and make a gallery like below -->
+                                            <c:forEach var="m" items='#{sessionHandler.mediaBySession("1")}'>
+                                                <!--<c:choose>
+                                                <c:when test=''>-->
+                                                    <!--<div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" url="#{m.url}"/></div>-->
+                                                <!--</c:when>
+                                                <c:otherwise>
+                                                        <div class="white-box">
+                                                            <p style="overflow-wrap: break-word;" class="box-label text-center">#{m.text}</p>
+                                                            <br />
+                                                        </div>
+                                                    </c:otherwise>
+                                                </c:choose>-->
+                                            </c:forEach>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                
+                            </c:forEach>
+                                
                             <div class="sl-item">
                                 <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
                                 <div class="sl-right">
-                                    <div><a href="#">Hritik Roshan</a> <span class="sl-date">5 minutes ago</span></div>
+                                    <div><a href="#">Hritik Roshan</a> <span class="sl-date timeago">18-10-2017 02:37:54</span></div>
                                     <div class="desc">Lorem Ipsum is simply dummy</div>
                                     <div class="row inline-photos">
                                         <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" name="img/birds/1.jpg"/></div>
                                         <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" name="img/birds/2.jpg"/></div>
                                         <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" name="img/birds/3.jpg"/></div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="sl-item">
-                                <div class="sl-left"> <h:graphicImage styleClass="img-circle" alt="user" name="img/user-avatar/boy-1.png"/> </div>
-                                <div class="sl-right">
-                                    <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
-                                    <div class="desc">The standard chunk of ipsum </div>
-                                </div>
-                            </div>
-                            <div class="sl-item">
-                                <div class="sl-left"> <h:graphicImage styleClass="img-circle" alt="user" name="img/user-avatar/girl-1.png"/> </div>
-                                <div class="sl-right">
-                                    <div><a href="#">Varun Dhavan</a> <span class="sl-date">5 minutes ago</span></div>
-                                    <div class="desc">Contrary to popular belief</div>
-                                </div>
-                            </div>
-                            <div class="sl-item">
-                                <div class="sl-left"> <h:graphicImage styleClass="img-circle" alt="user" name="img/user-avatar/man-2.png"/> </div>
-                                <div class="sl-right">
-                                    <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span></div>
-                                    <div class="desc">The generated lorem ipsum
-                                        <br /><a href="javascript:void(0)" class="btn m-t-10 m-r-5 btn-rounded btn-outline btn-success">Apporve</a> <a href="javascript:void(0)" class="btn m-t-10 btn-rounded btn-outline btn-danger">Refuse</a> </div>
                                 </div>
                             </div>
                         </div>
@@ -196,6 +196,19 @@
         <h:outputScript name="plugins/bower_components/counterup/jquery.counterup.min.js"/>
         <h:outputScript name="plugins/bower_components/Chart.js/chartjs.init.js"/>
         <h:outputScript name="plugins/bower_components/Chart.js/Chart.min.js"/>
+        
+        <h:outputScript name="ample/js/timeAgo.js" />
+        
+        <script>
+            $(document).ready(function(){
+                $(".timeago").each(function() {
+                    var date = $(this).text();
+                    var dateAndTime = date.split(" ");
+                    var splittedDate = dateAndTime[0].split("-");
+                    $(this).text($.timeago(splittedDate[2] + "-" + splittedDate[1] + "-" + splittedDate[0] + " " + dateAndTime[1]));
+                });
+            });
+        </script>
     </ui:define>
 
 </ui:composition>

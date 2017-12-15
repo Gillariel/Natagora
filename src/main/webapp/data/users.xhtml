@@ -22,7 +22,7 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <h3 class="box-title m-b-0">Users</h3>
-                    <a href="birds/new" class="pull-right btn btn-info">Create New</a>
+                    <button type="button" id="newAdmin" class="pull-right btn btn-info">Create Admin</button>
                     <p class="text-muted m-b-30">All Users</p>
                     <div class="table-responsive">
                         <h:dataTable id="example" class="table display" value="#{userHandler.all()}" var="u">
@@ -53,8 +53,8 @@
                             
                             <h:column headerClass="sorting_disabled">
                                 <f:facet name = "header">Actions</f:facet>
-                                <a href="users/edit/#{s.id}"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
-                                <a href="users/delete/#{s.id}"><i class="fa fa-trash-o fa-2x"></i> </a>
+                                <a data-id ="#{u.id}" data-pseudo="#{u.pseudo}" data-name="#{u.name}" data-forname="#{u.forname}" data-mail="#{u.mail}" data-roleName="#{u.role.name}" data-roleID="#{u.role.id}" data-password="#{u.password}" data-picture="#{u.picture}" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
+                                <a data-id="#{u.id}" data-name="#{u.name}" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a>
                             </h:column>
                         </h:dataTable>
                     </div>
@@ -76,8 +76,13 @@
         <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
         <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        
         <h:outputScript name="ample/js/datatable.js"/>
-
+        
+        <h:outputScript name="ample/js/ajax/userAjax.js"/>
+        
     </ui:define>
 
 </ui:composition>

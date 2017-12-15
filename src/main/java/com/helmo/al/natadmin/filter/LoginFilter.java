@@ -33,6 +33,8 @@ public class LoginFilter implements Filter{
         
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
+        res.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession(false);
         
         if(req.getRequestURL().toString().contains("users/logout")){

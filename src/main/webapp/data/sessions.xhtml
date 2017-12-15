@@ -53,8 +53,8 @@
                             
                             <h:column headerClass="sorting_disabled">
                                 <f:facet name = "header">Actions</f:facet>
-                                <a href="sessions/edit/#{s.id}"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
-                                <a href="sessions/delete/#{s.id}"><i class="fa fa-trash-o fa-2x"></i> </a>
+                                <a href="sessions/#{s.id}"><i class="fa fa-eye fa-2x"></i> </a>
+                                <a data-id="#{s.id}" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a>
                             </h:column>
                         </h:dataTable>
                     </div>
@@ -78,6 +78,8 @@
 
         <h:outputScript name="ample/js/datatable.js"/>
 
+        <h:outputScript name="ample/js/ajax/sessionAjax.js"/>
+        
     </ui:define>
 
 </ui:composition>
