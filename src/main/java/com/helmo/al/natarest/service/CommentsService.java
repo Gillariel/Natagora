@@ -70,7 +70,7 @@ public class CommentsService extends AbstractDao<Comment> {
     public Response countReported(){
         long result;
         try{
-            Query q = getEntityManager().createNativeQuery("SELECT Number FROM Count_Reported_Comments");
+            Query q = getEntityManager().createNativeQuery("SELECT Number FROM count_reported_comments");
             result = (long) q.getSingleResult();
         } catch(Exception e){
             result =  0;

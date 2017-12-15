@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Roles_Dev")
+@Table(name = "role")
 @XmlRootElement
 public class Role implements Serializable {
 

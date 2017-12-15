@@ -17,7 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Observations_Dev")
+@Table(name = "observation")
 @XmlRootElement
 public class Observation implements Serializable {
 
@@ -48,14 +48,14 @@ public class Observation implements Serializable {
     private Date date;
     
     
-    @JoinTable(name = "Observations_Birds_Dev", joinColumns = {
-        @JoinColumn(name = "Observation_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
-        @JoinColumn(name = "Bird_ID", referencedColumnName = "ID")})
-    @ManyToMany()
-    private Collection<Bird> birds;
+    /*@JoinTable(name = "bird", 
+            joinColumns = @JoinColumn(name = "Bird_ID")
+    )*/
+    @ManyToOne(cascade = CascadeType.DETACH)
+    private Bird bird;
     
     @OneToOne()
-    @JoinTable(name = "Media_Dev", 
+    @JoinTable(name = "media", 
             joinColumns = @JoinColumn(name = "Observation_ID"),
             inverseJoinColumns = @JoinColumn(name = "ID")
     )
@@ -66,7 +66,7 @@ public class Observation implements Serializable {
     private Session session;
     
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Notes_Dev",
+    @JoinTable(name = "note",
             joinColumns = @JoinColumn(name = "Observation_ID"),
             inverseJoinColumns = @JoinColumn(name = "ID")
     )
@@ -98,18 +98,18 @@ public class Observation implements Serializable {
         this.date = date;
     }
 
-    public Collection<Bird> getBirds() {
-        return birds;
+    public Bird getBird() {
+        return bird;
     }
-    public void setBirds(Collection<Bird> birds) {
-        this.birds = birds;
+    public void setBird(Bird bird) {
+        this.bird = bird;
     }
     
     
-    public Media getMediaDev() {
+    public Media getMedia() {
         return media;
     }
-    public void setMediaDev(Media media) {
+    public void setMedia(Media media) {
         this.media = media;
     }
 

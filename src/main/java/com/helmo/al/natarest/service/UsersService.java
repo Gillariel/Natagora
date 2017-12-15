@@ -51,6 +51,27 @@ public class UsersService extends AbstractDao<User> {
     }
 
     @GET
+    @Path("check/{name}/{forname}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response check(@PathParam("name") String name, @PathParam("forname") String forname){
+        return ResponseBuilder.buildBlank(getEntityManager().createQuery(
+            "SELECT u FROM User u WHERE u.name = :name AND u.forname = :forname"
+        ).setParameter("name", name)
+        .setParameter("forname", forname)
+        .getResultList().size() == 1);
+    }
+    
+    @GET
+    @Path("retrieve/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response byUsername(@PathParam("username") String username){
+        return ResponseBuilder.buildGet(getEntityManager().createQuery(
+            "SELECT u FROM User u WHERE u.pseudo = :username"
+        ).setParameter("username", username)
+        .getSingleResult());
+    }
+    
+    @GET
     @Path("login/{username}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response login(@HeaderParam("passwd") String password, @PathParam("username") String username){

@@ -5,6 +5,7 @@
  */
 package com.helmo.al.natarest.service;
 
+import com.helmo.al.natarest.entity.Session;
 import com.helmo.al.natarest.filter.AuthFilter;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -25,7 +26,7 @@ public abstract class AbstractDao<T> extends AuthFilter{
     
     private Class<T> entityClass;
     
-    private static final EntityManager EM = Persistence.createEntityManagerFactory("NataRest").createEntityManager();
+    private static EntityManager EM = Persistence.createEntityManagerFactory("NataRest").createEntityManager();
 
     public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -35,6 +36,21 @@ public abstract class AbstractDao<T> extends AuthFilter{
         return EM;
     };
 
+    public T saveAndReturn(T entity){
+        if(isNull(entity))
+            return null;
+        try{
+            getEntityManager().getTransaction().begin();
+            getEntityManager().persist(entity);
+            getEntityManager().flush();
+            getEntityManager().getTransaction().commit();
+            return entity;
+        } catch(Exception e){ 
+            ResetEntityManager();
+            return null; 
+        }  
+    }
+    
     public boolean save(T entity) {
         //return this.exec(Operation.CREATE, entity);
         if(isNull(entity))
@@ -45,7 +61,10 @@ public abstract class AbstractDao<T> extends AuthFilter{
             getEntityManager().flush();
             getEntityManager().getTransaction().commit();
             return true;
-        } catch(Exception e){ return false; }       
+        } catch(Exception e){ 
+            ResetEntityManager();
+            return false; 
+        }       
     }
 
     public boolean update(T entity) {
@@ -58,7 +77,10 @@ public abstract class AbstractDao<T> extends AuthFilter{
             getEntityManager().flush();
             getEntityManager().getTransaction().commit();
             return true;
-        } catch(Exception e){ return false; }    
+        } catch(Exception e){ 
+            ResetEntityManager();
+            return false; 
+        }    
     }
 
     public boolean delete(T entity) {
@@ -71,7 +93,10 @@ public abstract class AbstractDao<T> extends AuthFilter{
             getEntityManager().flush();
             getEntityManager().getTransaction().commit();
             return true;
-        } catch(Exception e){ return false; }    
+        } catch(Exception e){ 
+            ResetEntityManager();
+            return false; 
+        }    
     }
 
     public T get(Object id) {
@@ -143,5 +168,9 @@ public abstract class AbstractDao<T> extends AuthFilter{
         return (results.size() == 1);
     }
     
-    
+    public void ResetEntityManager() {
+        AbstractDao.EM.close();
+        AbstractDao.EM = null;
+        AbstractDao.EM = Persistence.createEntityManagerFactory("NataRest").createEntityManager();
+    }
 }

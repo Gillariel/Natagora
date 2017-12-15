@@ -17,7 +17,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author foers
  */
 @Entity
-@Table(name = "Birds_Dev")
+@Table(name = "bird")
 @XmlRootElement
 public class Bird implements Serializable {
 
@@ -52,11 +55,23 @@ public class Bird implements Serializable {
     private Integer weight;
     
     @Basic(optional = false)
+    @Column(name = "PrimaryColor")
+    private String primaryColor;
+    
+    @Basic(optional = true)
+    @Column(name = "SecondaryColor")
+    private String secondaryColor;
+    
+    @Basic(optional = true)
+    @Column(name = "Url")
+    private String url;
+    
+    @Basic(optional = false)
     @Column(name = "Creation_Date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     
-    @ManyToMany(mappedBy = "birds", cascade = { CascadeType.REMOVE })
+    @OneToMany(mappedBy = "bird")
     private Collection<Observation> observations = new ArrayList<>();
 
     public Bird() {
@@ -106,6 +121,27 @@ public class Bird implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public String getPrimaryColor() {
+        return primaryColor;
+    }
+    public void setPrimaryColor(String primaryColor) {
+        this.primaryColor = primaryColor;
+    }
+    
+    public String getSecondaryColor() {
+        return secondaryColor;
+    }
+    public void setSecondaryColor(String secondaryColor) {
+        this.secondaryColor = secondaryColor;
+    }
+    
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
     
     @XmlTransient
     public Collection<Observation> getObservations() {
@@ -124,7 +160,6 @@ public class Bird implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Bird)) {
             return false;
         }

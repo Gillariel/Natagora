@@ -136,19 +136,19 @@ public class StatisticsService {
     }
     
     public enum StatQueries {
-        BIRDS("SELECT Number FROM Count_Birds"),
-        COMMENTS("SELECT Number FROM Count_Comments"),
-        MEDIA("SELECT Number FROM Count_Media"),
-        OBSERVATIONS("SELECT Number FROM Count_Observations"),
-        SESSIONS("SELECT Number FROM Count_Sessions"),
-        USERS("SELECT Number FROM Count_Users"),
-        LAST_USERS("SELECT Number FROM Last_New_Users"),
-        COMMENTS_BY_FORUMS("SELECT Number FROM Count_Forum_Comments WHERE Forum_ID = #id"),
-        MEDIA_BY_TYPE("SELECT Number FROM Count_Media_By_Type WHERE Type_ID = #id"),
-        SEE_BIRD("SELECT Number FROM Count_Number_See_Bird WHERE Bird_ID = #id"),
-        OBSERVATION_BY_SESSION("SELECT Number FROM Count_Observations_Session WHERE Sessions_ID = #id"),
-        OBSERVATION_SESSION_BY_USER("SELECT Number FROM Count_Observations_Sessions_User WHERE User_ID = #id"),
-        SESSIONS_BY_USER("SELECT Number FROM Count_User_Sessions WHERE User_ID = #id");
+        BIRDS("SELECT Number FROM count_birds"),
+        COMMENTS("SELECT Number FROM count_comments"),
+        MEDIA("SELECT Number FROM count_media"),
+        OBSERVATIONS("SELECT Number FROM count_observations"),
+        SESSIONS("SELECT Number FROM count_sessions"),
+        USERS("SELECT Number FROM count_users"),
+        LAST_USERS("SELECT Number FROM last_new_users"),
+        COMMENTS_BY_FORUMS("SELECT Number FROM count_forum_comments WHERE Forum_ID = #id"),
+        MEDIA_BY_TYPE("SELECT Number FROM count_media_by_type WHERE Type_ID = #id"),
+        SEE_BIRD("SELECT Number FROM count_number_see_bird WHERE Bird_ID = #id"),
+        OBSERVATION_BY_SESSION("SELECT Number FROM count_observations_session WHERE Sessions_ID = #id"),
+        OBSERVATION_SESSION_BY_USER("SELECT Number FROM count_observations_sessions_User WHERE User_ID = #id"),
+        SESSIONS_BY_USER("SELECT Number FROM count_user_sessions WHERE User_ID = #id");
         
         private final String query;
         

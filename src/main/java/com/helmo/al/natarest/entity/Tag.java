@@ -14,8 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author foers
  */
 @Entity
-@Table(name = "Tags_Dev")
+@Table(name = "tag")
 @XmlRootElement
 public class Tag implements Serializable {
 

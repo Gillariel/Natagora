@@ -5,12 +5,8 @@
  */
 package com.helmo.al.natarest.service;
 
-import com.helmo.al.natarest.entity.Bird;
+import com.helmo.al.natarest.entity.Color;
 import com.helmo.al.natarest.util.ResponseBuilder;
-import com.helmo.al.natarest.view.*;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,22 +22,22 @@ import javax.ws.rs.core.Response;
  *
  * @author foers
  */
-@Path("birds")
-public class BirdsService extends AbstractDao<Bird> {
-    public BirdsService() {
-        super(Bird.class);
+@Path("colors")
+public class ColorService extends AbstractDao<Color> {
+    public ColorService() {
+        super(Color.class);
     }
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(Bird entity) {
+    public Response create(Color entity) {
         return ResponseBuilder.buildPost(super.save(entity));
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response edit(@PathParam("id") Integer id, Bird entity) {
+    public Response edit(@PathParam("id") Integer id, Color entity) {
         return ResponseBuilder.buildPut(super.update(entity));
     }
 
@@ -51,21 +47,16 @@ public class BirdsService extends AbstractDao<Bird> {
     public Response remove(@PathParam("id") Integer id) {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
-
-    @GET
-    @Path("history")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response history() {
-        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM history_new_birds");
-        return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
-    }
     
     @GET
-    @Path("top")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response topBirds() {
-        Query q = getEntityManager().createNativeQuery("SELECT Name, Number FROM top5_bird");
-        return ResponseBuilder.buildGet((List<topBird>) q.getResultList());
+    @Path("byName/{name}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response find(@PathParam("name") String name) {
+        return ResponseBuilder.buildGet(
+            getEntityManager().createQuery("SELECT c FROM Color c WHERE c.name = :name", Color.class)
+                .setParameter("name", name)
+                .getSingleResult()
+        );
     }
     
     @GET

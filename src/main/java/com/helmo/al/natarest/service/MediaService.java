@@ -75,7 +75,7 @@ public class MediaService extends AbstractDao<Media> {
     @Path("count/type")
     @Produces({ MediaType.APPLICATION_JSON})
     public Response CountByType() {
-        Query q = getEntityManager().createNativeQuery("SELECT Number, Type FROM Count_Media_By_Type");
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Type FROM count_media_by_type");
         return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
     }
     
@@ -83,7 +83,7 @@ public class MediaService extends AbstractDao<Media> {
     @Path("history/pending")
     @Produces({ MediaType.APPLICATION_JSON})
     public Response historyPending() {
-        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM History_New_Media WHERE Has_Been_Pended = 1");
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM history_new_media WHERE Has_Been_Pended = 1");
         return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
     }
     
@@ -91,7 +91,7 @@ public class MediaService extends AbstractDao<Media> {
     @Path("history/created")
     @Produces({ MediaType.APPLICATION_JSON})
     public Response history() {
-        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM History_New_Media");
+        Query q = getEntityManager().createNativeQuery("SELECT Number, Month FROM history_new_media");
         return ResponseBuilder.buildGet((List<BirdByMonth>) q.getResultList());
     }
     

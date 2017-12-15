@@ -8,6 +8,7 @@ package com.helmo.al.natarest.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Sessions_Dev")
+@Table(name = "session")
 @XmlRootElement
 public class Session implements Serializable {
 
@@ -53,8 +54,16 @@ public class Session implements Serializable {
     @Column(name = "Longitude")
     private float longitude;
     
+    @Basic(optional = false)
+    @Column(name = "Comment")
+    private String comment;
+    
+    @Basic(optional = true)
+    @Column(name = "Weather")
+    private String weather;
+    
     @JoinColumn(name = "User_ID", referencedColumnName = "ID")
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = { CascadeType.DETACH })
     private User user;
 
     public Session() {
@@ -64,12 +73,14 @@ public class Session implements Serializable {
         this.id = id;
     }
 
-    public Session(Integer id, boolean validated, Date date, float latitude, float longitude) {
+    public Session(Integer id, boolean validated, Date date, float latitude, float longitude, String comment, String weather) {
         this.id = id;
         this.validated = validated;
         this.date = date;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.comment = comment;
+        this.weather = weather;
     }
 
     public Integer getId() {
@@ -107,10 +118,23 @@ public class Session implements Serializable {
         this.longitude = longitude;
     }
 
+    public String getComment() {
+        return comment;
+    }
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+    public void setWeather(String weather) {
+        this.weather = weather;
+    }
+    
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }

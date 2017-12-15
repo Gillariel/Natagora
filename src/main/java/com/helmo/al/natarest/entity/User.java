@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Users_Dev")
+@Table(name = "user")
 @XmlRootElement
 public class User implements Serializable {
 
@@ -58,7 +58,7 @@ public class User implements Serializable {
     @Column(name = "Picture")
     private String picture;
     
-    @JoinColumn(name = "Role_ID", referencedColumnName = "ID")
+    @JoinColumn(unique = false, name = "Role_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private Role role;
 

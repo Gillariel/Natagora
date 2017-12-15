@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Media_Dev")
+@Table(name = "media")
 @XmlRootElement
 public class Media implements Serializable {
 
@@ -113,11 +113,11 @@ public class Media implements Serializable {
         this.deleted = deleted;
     }
     
-    public MediaTypeDB getMediaTypeID() {
+    public MediaTypeDB getMediaType() {
         return mediaType;
     }
-    public void setMediaTypeID(MediaTypeDB mediaTypeID) {
-        this.mediaType = mediaTypeID;
+    public void setMediaType(MediaTypeDB mediaType) {
+        this.mediaType = mediaType;
     }
 
     @Override

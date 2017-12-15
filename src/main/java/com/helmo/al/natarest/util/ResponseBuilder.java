@@ -55,4 +55,10 @@ public class ResponseBuilder {
             ? Response.status(Response.Status.NOT_FOUND).build()
             : Response.status(Response.Status.NO_CONTENT).build();
     }
+    
+    public static Response buildPostEntity(Object entity) {
+        return (entity == null)
+            ? Response.status(Response.Status.INTERNAL_SERVER_ERROR).build()
+            : Response.status(Response.Status.CREATED).type(MediaType.APPLICATION_JSON).entity(entity).build();
+    }
 }

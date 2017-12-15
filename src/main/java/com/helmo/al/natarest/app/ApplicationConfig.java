@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.helmo.al.natarest.filter.AuthFilter.class);
         resources.add(com.helmo.al.natarest.service.ApplicationsServices.class);
         resources.add(com.helmo.al.natarest.service.BirdsService.class);
+        resources.add(com.helmo.al.natarest.service.ColorService.class);
         resources.add(com.helmo.al.natarest.service.CommentsService.class);
         resources.add(com.helmo.al.natarest.service.ForumsService.class);
         resources.add(com.helmo.al.natarest.service.MediaService.class);
