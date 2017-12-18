@@ -1,22 +1,79 @@
 package al.helmo.com.natamobile.model;
 
-import android.net.Uri;
-
-import java.io.File;
-
 public class Media {
 
-    // url = Cloud adress + idClient + n°session + n°of observation + extension;
-    private String url ;
-    private File localFile;
+private int id;
+private String name;
+private String url;
+private String text;
+private boolean validated;
+private boolean deleted;
+private MediaType mediaType;
 
-    public Media (File localFile){
+public Media(String name, String url, MediaType mediaType){
+    setId(0);
+    setName(name);
+    setUrl(url);
+    setText("");
+    setValidated(false);
+    setDeleted(false);
+    setMediaType(mediaType);
+}
 
-        this.localFile = localFile;
+
+    public int getId() {
+        return id;
     }
 
-    public File getLocalFile() {
-        return localFile;
+    public void setId(int id) {
+        this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public MediaType getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(MediaType mediaType) {
+        this.mediaType = mediaType;
+    }
 }

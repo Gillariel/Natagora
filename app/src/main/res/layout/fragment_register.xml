@@ -4,10 +4,114 @@
     android:layout_height="match_parent"
     tools:context="al.helmo.com.natamobile.fragment.login.RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"
+            />
+
+        <EditText
+            android:id="@+id/edtRegisterUsername"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Username"
+            android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            />
+
+        <EditText
+            android:id="@+id/edtRegisterName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Name"
+            android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            />
+
+        <EditText
+            android:id="@+id/edtRegisterForname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Family Name"
+            android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            />
+
+        <EditText
+            android:id="@+id/edtRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Email"
+            android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            />
+
+        <EditText
+            android:id="@+id/edtRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            />
+
+        <EditText
+            android:id="@+id/edtRegisterPasswordCheck"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            android:hint="Repeat Password"
+            android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_gravity="center"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"
+            />
+
+        <Button
+            android:id="@+id/btnRegisterFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register with Facebook"
+            android:layout_gravity="center"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"
+            />
+    </LinearLayout>
 </FrameLayout>

@@ -4,21 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
-    tools:context="al.helmo.com.natamobile.activity.MainActivity">
+    tools:context="al.helmo.com.natamobile.activity.MainActivity"
+    android:background="@drawable/backgroundmain">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainContent">
-        <TextView
-            android:id="@+id/txtUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            />
-    </RelativeLayout>
+        android:id="@+id/mainContent"/>
 
-    <ListView
+    <RelativeLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:id="@+id/menuBurger"
@@ -26,5 +20,55 @@
         android:choiceMode="singleChoice"
         android:layout_gravity="start">
 
-    </ListView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:id="@+id/mysession"
+                android:background="@mipmap/ic_start"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/addobservation"
+                android:background="@mipmap/ic_add"
+                />
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/gallery"
+                android:background="@mipmap/ic_gallery"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="260dp">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/settings"
+                android:background="@mipmap/ic_settings"
+                />
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/logout"
+                android:background="@mipmap/ic_logout"
+                />
+        </LinearLayout>
+        </RelativeLayout>
+
 </android.support.v4.widget.DrawerLayout>

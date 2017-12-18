@@ -5,16 +5,12 @@
     tools:context="al.helmo.com.natamobile.fragment.login.LogInFragment"
     >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
         >
 
         <TextView
@@ -22,6 +18,11 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="100dp"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"
             />
 
         <EditText
@@ -30,7 +31,10 @@
             android:layout_height="40dp"
             android:hint="Username"
             android:background="@drawable/bg_edittext"
-            android:layout_marginBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            android:inputType="textPersonName"
+            android:textColorHint="#FFFFFF"
             />
 
         <EditText
@@ -40,18 +44,25 @@
             android:inputType="textPassword"
             android:hint="Password"
             android:background="@drawable/bg_edittext"
+            android:layout_margin="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
 
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Login"
+                android:fontFamily="cursive"
+                android:textColor="@color/colorAccent"
+                android:layout_marginRight="20dp"
 
                 />
 
@@ -60,16 +71,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
+                android:fontFamily="cursive"
+                android:textColor="@color/colorAccent"
                 />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnRegisterFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register with Facebook"
-            android:layout_gravity="center"
-            />
 
     </LinearLayout>
 </FrameLayout>

@@ -1,39 +1,88 @@
 package al.helmo.com.natamobile.model;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Session {
 
-class Session {
-
-    private List<Observation> observations;
     private int id;
-    private double longitude;
+    private boolean validated;
+    private long date;
     private double latitude;
+    private double longitude;
+    private String comment;
+    private String weather;
+    private User user;
 
-    Session(int id, double latitude, double longitude){
-        observations = new ArrayList<>();
-        this.id = id;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
 
-    void addObservation(Observation observation) {
-        observations.add(observation);
-    }
-
-    List<Observation> getObservations() {
-        return observations;
+    Session(int id, double latitude, double longitude, User user){
+        setId(id);
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setUser(user);
+        setDate(System.currentTimeMillis());
+        setComment("");
+        setValidated(false);
     }
 
     public int getId() {
         return id;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 
     public double getLatitude() {
         return latitude;
     }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {this.longitude = longitude;}
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+
+    public void setWeather(String weather) {
+        this.weather = weather;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

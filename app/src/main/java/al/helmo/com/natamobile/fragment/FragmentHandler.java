@@ -8,16 +8,14 @@ import al.helmo.com.natamobile.R;
 public class FragmentHandler {
 
     public void replaceFragment(Fragment fragment, FragmentManager mainActivity){
-        FragmentManager fragmentManager = mainActivity;
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = mainActivity.beginTransaction();
         fragmentTransaction.replace(R.id.mainContent,fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
     public void replaceLogFragment(Fragment fragment, FragmentManager mainActivity){
-        FragmentManager fragmentManager = mainActivity;
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = mainActivity.beginTransaction();
         fragmentTransaction.replace(R.id.mainContentLog,fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

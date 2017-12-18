@@ -12,23 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
 import java.io.File;
-
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.MainActivity;
-import al.helmo.com.natamobile.fragment.FragmentHandler;
 import al.helmo.com.natamobile.model.Media;
-import al.helmo.com.natamobile.model.Observation;
+import al.helmo.com.natamobile.model.LocalObservation;
 
 public class CommentMediaFragment extends Fragment {
 
     private Bitmap bitMap;
-    private File localURI;
-    private String mediaType;
+
     private MainActivity mainActivity;
     private EditText txtObservationComment;
-    private FragmentHandler fragmentHandler;
+    private LocalObservation localObservation;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,33 +34,27 @@ public class CommentMediaFragment extends Fragment {
         Button nextButton = (Button)view.findViewById(R.id.btnNextComment);
         txtObservationComment = (EditText)view.findViewById(R.id.txtObservationComment);
         Drawable d = new BitmapDrawable(getResources(), bitMap);
+
         mainActivity = (MainActivity) this.getActivity();
-        fragmentHandler = new FragmentHandler();
 
         imageButton.setBackground(d);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (mediaType) {
-                    case "photo": {
+                switch (localObservation.getMediaType().getType()) {
+                    case "Photo": {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
-                        intent.setDataAndType(Uri.parse(localURI.toString()), "image/*");
+                        intent.setDataAndType(Uri.parse(localObservation.getLocalFile().toString()), "image/*");
                         startActivity(intent);
                         break;
                     }
-                    case "video": {
+                    case "Audio":
+                    case "Video": {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
-                        intent.setDataAndType(Uri.parse(localURI.toString()), "video/*");
-                        startActivity(intent);
-                        break;
-                    }
-                    case "audio": {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.setDataAndType(Uri.parse(localURI.toString()), "video/*");
+                        intent.setDataAndType(Uri.parse(localObservation.getLocalFile().toString()), "video/*");
                         startActivity(intent);
                         break;
                     }
@@ -75,11 +65,11 @@ public class CommentMediaFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Media media = new Media(localURI);
-                Observation o= new Observation(media, txtObservationComment.getText().toString());
-                mainActivity.getSessionManager().addObservation(o);
-                Fragment fragment = new SessionFragment();
-                fragmentHandler.replaceFragment(fragment, getFragmentManager());
+                localObservation.setComment(txtObservationComment.getText().toString());
+                SelectBirdFragment fragment = new SelectBirdFragment();
+                fragment.setLocalObservation(localObservation);
+
+                mainActivity.getFragmentHandler().replaceFragment(fragment, getFragmentManager());
             }
         });
         return view;
@@ -89,10 +79,8 @@ public class CommentMediaFragment extends Fragment {
         this.bitMap = bitmap;
     }
 
-    public void setLocalURI(File localURI) {
-        this.localURI = localURI;
+    public void setLocalObservation(LocalObservation lo){
+        this.localObservation = lo;
     }
-
-    public void setMediaType(String type){this.mediaType = type;}
 
 }

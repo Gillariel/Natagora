@@ -17,15 +17,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
 import al.helmo.com.natamobile.R;
-import al.helmo.com.natamobile.fragment.FragmentHandler;
+import al.helmo.com.natamobile.activity.MainActivity;
+import al.helmo.com.natamobile.model.LocalObservation;
+import al.helmo.com.natamobile.model.MediaType;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -36,20 +36,19 @@ public class SelectMediaFragment extends Fragment {
     private static final int CAPTURE_AUDIO_FRAGMENT_REQUEST_CODE = 3;
     private static final int MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 4 ;
 
-    private Button photoButton, cameraButton,audioButton,commentButton ;
-    private FragmentHandler fragmentHandler;
-    private View view;
+    private MainActivity mainActivity;
     private File pathFile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_select_media,container,false);
+        View view = inflater.inflate(R.layout.fragment_select_media,container,false);
 
-        photoButton = (Button)view.findViewById(R.id.photoButton);
-        cameraButton = (Button)view.findViewById(R.id.cameraButton);
-        audioButton = (Button)view.findViewById(R.id.audioButton);
-        commentButton = (Button)view.findViewById(R.id.commentButton);
-        fragmentHandler = new FragmentHandler();
+        Button photoButton = (Button) view.findViewById(R.id.photoButton);
+        Button cameraButton = (Button) view.findViewById(R.id.cameraButton);
+        Button audioButton = (Button) view.findViewById(R.id.audioButton);
+        Button commentButton = (Button) view.findViewById(R.id.commentButton);
+        mainActivity = (MainActivity)getActivity();
+
         requestPermission();
 
         photoButton.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +95,8 @@ public class SelectMediaFragment extends Fragment {
                 CommentMediaFragment fragment = new CommentMediaFragment();
                 Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_comment);
                 fragment.setBitMap(icon);
-                fragmentHandler.replaceFragment(new CommentMediaFragment(), getFragmentManager());
+                fragment.setLocalObservation(new LocalObservation(new File(""),new MediaType(4,"Text")));
+                mainActivity.getFragmentHandler().replaceFragment(new CommentMediaFragment(), getFragmentManager());
             }
         });
         return view;
@@ -109,7 +109,7 @@ public class SelectMediaFragment extends Fragment {
 
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            OutputStream outStream = null;
+            OutputStream outStream;
             try {
                 outStream = new FileOutputStream(pathFile);
                 imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream);
@@ -122,10 +122,9 @@ public class SelectMediaFragment extends Fragment {
             }
             CommentMediaFragment fragment = new CommentMediaFragment();
             fragment.setBitMap(imageBitmap);
-            fragment.setLocalURI(pathFile);
-            fragment.setMediaType("photo");
+            fragment.setLocalObservation(new LocalObservation(pathFile,new MediaType(1,"Photo")));
 
-            fragmentHandler.replaceFragment(fragment,getFragmentManager() );
+            mainActivity.getFragmentHandler().replaceFragment(fragment,getFragmentManager() );
 
         }else if (requestCode == CAPTURE_VIDEO_FRAGMENT_REQUEST_CODE && resultCode == RESULT_OK){
             Uri video = data.getData();
@@ -133,10 +132,8 @@ public class SelectMediaFragment extends Fragment {
             CommentMediaFragment fragment = new CommentMediaFragment();
             Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_video);
             fragment.setBitMap(icon);
-            fragment.setLocalURI(new File(path));
-            fragment.setMediaType("video");
-
-            fragmentHandler.replaceFragment(fragment,getFragmentManager() );
+            fragment.setLocalObservation(new LocalObservation(new File(path),new MediaType(3,"Video")));
+            mainActivity.getFragmentHandler().replaceFragment(fragment,getFragmentManager() );
 
         }else if (requestCode == CAPTURE_AUDIO_FRAGMENT_REQUEST_CODE && resultCode == RESULT_OK){
             Uri audio = data.getData();
@@ -146,17 +143,15 @@ public class SelectMediaFragment extends Fragment {
 
             Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_comment);
             fragment.setBitMap(icon);
-            fragment.setLocalURI(new File(path));
-            fragment.setMediaType("audio");
+            fragment.setLocalObservation(new LocalObservation(new File(path),new MediaType(2,"Audio")));
 
-            fragmentHandler.replaceFragment(fragment,getFragmentManager() );
+            mainActivity.getFragmentHandler().replaceFragment(fragment,getFragmentManager() );
         }
     }
 
     private File createImageFile() throws IOException {
         File storageDir = Environment.getExternalStorageDirectory();
-        File image = File.createTempFile("example", ".png", storageDir);
-        return image;
+        return File.createTempFile("example", ".png", storageDir);
     }
 
     private void requestPermission(){

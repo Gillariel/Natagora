@@ -4,10 +4,6 @@
     android:layout_height="match_parent"
     tools:context="al.helmo.com.natamobile.fragment.main.SessionFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <Button
         android:id="@+id/startStopSession"
         android:layout_width="125dp"

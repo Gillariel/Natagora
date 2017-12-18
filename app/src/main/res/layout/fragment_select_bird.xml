@@ -1,0 +1,113 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="al.helmo.com.natamobile.fragment.main.SelectBirdFragment"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a Bird"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:id="@+id/birdsListView"
+            android:listSelector="@color/colorPrimary"
+            android:longClickable="true"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveObservation"
+            android:text="Save Observation"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Primary Color"
+                    android:layout_gravity="center"
+                    android:fontFamily="cursive"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"
+                    android:gravity="left"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/primarySpinner"
+                    android:spinnerMode="dialog"
+                    android:fontFamily="cursive"
+                    android:textColor="@color/colorAccent"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Secondary Color"
+                    android:layout_gravity="center"
+                    android:fontFamily="cursive"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/secondarySpinner"
+                    android:spinnerMode="dialog"
+                    android:fontFamily="cursive"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Length"
+                    android:layout_gravity="center"
+                    android:fontFamily="cursive"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lengthSpinner"
+                    android:spinnerMode="dialog"
+                    android:fontFamily="cursive"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

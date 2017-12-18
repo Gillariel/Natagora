@@ -17,4 +17,8 @@ public class LoginActivity extends AppCompatActivity {
         fragmentHandler = new FragmentHandler();
         fragmentHandler.replaceLogFragment(new LogInFragment(), getFragmentManager());
     }
+
+    public FragmentHandler getFragmentHandler() {
+        return fragmentHandler;
+    }
 }

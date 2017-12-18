@@ -1,72 +1,101 @@
 package al.helmo.com.natamobile.activity;
 
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.fragment.login.LogOutFragment;
 import al.helmo.com.natamobile.fragment.main.GalleryGridFragment;
-import al.helmo.com.natamobile.fragment.main.SaveSessionFragment;
+import al.helmo.com.natamobile.fragment.main.SelectMediaFragment;
 import al.helmo.com.natamobile.fragment.main.SessionFragment;
 import al.helmo.com.natamobile.fragment.main.SettingsFragment;
 import al.helmo.com.natamobile.fragment.FragmentHandler;
 import al.helmo.com.natamobile.model.SessionManager;
 import al.helmo.com.natamobile.model.User;
-import al.helmo.com.natamobile.res.ItemSlideMenu;
-import al.helmo.com.natamobile.res.MenuBurgerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<ItemSlideMenu> listMenu;
-    private MenuBurgerAdapter adapter;
-    private ListView listView;
+    private RelativeLayout listView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FragmentHandler fragmentHandler;
     private SessionManager sessionManager;
+    private Button sessionButton, galleryButton, addButton, settingsButton, logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bundle extra = getIntent().getExtras();
-        User user = new User(extra.getString("username"));
+        User user = getIntent().getParcelableExtra("user");
         sessionManager = new SessionManager(user);
-        listView = (ListView)findViewById(R.id.menuBurger);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
-        listMenu = new ArrayList<>();
         fragmentHandler = new FragmentHandler();
+        sessionButton = (Button)findViewById(R.id.mysession);
+        galleryButton = (Button)findViewById(R.id.gallery);
+        addButton = (Button)findViewById(R.id.addobservation);
+        settingsButton = (Button)findViewById(R.id.settings);
+        logoutButton = (Button)findViewById(R.id.logout);
+        listView = (RelativeLayout)findViewById(R.id.menuBurger);
 
-        adapter = new MenuBurgerAdapter(this);
-        listView.setAdapter(adapter);
-        listMenu = adapter.getListItem();
+        fragmentHandler.replaceFragment(new SessionFragment(), getFragmentManager());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle(listMenu.get(0).getTitle());
-        listView.setItemChecked(0,true);
-        drawerLayout.closeDrawer(listView);
+        if(sessionManager.getConnectedUser() == null){
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            Toast.makeText(this, "Error, No user is currently connected, Log in again Please", Toast.LENGTH_SHORT).show();
+        }
 
-        replaceFragment(0);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                setTitle(listMenu.get(i).getTitle());
-                listView.setItemChecked(i, true);
-                replaceFragment(i);
+            public void onClick(View view) {
+                fragmentHandler.replaceFragment(new SessionFragment(), getFragmentManager());
                 drawerLayout.closeDrawer(listView);
             }
         });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.replaceFragment(new SelectMediaFragment(), getFragmentManager());
+                drawerLayout.closeDrawer(listView);
+            }
+        });
+
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.replaceFragment(new GalleryGridFragment(), getFragmentManager());
+                drawerLayout.closeDrawer(listView);
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.replaceFragment(new SettingsFragment(), getFragmentManager());
+                drawerLayout.closeDrawer(listView);
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.replaceFragment(new LogOutFragment(), getFragmentManager());
+                drawerLayout.closeDrawer(listView);
+            }
+        });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawerLayout.closeDrawer(listView);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_opened, R.string.drawer_closed){
             @Override
@@ -98,31 +127,12 @@ public class MainActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
-    
-    private void replaceFragment(int i){
-        switch (i){
-            case 0:
-                fragmentHandler.replaceFragment(new SessionFragment(), getFragmentManager());
-                break;
-            case 1:
-                fragmentHandler.replaceFragment(new GalleryGridFragment(), getFragmentManager());
-                break;
-            case 2:
-                fragmentHandler.replaceFragment(new SaveSessionFragment(), getFragmentManager());
-                break;
-            case 3:
-                fragmentHandler.replaceFragment(new SettingsFragment(), getFragmentManager());
-                break;
-            case 4:
-                fragmentHandler.replaceFragment(new LogOutFragment(), getFragmentManager());
-                break;
-            default:
-                fragmentHandler.replaceFragment(new SessionFragment(), getFragmentManager());
-                break;
-        }
-    }
 
     public SessionManager getSessionManager() {
         return sessionManager;
+    }
+
+    public FragmentHandler getFragmentHandler() {
+        return fragmentHandler;
     }
 }
