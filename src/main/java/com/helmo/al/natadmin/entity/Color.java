@@ -20,10 +20,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Notes_Dev")
+@Table(name = "color")
 @XmlRootElement
-public class Note implements Serializable {
-
+public class Color implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -33,19 +32,15 @@ public class Note implements Serializable {
     private Integer id;
     
     @Basic(optional = false)
-    @Column(name = "Message")
-    private String message;
+    @Column(name = "Name")
+    private String name;
 
-    public Note() {
+    public Color() {
     }
 
-    public Note(Integer id) {
+    public Color(Integer id, String name) {
         this.id = id;
-    }
-
-    public Note(Integer id, String message) {
-        this.id = id;
-        this.message = message;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -55,11 +50,20 @@ public class Note implements Serializable {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getName() {
+        return name;
     }
-    public void setMessage(String message) {
-        this.message = message;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Color)) {
+            return false;
+        }
+        Color other = (Color) object;
+        return ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
@@ -70,21 +74,7 @@ public class Note implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Note)) {
-            return false;
-        }
-        Note other = (Note) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return this.message;
+        return this.name;
     }
-    
 }

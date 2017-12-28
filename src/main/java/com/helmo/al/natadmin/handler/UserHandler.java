@@ -37,4 +37,16 @@ public class UserHandler extends BaseHandler<User>{
     public User login(String username, String pwd){
         return new UserClient().login(username, pwd);
     }
+    
+    public String history(){
+        return new UserClient().history();
+    }
+    
+    public String byRole(){
+        return new UserClient().byRole();
+    }
+    
+    public String vsFb(){
+        return new UserClient().vsFb();
+    }
 }

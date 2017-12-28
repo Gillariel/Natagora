@@ -11,6 +11,6 @@ package com.helmo.al.natadmin.security;
  */
 public class Global {
     public static final String API_KEY = "136519fd-6d11-4a53-94e3-78f74abd56ee";
-    public static final String BASE_URL = "http://192.168.128.13:8081/NataRest/api/";
+    public static final String BASE_URL = "https://dartagnan-intra.cg.helmo.be:8444/NataRest/api/";
     public static final String LOCAL_URL = "http://localhost:8081/NataRest/api/";
 }

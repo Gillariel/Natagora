@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "Users_Dev")
+@Table(name = "user")
 @XmlRootElement
 public class User implements Serializable {
 
@@ -53,12 +53,12 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "Password")
     private String password;   
-    
+
     @Basic(optional = false)
     @Column(name = "Picture")
     private String picture;
     
-    @JoinColumn(name = "Role_ID", referencedColumnName = "ID")
+    @JoinColumn(unique = false, name = "Role_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private Role role;
 
@@ -162,20 +162,6 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return this.pseudo + " (" + this.getFullName() + ")";
-    }
-    
-    public String BetterStringView() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("----------------------------\n");
-        sb.append("|        User : " + this.id +        "|\n");
-        sb.append("|        Name : " + this.name +        "|\n");
-        sb.append("|        Forname : " + this.forname +        "|\n");
-        sb.append("|        Username : " + this.pseudo +        "|\n");
-        sb.append("|        Passwd : " + this.password +        "|\n");
-        sb.append("|        Mail : " + this.mail +        "|\n");
-        sb.append("|        Role : " + this.role.getName() +        "|\n");
-        sb.append("----------------------------\n");
-        return sb.toString();
     }
     
 }

@@ -84,7 +84,7 @@
                                                     <i class="fa fa-lock text-success"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <i class="fa fa-lock text-danger"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                    <i class="fa fa-lock text-danger"></i><span><h2>NatAdmin</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </li>
@@ -98,7 +98,7 @@
                                                     <i class="fa ti-android text-success"></i><span><h2>NataMobile</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <i class="fa ti-android text-danger"></i><span><h2>NataMobile</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                    <i class="fa ti-android text-danger"></i><span><h2>NataMobile</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </li>
@@ -114,7 +114,7 @@
                                                     <i class="fa fa-server text-success"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <i class="fa fa-server text-danger"></i><span><h2>NataRest</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                    <i class="fa fa-server text-danger"></i><span><h2>NataRest</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </li>
@@ -128,7 +128,7 @@
                                                     <i class="fa ti-world text-success"></i><span><h2>NataWeb</h2><h4><i class="fa fa-check-circle-o text-success"></i></h4></span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <i class="fa ti-world text-danger"></i><span><h2>NataWeb</h2><h4><i class="fa fa-check-circle-o text-danger"></i></h4></span>
+                                                    <i class="fa ti-world text-danger"></i><span><h2>NataWeb</h2><h4><i class="fa fa-times-circle-o text-danger"></i></h4></span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </li>
@@ -144,47 +144,21 @@
                     <div class="panel-heading">SESSION LAST ACTIVITY</div>
                     <div class="panel-body">
                         <div class="steamline">
-                            
-                            <!-- Order by Date from db should be better, + top 5 and not all of them -->
-                            <c:forEach var="s" items="#{sessionHandler.all()}">
-                            
+                            <c:forEach var="s" items="#{sessionHandler.last10()}">
                                 <div class="sl-item">
                                     <div class="sl-left bg-success"> <h:graphicImage styleClass="img-circle" alt="user" url="#{s.user.picture}"/></div>
                                     <div class="sl-right">
-                                        <div><a href="#">#{s.user.pseudo}</a> <span class="sl-date timeago">#{s.date}</span></div>
-                                        <div class="desc">
+                                        <div><a href="/NatAdmin/data/sessions/see?id=#{s.id}">#{s.user.pseudo}</a> <span class="sl-date timeago">#{s.date}</span></div>
+                                        <div class="desc"></div>
+                                        <div class="row inline-photos">
                                             <!-- Get all media from observations of this sessions and make a gallery like below -->
-                                            <c:forEach var="m" items='#{sessionHandler.mediaBySession("1")}'>
-                                                <!--<c:choose>
-                                                <c:when test=''>-->
-                                                    <!--<div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" url="#{m.url}"/></div>-->
-                                                <!--</c:when>
-                                                <c:otherwise>
-                                                        <div class="white-box">
-                                                            <p style="overflow-wrap: break-word;" class="box-label text-center">#{m.text}</p>
-                                                            <br />
-                                                        </div>
-                                                    </c:otherwise>
-                                                </c:choose>-->
+                                            <c:forEach var="m" items='#{sessionHandler.top3MediaBySession(1)}'>
+                                                <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="pic" url="#{m}"/></div>
                                             </c:forEach>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </c:forEach>
-                                
-                            <div class="sl-item">
-                                <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
-                                <div class="sl-right">
-                                    <div><a href="#">Hritik Roshan</a> <span class="sl-date timeago">18-10-2017 02:37:54</span></div>
-                                    <div class="desc">Lorem Ipsum is simply dummy</div>
-                                    <div class="row inline-photos">
-                                        <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" name="img/birds/1.jpg"/></div>
-                                        <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" name="img/birds/2.jpg"/></div>
-                                        <div class="col-xs-4"><h:graphicImage styleClass="img-responsive" alt="bird" name="img/birds/3.jpg"/></div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -202,10 +176,10 @@
         <script>
             $(document).ready(function(){
                 $(".timeago").each(function() {
-                    var date = $(this).text();
-                    var dateAndTime = date.split(" ");
-                    var splittedDate = dateAndTime[0].split("-");
-                    $(this).text($.timeago(splittedDate[2] + "-" + splittedDate[1] + "-" + splittedDate[0] + " " + dateAndTime[1]));
+                    var d = new Date($(this).text()/1);
+                    var strDate = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0"+d.getDate()).slice(-2) + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
+                    console.log(strDate);
+                    $(this).text($.timeago(strDate));
                 });
             });
         </script>

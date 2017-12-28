@@ -5,12 +5,14 @@
  */
 package com.helmo.al.natadmin.network;
 
+import com.helmo.al.natadmin.util.CompletelyDeprecateSSLDestroyerDueToBadServer;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  *
@@ -32,6 +34,20 @@ public class Ping {
 
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setConnectTimeout(timeout.getTimeout());
+            connection.setReadTimeout(timeout.getTimeout());
+            connection.setRequestMethod("HEAD");
+            int responseCode = connection.getResponseCode();
+            return ((200 <= responseCode && responseCode <= 399) || responseCode == 401);
+        } catch (IOException e) {
+            return false;
+        }
+    }
+    
+    public static boolean pingSSLURL(String url, NetworkTimeOut timeout) {
+        try {
+            HttpsURLConnection connection = (HttpsURLConnection) new URL(url).openConnection();
+            connection = CompletelyDeprecateSSLDestroyerDueToBadServer.DestroyLittlePiece(connection);
             connection.setConnectTimeout(timeout.getTimeout());
             connection.setReadTimeout(timeout.getTimeout());
             connection.setRequestMethod("HEAD");
@@ -65,5 +81,44 @@ public class Ping {
             }
         }
         return result;
+    }
+    
+    public static Map<String, Boolean> multiplePingSSLURL(List<String> urls, NetworkTimeOut timeout) {
+        Map<String,Boolean> result = new TreeMap<>();
+        for(String url : urls){
+            try {
+                HttpsURLConnection connection = (HttpsURLConnection) new URL(url).openConnection();
+                connection = CompletelyDeprecateSSLDestroyerDueToBadServer.DestroyLittlePiece(connection);
+                connection.setConnectTimeout(timeout.getTimeout());
+                connection.setReadTimeout(timeout.getTimeout());
+                connection.setRequestMethod("HEAD");
+                int responseCode = connection.getResponseCode();
+                result.put(
+                        url.replaceFirst(".*/([^/?]+).*", "$1"),
+                        ((200 <= responseCode && responseCode <= 399) || responseCode == 401)
+                );
+            } catch (IOException e) {
+                result.put(
+                        url.replaceFirst(".*/([^/?]+).*", "$1"),
+                        false
+                );
+            }
+        }
+        return result;
+    }
+    
+    public static boolean pingFile(String url, NetworkTimeOut timeout) {
+        url = url.replaceFirst("^https", "http"); // Otherwise an exception may be thrown on invalid SSL certificates.
+
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setConnectTimeout(timeout.getTimeout());
+            connection.setReadTimeout(timeout.getTimeout());
+            connection.setRequestMethod("HEAD");
+            int responseCode = connection.getResponseCode();
+            return ((200 <= responseCode && responseCode <= 399) || responseCode == 401);
+        } catch (IOException e) {
+            return false;
+        }
     }
 }

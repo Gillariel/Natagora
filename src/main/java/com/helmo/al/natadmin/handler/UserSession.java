@@ -5,13 +5,9 @@
  */
 package com.helmo.al.natadmin.handler;
 
-import com.helmo.al.natadmin.entity.Role;
-import com.helmo.al.natadmin.entity.User;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 /**
  *

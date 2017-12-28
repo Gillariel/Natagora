@@ -6,12 +6,9 @@
 package com.helmo.al.natadmin.client;
 
 import com.helmo.al.natadmin.entity.MediaTypeDB;
-import com.helmo.al.natadmin.security.Global;
 import com.helmo.al.natadmin.security.RequestBuilder;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
  *

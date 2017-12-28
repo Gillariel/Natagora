@@ -53,8 +53,13 @@
                             
                             <h:column headerClass="sorting_disabled">
                                 <f:facet name = "header">Actions</f:facet>
-                                <a data-id ="#{u.id}" data-pseudo="#{u.pseudo}" data-name="#{u.name}" data-forname="#{u.forname}" data-mail="#{u.mail}" data-roleName="#{u.role.name}" data-roleID="#{u.role.id}" data-password="#{u.password}" data-picture="#{u.picture}" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
-                                <a data-id="#{u.id}" data-name="#{u.name}" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a>
+                                <h:panelGroup rendered="#{u.role.id == 2}">
+                                    
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{u.role.id == 1}">
+                                    <a data-id ="#{u.id}" data-pseudo="#{u.pseudo}" data-name="#{u.name}" data-forname="#{u.forname}" data-mail="#{u.mail}" data-roleName="#{u.role.name}" data-roleID="#{u.role.id}" data-password="#{u.password}" data-picture="#{u.picture}" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
+                                    <a data-id="#{u.id}" data-name="#{u.name}" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a>
+                                </h:panelGroup>
                             </h:column>
                         </h:dataTable>
                     </div>

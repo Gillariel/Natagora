@@ -29,23 +29,40 @@ public class UserClient extends BaseClient<User> {
                 
     }
     
-    public boolean trylogin(String username, String passwd) {
-        WebTarget t = getRessource().path("/trylogin/" + username);
-        int resStatus = t.request(MediaType.APPLICATION_JSON)
-                            .header("api-key", Global.API_KEY)
-                            .header("passwd", passwd)
-                            .get(Response.class)
-                            .getStatus();
-        return (resStatus >= 200 && resStatus <= 399);
-    }
-    
     public User login(String username, String passwd) {
-        WebTarget t = getRessource().path("/login/" + username);
+        WebTarget t = getRessource().path("/loginAdmin/" + username);
         return t.request()
                     .header("api-key", Global.API_KEY)
                     .header("passwd", passwd)
                     .accept("Content-Type", "application/json")
                     .get(Response.class)
                     .readEntity(User.class);
+    }
+    
+    public String history() {
+        WebTarget t = super.getRessource().path("/history");
+        return t
+                .request(MediaType.APPLICATION_JSON)
+                .header("api-key", Global.API_KEY)
+                .get(Response.class)
+                .readEntity(String.class);
+    }
+    
+    public String byRole() {
+        WebTarget t = super.getRessource().path("/byRole");
+        return t
+                .request(MediaType.APPLICATION_JSON)
+                .header("api-key", Global.API_KEY)
+                .get(Response.class)
+                .readEntity(String.class);
+    }
+    
+    public String vsFb() {
+        WebTarget t = super.getRessource().path("/vsFb");
+        return t
+                .request(MediaType.APPLICATION_JSON)
+                .header("api-key", Global.API_KEY)
+                .get(Response.class)
+                .readEntity(String.class);
     }
 }

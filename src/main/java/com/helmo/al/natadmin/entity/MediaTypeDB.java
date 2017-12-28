@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author foers
  */
 @Entity
-@Table(name = "MediaType_Dev")
+@Table(name = "mediatype")
 @XmlRootElement
 public class MediaTypeDB implements Serializable {
 

@@ -8,7 +8,18 @@ package com.helmo.al.natadmin.client;
 import com.helmo.al.natadmin.entity.Media;
 import com.helmo.al.natadmin.security.Global;
 import com.helmo.al.natadmin.security.RequestBuilder;
+import com.helmo.al.natadmin.util.CompletelyDeprecateSSLDestroyerDueToBadServer;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
@@ -22,8 +33,8 @@ import javax.ws.rs.core.Response;
  * @param <T> The subclass entity
  */
 public abstract class BaseClient<T> {
-    private final WebTarget webTarget;
-    private final Client client;
+    private  WebTarget webTarget;
+    private  Client client;
 
     /**
      *  The java class of the entity
@@ -36,9 +47,10 @@ public abstract class BaseClient<T> {
     private final GenericType listClass;
     
     public BaseClient(Class<T> entityClass, GenericType g, String path) {
+        
         this.entityClass = entityClass;
         this.listClass = g;
-        client = javax.ws.rs.client.ClientBuilder.newBuilder().build();
+        client = CompletelyDeprecateSSLDestroyerDueToBadServer.DestroyEverything();
         webTarget = client.target(Global.BASE_URL + path);
     }
     

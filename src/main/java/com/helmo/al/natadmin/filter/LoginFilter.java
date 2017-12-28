@@ -44,6 +44,7 @@ public class LoginFilter implements Filter{
                 session.removeAttribute("fullname");
                 session.removeAttribute("mail");
                 session.removeAttribute("picture");
+                session.removeAttribute("role");
             } catch(Exception e) { }
         }
         
@@ -64,7 +65,6 @@ public class LoginFilter implements Filter{
         } else {
             res.sendRedirect(loginUrl);
         }  
-        //chain.doFilter(req,res);
     }
 
     @Override

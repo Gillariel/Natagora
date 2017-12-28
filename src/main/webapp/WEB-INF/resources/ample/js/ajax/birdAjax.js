@@ -3,7 +3,7 @@ $(document).ready(function(){
     setDeleteClick();
 
     $('#newBird').on('click', function() {
-        var id, name, length, weight;
+        var id, name, length, weight, pColor, sColor, url;
         swal({
             title: 'Create a new Bird',
             showCancelButton: true,
@@ -11,22 +11,31 @@ $(document).ready(function(){
             html:
                 '<input type="text" id="swal-input1" class="swal2-input" autofocus="true" placeholder="Name of Bird" />' +
                 '<input type="number" id="swal-input2" class="swal2-input pull-left" placeholder="Bird\'s length" />' +
-                '<input type="number" id="swal-input3" class="swal2-input pull-right" placeholder="Bird\'s weight" />',
+                '<input type="number" id="swal-input3" class="swal2-input pull-right" placeholder="Bird\'s weight" />' +
+                '<select id="swal-input4" class="swal2-input pull-left"> <option value="" disabled selected>Select the primary color</option> <option value="Black">Black</option> <option value="White">White</option> <option value="Yellow">Yellow</option> <option value="Orange">Orange</option> <option value="Red">Red</option> <option value="Blue">Blue</option> <option value="Green">Green</option> <option value="Brown">Brown</option> <option value="Grey">Grey</option> <option value="Beige">Beige</option> </select>' +
+                '<select id="swal-input5" class="swal2-input pull-right"> <option value="" disabled selected>Select the secondary color</option> <option value="Black">Black</option> <option value="White">White</option> <option value="Yellow">Yellow</option> <option value="Orange">Orange</option> <option value="Red">Red</option> <option value="Blue">Blue</option> <option value="Green">Green</option> <option value="Brown">Brown</option> <option value="Grey">Grey</option> <option value="Beige">Beige</option> </select>' +
+                '<input type="text" id="swal-input6" class="swal2-input" placeholder="Url of this bird picture" />',
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     name = $('#swal-input1').val();
                     length = $('#swal-input2').val();
                     weight = $('#swal-input3').val();
+                    pColor = $('#swal-input4').val();
+                    sColor = $('#swal-input5').val();
+                    url = $('#swal-input6').val();
                     var data = {
                         id: 1,
                         name: name,
                         length: parseInt(length),
                         weight: parseInt(weight),
+                        primaryColor: pColor,
+                        secondaryColor: sColor,
+                        url: url,
                         date: ""
                     };
                     console.log(JSON.stringify(data));
                     $.ajax({
-                        url: "http://192.168.128.13:8081/NataRest/api/birds",
+                        url: "https://192.168.128.13:8444/NataRest/api/birds",
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -45,13 +54,16 @@ $(document).ready(function(){
                 });
             }
         }).then(function(resolve) {
-            if(resolve === "true") {
+            if(resolve.value === "true") {
                 $('#example').find('tbody').append( '<tr role="row">' +
                     '<td>' + id + '</td>' +
                     '<td>' + name + '</td>' +
                     '<td>' + length + '</td>' +
                     '<td>' + weight + '</td>' +
-                    '<td><a data-id="' + id + '" data-name ="' + name + '" data-length="' + length + '" data-weight="' + weight + '" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>' +
+                    '<td>' + pColor + '</td>' +
+                    '<td>' + sColor + '</td>' +
+                    '<td><a href="/NatAdmin/data/birds/see?id=' + id + '"><i class="fa fa-eye fa-2x"></i> </a>' +
+                    '<a data-id="' + id + '" data-name ="' + name + '" data-length="' + length + '" data-weight="' + weight + '" data-url="' + url + '" data-pcolor="' + pColor + '" data-scolor="' + sColor + '" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>' +
                     '<a data-id="' + id + '" data-name="' + name + '" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a></td>' +
                     '</tr>'
                 );
@@ -60,7 +72,7 @@ $(document).ready(function(){
                     type:'success',
                     title:'Bird has been created'
                 });
-            } else if(resolve === "false"){
+            } else if(resolve.value === "false"){
                 swal({
                     type: 'error',
                     title: 'Server failed to response :('
@@ -74,6 +86,9 @@ $(document).ready(function(){
             var name = $(this).data("name");
             var length = $(this).data('length');
             var weight = $(this).data('weight');
+            var pColor = $(this).data('pcolor');
+            var sColor = $(this).data('scolor');
+            var url = $(this).data('url');
             var id = $(this).data("id");
             var tbody = $(this).parent().parent().parent();
             var line = $(this).parent().parent();
@@ -85,28 +100,40 @@ $(document).ready(function(){
                 html:
                     '<input type="text" id="swal-input1" class="swal2-input" autofocus="true" value="' + name +'" />' +
                     '<input type="number" id="swal-input2" class="swal2-input" value="' + length +'" />' +
-                    '<input type="number" id="swal-input3" class="swal2-input" value="' + weight +'" />',
+                    '<input type="number" id="swal-input3" class="swal2-input" value="' + weight +'" />' +
+                    '<select id="swal-input4" class="swal2-input pull-left"> <option value="" disabled selected>Change the primary color</option> <option value="Black">Black</option> <option value="White">White</option> <option value="Yellow">Yellow</option> <option value="Orange">Orange</option> <option value="Red">Red</option> <option value="Blue">Blue</option> <option value="Green">Green</option> <option value="Brown">Brown</option> <option value="Grey">Grey</option> <option value="Beige">Beige</option> </select>' +
+                    '<select id="swal-input5" class="swal2-input pull-right"> <option value="" disabled selected>Change the secondary color</option> <option value="Black">Black</option> <option value="White">White</option> <option value="Yellow">Yellow</option> <option value="Orange">Orange</option> <option value="Red">Red</option> <option value="Blue">Blue</option> <option value="Green">Green</option> <option value="Brown">Brown</option> <option value="Grey">Grey</option> <option value="Beige">Beige</option> </select>' +
+                    '<input type="text" id="swal-input6" class="swal2-input" value="' + url + '" />',
                 preConfirm: function() {
                     return new Promise(function(resolve) {
                         var isOneInputIsChanged = (
                                 name !== $('#swal-input1').val() ||
                                 length !== $('#swal-input2').val() ||
-                                weight !== $('#swal-input3').val()
+                                weight !== $('#swal-input3').val() ||
+                                pColor !== $('#swal-input4').val() ||
+                                sColor !== $('#swal-input5').val() ||
+                                url !== $('#swal-input6').val()
                         );
                         //ajax here to, see delete for example
                         if (isOneInputIsChanged) {
                             name = $('#swal-input1').val();
                             length = $('#swal-input2').val();
                             weight = $('#swal-input3').val();
+                            pColor = $('#swal-input4').val();
+                            sColor = $('#swal-input5').val();
+                            url = $('#swal-input6').val();
                             var data = {
                                 id: id,
                                 name: name,
                                 length: parseInt(length),
                                 weight: parseInt(weight),
+                                primaryColor: pColor,
+                                secondaryColor: sColor,
+                                url: url,
                                 date: ""
                             };
                             $.ajax({
-                                url: "http://192.168.128.13:8081/NataRest/api/birds/" + id,
+                                url: "https://192.168.128.13:8444/NataRest/api/birds/" + id,
                                 type: 'PUT',
                                 contentType: "application/json; charset=utf-8",
                                 data: JSON.stringify(data),
@@ -124,14 +151,17 @@ $(document).ready(function(){
                     });
                 }
             }).then(function(resolve) {
-                if(resolve === "true") {
+                if(resolve.value === "true") {
                     line.remove();
                     tbody.append( '<tr role="row">' +
                         '<td>' + id + '</td>' +
                         '<td>' + name + '</td>' +
                         '<td>' + length + '</td>' +
                         '<td>' + weight + '</td>' +
-                        '<td><a data-id="' + id + '" data-name ="' + name + '" data-length="' + length + '" data-weight="' + weight + '" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>' +
+                        '<td>' + pColor + '</td>' +
+                        '<td>' + sColor + '</td>' +
+                        '<td><a href="/NatAdmin/data/birds/see?id=' + id + '"><i class="fa fa-eye fa-2x"></i> </a>' +
+                        '<a data-id="' + id + '" data-name ="' + name + '" data-length="' + length + '" data-weight="' + weight + '" data-url="' + url + '" data-pcolor="' + pColor + '" data-scolor="' + sColor + '" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>' +
                         '<a data-id="' + id + '" data-name="' + name + '" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a></td>' +
                         '</tr>'
                     );
@@ -140,7 +170,7 @@ $(document).ready(function(){
                         type:'success',
                         title:'Bird has been updated!'
                     });
-                } else if(resolve === "false") {
+                } else if(resolve.value === "false") {
                     swal({
                         type: 'error',
                         title: 'Server failed to response :('
@@ -168,7 +198,7 @@ $(document).ready(function(){
                 preConfirm: function () {
                     return new Promise(function (resolve) {
                         $.ajax({
-                            url: "http://192.168.128.13:8081/NataRest/api/birds/" + id,
+                            url: "https://192.168.128.13:8444/NataRest/api/birds/" + id,
                             type: 'DELETE',
                             data: { },
                             headers: {
@@ -186,14 +216,14 @@ $(document).ready(function(){
                 },
                 allowOutsideClick: false
             }).then(function (resolve) {
-                if (resolve === "true") {
+                if (resolve.value === "true") {
                     swal({
                         type: 'success',
                         title: name + ' has correctly been deleted!'
                     }).then(function(){
                         line.remove();
                     });  
-                }else if(resolve === "false"){
+                }else if(resolve.value === "false"){
                     swal({
                         type: 'error',
                         title: 'Server failed to response :('

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author foers
  */
 @Entity
-@Table(name = "Forums_Dev")
+@Table(name = "forum")
 @XmlRootElement
 public class Forum implements Serializable {
 
@@ -47,7 +47,7 @@ public class Forum implements Serializable {
     @Column(name = "Dislike")
     private int dislike;
     
-    @JoinTable(name = "Tags_Forums_Dev", joinColumns = {
+    @JoinTable(name = "tag_forum", joinColumns = {
         @JoinColumn(name = "Forum_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "Tag_ID", referencedColumnName = "ID")})
     @ManyToMany

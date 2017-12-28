@@ -28,28 +28,13 @@ public class MediaClient extends BaseClient {
         return super.getAll();
     }
     
-    /*public List<Media> findBySession(int sesionID) {
-        Response r = RequestBuilder.Build(getRessource().path("bySession/" + sesionID))
-                .get();
-        return(r.getStatusInfo() == Response.Status.OK)
-            ? r.readEntity(new GenericType<List<Media>>(){})
-            : null;
-    }
-    
-    public List<Media> byType(MediaType type) {
-        Response r = RequestBuilder.Build(getRessource().path("byMedia/" + type))
-                .get();
-        return(r.getStatusInfo() == Response.Status.OK)
-            ? r.readEntity(new GenericType<List<Media>>(){})
-            : null;
-    }/*
-    
     /*******************************************/
     /*****             PENDING            ******/
     /*******************************************/
     
     public List<Media> pending() {
-        return RequestBuilder.execute(getRessource().path("/pending"), getListClass());
+        List<Media> m = RequestBuilder.execute(getRessource().path("/pending"), getListClass());
+        return m;
     }
     
     public List<Media> pendingBySession(int sesionID) {

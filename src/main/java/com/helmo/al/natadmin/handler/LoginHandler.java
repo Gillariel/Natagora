@@ -61,7 +61,7 @@ public class LoginHandler {
                 session.setAttribute("fullname", loggedUser.getFullName());
                 session.setAttribute("mail", loggedUser.getMail());
                 session.setAttribute("picture", loggedUser.getPicture());
-                
+                session.setAttribute("role", loggedUser.getRole().getName());
                 /**
                  * Remember Me will be used through a cookie, not priority right now
                  */
@@ -77,7 +77,7 @@ public class LoginHandler {
         } else {
             try {
                 FacesContext.getCurrentInstance().getExternalContext()
-                        .redirect("192.168.128.12:8888/NatAdmin/data/birds");
+                        .redirect("192.168.128.12:8888/NatAdmin/users/login");
             } catch (IOException e) { e.printStackTrace(); }
             return;
         }

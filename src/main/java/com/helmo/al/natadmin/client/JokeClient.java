@@ -6,6 +6,7 @@
 package com.helmo.al.natadmin.client;
 
 import com.helmo.al.natadmin.entity.Joke;
+import com.helmo.al.natadmin.util.CompletelyDeprecateSSLDestroyerDueToBadServer;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
@@ -22,7 +23,7 @@ public class JokeClient {
     private static final String BASE_URI = "https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten";
 
     public JokeClient() {
-        client = javax.ws.rs.client.ClientBuilder.newBuilder().build();
+        client = CompletelyDeprecateSSLDestroyerDueToBadServer.DestroyEverything();
         webTarget = client.target(BASE_URI);
     }
     

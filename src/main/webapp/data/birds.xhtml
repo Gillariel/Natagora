@@ -41,9 +41,21 @@
                                 <f:facet name = "header">Weigth</f:facet>    				
                                 #{b.weight}
                             </h:column>
+                            
+                            <h:column>    				
+                                <f:facet name = "header">Primary Color</f:facet>    				
+                                #{b.primaryColor}
+                            </h:column>
+                            
+                            <h:column>    				
+                                <f:facet name = "header">Secondary Color</f:facet>    				
+                                #{b.secondaryColor}
+                            </h:column>
+                            
                             <h:column headerClass="sorting_disabled">
                                 <f:facet name = "header">Actions</f:facet>
-                                <a data-id="#{b.id}" data-name ="#{b.name}" data-length="#{b.length}" data-weight="#{b.weight}" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
+                                <a href="/NatAdmin/data/birds/see?id=#{b.id}"><i class="fa fa-eye fa-2x"></i> </a>
+                                <a data-id="#{b.id}" data-name ="#{b.name}" data-length="#{b.length}" data-weight="#{b.weight}" data-url="#{b.url}" data-pcolor="#{b.primaryColor}" data-scolor="#{b.secondaryColor}" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>
                                 <a data-id="#{b.id}" data-name="#{b.name}" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a>
                             </h:column>
                         </h:dataTable>
@@ -65,7 +77,7 @@
         <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
         <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.min.js"></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
         
         <h:outputScript name="ample/js/datatable.js"/>

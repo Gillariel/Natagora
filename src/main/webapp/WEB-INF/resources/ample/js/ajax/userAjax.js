@@ -31,23 +31,23 @@ $(document).ready(function(){
                         forname: forname,
                         pseudo: pseudo,
                         mail: mail,
-                        password: password,
+                        password: "eheheheh",
                         picture: picture,
                         role: {
                             id: 2,
                             name: "Admin"
-                        },
-                        fullName: forname + " " + name 
+                        }
                     };
                     console.log(JSON.stringify(data));
                     $.ajax({
-                        url: "http://192.168.128.13:8081/NataRest/api/users",
+                        url: "https://192.168.128.13:8444/NataRest/api/users/secure",
                         type: 'POST',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         data: JSON.stringify(data),
                         headers: {
-                            'api-key': "136519fd-6d11-4a53-94e3-78f74abd56ee"
+                            'api-key': "136519fd-6d11-4a53-94e3-78f74abd56ee",
+                            'passwd': password
                         },
                         success: function (data) {
                             id = data.id;
@@ -60,7 +60,7 @@ $(document).ready(function(){
                 });
             }
         }).then(function(resolve) {
-            if(resolve === "true") {
+            if(resolve.value === "true") {
                 $('#example').find('tbody').append( '<tr role="row">' +
                     '<td>' + id + '</td>' +
                     '<td>' + forname + ' ' + name + '</td>' +
@@ -76,7 +76,7 @@ $(document).ready(function(){
                     type:'success',
                     title:'User has been created'
                 });
-            } else if(resolve === "false"){
+            } else if(resolve.value === "false"){
                 swal({
                     type: 'error',
                     title: 'Server failed to response :('
@@ -135,21 +135,21 @@ $(document).ready(function(){
                                 forname: forname,
                                 pseudo: pseudo,
                                 mail: mail,
-                                password: password,
+                                password: "eheheheheh",
                                 picture: picture,
                                 role: {
-                                    id: roleID,
-                                    name: role
-                                },
-                                fullName: forname + " " + name 
+                                    id: 1,
+                                    name: "User"
+                                }
                             };
                             $.ajax({
-                                url: "http://192.168.128.13:8081/NataRest/api/users/" + id,
+                                url: "https://192.168.128.13:8444/NataRest/api/users/secure/" + id,
                                 type: 'PUT',
                                 contentType: "application/json; charset=utf-8",
                                 data: JSON.stringify(data),
                                 headers: {
-                                    'api-key': "136519fd-6d11-4a53-94e3-78f74abd56ee"
+                                    'api-key': "136519fd-6d11-4a53-94e3-78f74abd56ee",
+                                    'passwd': password
                                 },
                                 success: function () {
                                     resolve("true");
@@ -162,7 +162,7 @@ $(document).ready(function(){
                     });
                 }
             }).then(function(resolve) {
-                if(resolve === "true") {
+                if(resolve.value === "true") {
                     line.remove();
                     tbody.append( '<tr role="row">' +
                         '<td>' + id + '</td>' +
@@ -170,7 +170,7 @@ $(document).ready(function(){
                         '<td>' + pseudo + '</td>' +
                         '<td>' + mail + '</td>' +
                         '<td>' + role + '</td>' +
-                        '<td><a data-id="' + id + '" data-name ="' + name + '" data-forname="' + forname + '" data-pseudo="' + pseudo +  '" data-mail="' + mail + '" data-password="' + password + '" data-roleID="' + roleID + '" data-roleName="' + role + '" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>' +
+                        '<td><a data-id="' + id + '" data-name ="' + name + '" data-forname="' + forname + '" data-pseudo="' + pseudo +  '" data-mail="' + mail + '" data-password="' + password + '" data-roleID="1" data-roleName="User" class="edit-btn"><i class="fa fa-pencil-square-o fa-2x"></i> </a>' +
                         '<a data-id="' + id + '" data-name ="' + name + '" class="delete-btn"><i class="fa fa-trash-o fa-2x"></i> </a></td>' +
                         '</tr>'
                     );
@@ -179,7 +179,7 @@ $(document).ready(function(){
                         type:'success',
                         title:'User has been updated!'
                     });
-                } else if(resolve === "false") {
+                } else if(resolve.value === "false") {
                     swal({
                         type: 'error',
                         title: 'Server failed to response :('
@@ -207,7 +207,7 @@ $(document).ready(function(){
                 preConfirm: function () {
                     return new Promise(function (resolve) {
                         $.ajax({
-                            url: "http://192.168.128.13:8081/NataRest/api/users/" + id,
+                            url: "https://192.168.128.13:8444/NataRest/api/users/" + id,
                             type: 'DELETE',
                             data: { },
                             headers: {
@@ -217,7 +217,6 @@ $(document).ready(function(){
                                 resolve("true");
                             },
                             error: function(data, error){
-                                console.log(error);
                                 resolve("false");
                             }
                         });
@@ -225,14 +224,14 @@ $(document).ready(function(){
                 },
                 allowOutsideClick: false
             }).then(function (resolve) {
-                if (resolve === "true") {
+                if (resolve.value === "true") {
                     swal({
                         type: 'success',
                         title: name + ' has correctly been deleted!'
                     }).then(function(){
                         line.remove();
                     });  
-                }else if(resolve === "false"){
+                }else if(resolve.value === "false"){
                     swal({
                         type: 'error',
                         title: 'Server failed to response :('

@@ -15,12 +15,39 @@
     </ui:define>
 
     <ui:define name="content">
-
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">By Roles</h3>
+                    <div>
+                        <canvas id="roles" data-values="#{userHandler.byRole()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white-box">
+                    <h3 class="box-title">Number of Facebook account / Normal account</h3>
+                    <div>
+                        <canvas id="vsFb" data-values="#{userHandler.vsFb()}" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="white-box">
+                    <h3 class="box-title">New Users Per month</h3>
+                    <div>
+                        <canvas id="newUsers" data-values="#{userHandler.history()}" height="75"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </ui:define>
 
     <!-- Custom Script for this page -->
     <ui:define name="js">
-
+        <h:outputScript name="plugins/bower_components/Chart.js/Chart.min.js"/>
+        <h:outputScript name="ample/js/usersCharts.js"/>
     </ui:define>
         
 </ui:composition>

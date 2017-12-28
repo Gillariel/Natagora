@@ -36,9 +36,24 @@
                         <div id="gallery-content">
                             <div id="gallery-content-center">
                                 <c:forEach var="m" items="#{pendingHandler.all()}">
-                                    <a href="#{m.url}" id="#{m.id}" data-toggle="lightbox" data-gallery="multiimages" data-title="#{m.name}">
-                                        <img src="#{m.url}" class="all #{m.mediaTypeID.type}" alt="gallery" />
-                                    </a>
+                                    <h:panelGroup rendered="#{m.mediaType.id == 3}" >
+                                        <a href="#{m.url}" data-type="video" id="#{m.id}" data-toggle="lightbox" data-width="640" data-height="360" data-gallery="mixedgallery" data-title="#{m.name}">
+                                            <img src="https://blog.majestic.com/wp-content/uploads/2010/10/Video-Icon-crop.png" class="all #{m.mediaType.type}" alt="#{m.name}" />
+                                        </a>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{m.mediaType.id == 2}" >
+                                        <a href="#{m.url}" id="#{m.id}" data-toggle="lightbox" data-width="200" data-height="100" data-gallery="mixedgallery" data-title="#{m.name}">
+                                            <img src="http://www.bioprocessintl.com/wp-content/uploads/2014/06/audio.jpg" class="all #{m.mediaType.type}" alt="#{m.name}" />
+                                        </a>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{m.mediaType.id == 4}" >
+                                        <h3>#{m.name}</h3>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{m.mediaType.id == 1}" >
+                                        <a href="#{m.url}" id="#{m.id}" data-toggle="lightbox" data-gallery="mixedgallery" data-title="#{m.name}">
+                                            <img src="#{m.url}" class="all #{m.mediaType.type}" alt="#{m.name}" />
+                                        </a>
+                                    </h:panelGroup>
                                 </c:forEach>
                             </div>
                         </div>
@@ -54,6 +69,8 @@
         <h:outputScript name="plugins/bower_components/gallery/js/animated-masonry-gallery.js"></h:outputScript>
         <h:outputScript name="plugins/bower_components/gallery/js/jquery.isotope.min.js"></h:outputScript>
         <h:outputScript name="plugins/bower_components/fancybox/ekko-lightbox.min.js"></h:outputScript>
+        
+        
         <script type="text/javascript">
             $(document).ready(function($) {
                 // delegate calls to data-toggle="lightbox"
@@ -69,7 +86,6 @@
                         onContentLoaded: function() {
                             var url = $(".img-responsive").attr('src');
                             var id = $('a[href="'+url+'"]').attr("id");
-                            alert(id);
                             $(".modal-footer").html('<a href="#" onclick="ajaxValidate(' + id + ', false)" class="pull-left "><i class="fa fa-times-circle-o fa-3x text-danger"></i></a><a href="#" onclick="ajaxValidate(' + id + ', true)" class="pull-right"><i class="fa fa-check-circle-o fa-3x text-success"></i></a>');
                             $(".modal-footer").removeAttr('style');
                         },
@@ -106,28 +122,21 @@
             });
             
             function ajaxValidate(id, result) {
-                var url = (result) ? 'http://127.0.0.1:8081/NataRest/api/media/validate/' + id
-                                        : 'http://127.0.0.1:8081/NataRest/api/media/delete/' + id ;
+                var url = (result) ? 'http://192.168.128.13:8081/NataRest/api/media/validate/' + id
+                                        : 'http://192.168.128.13:8081/NataRest/api/media/delete/' + id ;
                 $.ajax({
                     url: url,
                     type: 'PUT',
-                    //crossDomain: true, 
                     data: { },
-                    /*beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-                    },*/
                     headers: {
-                        //'Access-Control-Allow-Origin': '*',
                         'api-key': "#{globalAjax.apiKey()}"
                     },
-                    //xhrFields: {withCredentials: true },
                     dataType: 'json',
                     success: function (data) {
-                        alert("Success");
-                        console.info(data);
+                        swal('Media has been updated', 'success');
                     },
                     error: function (data) {
-                        alert("Error");
+                        swal('Server is not responding', 'Try again later', 'error');
                     }
                 });
             }

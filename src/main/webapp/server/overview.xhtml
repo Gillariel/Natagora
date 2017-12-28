@@ -1,34 +1,75 @@
 <ui:composition template="/WEB-INF/template/layout.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
     <ui:define name="title">
         Testing Infrastructure
     </ui:define>
 
+    <ui:define name="css">
+        <style>
+            .row > .col-md-6 > .white-box {height: 35vh;}
+        </style>
+    </ui:define>
+    
     <ui:define name="content">
         <div class="row">
-            <div class="col-md-3">
-                <div class="white-box">
-                    <h3 class="box-title">NatAdmin Test</h3>
-                    <h:outputText value="#{networkHandler.completeTestNatAdmin()}" escape="false" />
+            <div class="col-md-6">
+                <div class="white-box text-center">
+                    <br/>
+                    <h3 class="box-title">NatAdmin</h3>
+                    <c:choose>
+                        <c:when test="#{networkHandler.pingNatAdmin()}" >
+                            <h1><p> <i class="fa fa-check-circle-o text-success fa-5x"></i></p></h1>
+                        </c:when>
+                        <c:otherwise>
+                            <h1><p><i class="fa fa-times-circle-o text-danger fa-5x"></i></p></h1>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="white-box">
-                    <h3 class="box-title">NataMobile Test</h3>
+            <div class="col-md-6">
+                <div class="white-box text-center">
+                    <br/>
+                    <h3 class="box-title">NataMobile</h3>
+                    <c:choose>
+                        <c:when test="#{networkHandler.pingNataMobile()}" >
+                            <h1><p> <i class="fa fa-check-circle-o text-success fa-5x"></i></p></h1>
+                        </c:when>
+                        <c:otherwise>
+                            <h1><p><i class="fa fa-times-circle-o text-danger fa-5x"></i></p></h1>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="white-box">
-                    <h3 class="box-title">NataRest Test</h3>
-                    <h:outputText value="#{networkHandler.completeTestNataRest()}" escape="false" />
+            <div class="col-md-6">
+                <div class="white-box text-center">
+                    <br/>
+                    <h3 class="box-title">NataRest</h3>
+                    <c:choose>
+                        <c:when test="#{networkHandler.pingNataRest()}" >
+                            <h1><p> <i class="fa fa-check-circle-o text-success fa-5x"></i></p></h1>
+                        </c:when>
+                        <c:otherwise>
+                            <h1><p><i class="fa fa-times-circle-o text-danger fa-5x"></i></p></h1>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="white-box">
-                    <h3 class="box-title">NataWeb Test</h3>
+            <div class="col-md-6">
+                <div class="white-box text-center">
+                    <br/>
+                    <h3 class="box-title">NataWeb</h3>
+                    <c:choose>
+                        <c:when test="#{networkHandler.pingNataWeb()}" >
+                            <h1><p> <i class="fa fa-check-circle-o text-success fa-5x"></i></p></h1>
+                        </c:when>
+                        <c:otherwise>
+                            <h1><p><i class="fa fa-times-circle-o text-danger fa-5x"></i></p></h1>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

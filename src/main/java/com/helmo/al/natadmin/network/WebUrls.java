@@ -13,26 +13,19 @@ import java.util.List;
  *
  * @author foers
  */
-public enum RESTUrls {
-    
+public enum WebUrls {
     INDEX(""),
-    BIRDS("api/birds"),
-    COMMENTS("api/comments"),
-    FORUMS("api/forums"),
-    MEDIA("api/media"),
-    MEDIATYPE("api/mediatype"),
-    OBSERVATIONS("api/observations"),
-    ROLES("api/roles"),
-    SESSIONS("api/sessions"),
-    TAGS("api/tags"),
-    USERS("api/users"),
-    WRONG("api/wrong");
+    HOME("home"),
+    LOGIN("login"),
+    SIGNIN("login/signin"),
+    MY_ACCOUNT("my"),
+    BIRDS("birds");
 
-    private static final String BASE = "http://192.168.128.13:8081/NataRest/";
+    private static final String BASE = "http://192.168.128.13/~e140577/NataWeb/webroot/index.php/";
     
     private final String url;
     
-    RESTUrls(String url) {
+    WebUrls(String url) {
         this.url = BASE + url;
     }
 
@@ -42,8 +35,8 @@ public enum RESTUrls {
     
     public static List<String> getAsList() {
         List<String> results = new ArrayList<>();
-        List<RESTUrls> urls = Arrays.asList(RESTUrls.values());
-        for(RESTUrls u : urls)
+        List<WebUrls> urls = Arrays.asList(WebUrls.values());
+        for(WebUrls u : urls)
             results.add(u.getUrl());
         return results;
     }

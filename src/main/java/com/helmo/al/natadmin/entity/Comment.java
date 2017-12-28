@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 
 @Entity
-@Table(name = "Comments_Dev")
+@Table(name = "comment")
 @XmlRootElement
 public class Comment implements Serializable {
 
@@ -117,7 +117,7 @@ public class Comment implements Serializable {
     }
     public void setReported(boolean reported) {
         this.reported = reported;
-    }
+    } 
     
     @XmlTransient
     public Forum getForum() {

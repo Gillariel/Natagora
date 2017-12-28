@@ -1,7 +1,8 @@
 <ui:composition template="/WEB-INF/template/layout.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- All content outside an ui:define will be considered as a comment and not be rendered -->
 
@@ -15,7 +16,16 @@
     </ui:define>
 
     <ui:define name="content">
-
+        <div class="white-box text-center">
+            <c:choose>
+                <c:when test="#{networkHandler.pingNataMobile()}" >
+                    <h1><p>Apk is available to download</p></h1>
+                </c:when>
+                <c:otherwise>
+                    <h1><p>Apk is unavailable for now</p></h1>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </ui:define>
 
     <!-- Custom Script for this page -->

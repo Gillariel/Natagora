@@ -16,13 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author foers
  */
 @Entity
-@Table(name = "Media_Dev")
+@Table(name = "media")
 @XmlRootElement
 public class Media implements Serializable {
 
@@ -58,6 +59,13 @@ public class Media implements Serializable {
     @OneToOne(optional = false)
     private MediaTypeDB mediaType;
 
+    @OneToOne
+    @JoinColumn(
+        name = "Observation_ID",
+        referencedColumnName = "ID"
+    )
+    private Observation observation;
+    
     public Media() {
     }
 
@@ -113,13 +121,21 @@ public class Media implements Serializable {
         this.deleted = deleted;
     }
     
-    public MediaTypeDB getMediaTypeID() {
+    public MediaTypeDB getMediaType() {
         return mediaType;
     }
-    public void setMediaTypeID(MediaTypeDB mediaTypeID) {
-        this.mediaType = mediaTypeID;
+    public void setMediaType(MediaTypeDB mediaType) {
+        this.mediaType = mediaType;
     }
 
+    @XmlTransient
+    public Observation getObservation() {
+        return observation;
+    }
+    public void setObservation(Observation observation) {
+        this.observation = observation;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -10,23 +10,23 @@ import java.util.List;
  */
 public enum AdminUrls {
     
-    INDEX(""),
-    BIRDS("data/birds.xhtml"),
-    PENDING("data/pending.xhtml"),
-    REPORTED("data/reported.xhtml"),
-    SESSIONS("data/sessions.xhtml"),
-    USERS("data/users.xhtml"),
-    STATS_BIRDS("statistics/birds.xhtml"),
-    STATS_FORUMS("statistics/forums.xhtml"),
-    STATS_MEDIA("statistics/media.xhtml"),
-    STATS_USERS("statistics/users.xhtml"),
-    LOGIN("users/login.xhtml"),
-    USERS_PROFILE("users/profile.xhtml"),
-    USERS_ACCOUNT("users/account.xhtml"),
-    USERS_INBOX("users/inbox.xhtml");
+    INDEX("dashboard"),
+    BIRDS("data/birds"),
+    PENDING("data/pending"),
+    REPORTED("data/reported"),
+    SESSIONS("data/sessions"),
+    USERS("data/users"),
+    STATS_BIRDS("statistics/birds"),
+    STATS_FORUMS("statistics/forums"),
+    STATS_MEDIA("statistics/media"),
+    STATS_USERS("statistics/users"),
+    LOGIN("users/login"),
+    USERS_PROFILE("users/profile"),
+    USERS_ACCOUNT("users/account"),
+    USERS_INBOX("users/inbox");
     
 
-    private static final String BASE = "http://127.0.0.1:8080/NatAdmin/";
+    private static final String BASE = "https://192.168.128.12:8181/NatAdmin/";
     
     private final String url;
     
