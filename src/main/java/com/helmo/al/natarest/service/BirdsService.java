@@ -8,7 +8,6 @@ package com.helmo.al.natarest.service;
 import com.helmo.al.natarest.entity.Bird;
 import com.helmo.al.natarest.util.ResponseBuilder;
 import com.helmo.al.natarest.view.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
@@ -34,8 +33,9 @@ public class BirdsService extends AbstractDao<Bird> {
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public Response create(Bird entity) {
-        return ResponseBuilder.buildPost(super.save(entity));
+        return ResponseBuilder.buildPostEntity(super.save(entity));
     }
 
     @PUT
@@ -79,19 +79,5 @@ public class BirdsService extends AbstractDao<Bird> {
     @Produces({MediaType.APPLICATION_JSON})
     public Response findAll() {
         return ResponseBuilder.buildGet(super.getAll());
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response countREST() {
-        return ResponseBuilder.buildGet(String.valueOf(super.count()));
     }
 }

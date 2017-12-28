@@ -7,11 +7,7 @@ package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.MediaTypeDB;
 import com.helmo.al.natarest.util.ResponseBuilder;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -29,25 +25,6 @@ public class MediaTypeService extends AbstractDao<MediaTypeDB> {
         super(MediaTypeDB.class);
     }
 
-    @POST
-    @Consumes({ MediaType.APPLICATION_JSON})
-    public Response create(MediaTypeDB entity) {
-        return ResponseBuilder.buildPost(super.save(entity));
-    }
-
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response edit(@PathParam("id") Integer id, MediaTypeDB entity) {
-        return ResponseBuilder.buildPut(super.update(entity));
-    }
-
-    @DELETE
-    @Path("{id}")
-    public Response remove(@PathParam("id") Integer id) {
-        return ResponseBuilder.buildDelete(super.delete(super.get(id)));
-    }
-
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -60,19 +37,4 @@ public class MediaTypeService extends AbstractDao<MediaTypeDB> {
     public Response findAll() {
         return ResponseBuilder.buildGet(super.getAll());
     }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response countREST() {
-        return ResponseBuilder.buildGet(String.valueOf(super.count()));
-    }
-
 }

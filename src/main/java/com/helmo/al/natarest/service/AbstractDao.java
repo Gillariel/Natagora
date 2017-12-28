@@ -5,7 +5,6 @@
  */
 package com.helmo.al.natarest.service;
 
-import com.helmo.al.natarest.entity.Session;
 import com.helmo.al.natarest.filter.AuthFilter;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -17,12 +16,6 @@ import javax.persistence.Persistence;
  */
 @SuppressWarnings("unchecked")
 public abstract class AbstractDao<T> extends AuthFilter{
-
-    public static enum Operation {
-        CREATE,
-        UPDATE,
-        DELETE
-    }
     
     private Class<T> entityClass;
     
@@ -52,7 +45,6 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
     
     public boolean save(T entity) {
-        //return this.exec(Operation.CREATE, entity);
         if(isNull(entity))
             return false;
         try{
@@ -68,7 +60,6 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
 
     public boolean update(T entity) {
-        //return this.exec(Operation.UPDATE, entity);
         if(isNull(entity))
             return false;
         try{
@@ -84,7 +75,6 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
 
     public boolean delete(T entity) {
-        //return this.exec(Operation.DELETE, entity);
         if(isNull(entity))
             return false;
         try{
@@ -125,9 +115,12 @@ public abstract class AbstractDao<T> extends AuthFilter{
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+    
     /**
      *  Working only for delete, Create and Update doesn't work that way
-     *  (Don't know why)
+     *  Because of the loosing of the Generic Type between all method.
+     * 
+     *  Keep it here in case of a solution has been found to execute everything from a single method
      */
     /*
     private boolean exec(Operation type, T entity){
@@ -153,6 +146,13 @@ public abstract class AbstractDao<T> extends AuthFilter{
             return false;
         }
     }
+    
+    public static enum Operation {
+        CREATE,
+        UPDATE,
+        DELETE
+    }
+    
     */
     
     private boolean isNull(T entity){

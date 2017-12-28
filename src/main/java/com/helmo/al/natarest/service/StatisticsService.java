@@ -6,7 +6,6 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.util.ResponseBuilder;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.ws.rs.GET;

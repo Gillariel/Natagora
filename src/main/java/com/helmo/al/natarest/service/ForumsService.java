@@ -60,18 +60,4 @@ public class ForumsService extends AbstractDao<Forum> {
     public Response findAll() {
         return ResponseBuilder.buildGet(super.getAll());
     }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response countREST() {
-        return ResponseBuilder.buildGet(String.valueOf(super.count()));
-    }
 }

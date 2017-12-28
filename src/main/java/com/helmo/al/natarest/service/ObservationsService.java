@@ -7,7 +7,7 @@ package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.entity.Observation;
 import com.helmo.al.natarest.util.ResponseBuilder;
-import java.util.List;
+import com.helmo.al.natarest.util.VisionChecker;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -33,7 +33,23 @@ public class ObservationsService extends AbstractDao<Observation> {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public Response create(Observation entity) {
-        return ResponseBuilder.buildPost(super.save(entity));
+        String url = "https://storage.googleapis.com/natamobile/" + entity.getMedia().getUrl();
+        switch(VisionChecker.check(url)){
+            case 0: {
+                entity.getMedia().setDeleted((short)1);
+                entity.getMedia().setValidated((short)0);
+            } 
+            case 2: {
+                entity.getMedia().setValidated((short)0);  
+            }
+            default: {
+                entity.getMedia().setUrl(url);
+                //Need to manually referenced each other to do INSERT INTO
+                entity.setMedia(entity.getMedia());
+                entity.getMedia().setObservation(entity);
+                return ResponseBuilder.buildPost(super.save(entity));
+            }
+        }    
     }
 
     @PUT
@@ -61,19 +77,4 @@ public class ObservationsService extends AbstractDao<Observation> {
     public Response findAll() {
         return ResponseBuilder.buildGet(super.getAll());
     }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response countREST() {
-        return ResponseBuilder.buildGet(String.valueOf(super.count()));
-    }
-
 }

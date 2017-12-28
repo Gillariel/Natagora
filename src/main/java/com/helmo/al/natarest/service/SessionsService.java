@@ -41,6 +41,18 @@ public class SessionsService extends AbstractDao<Session> {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Session entity) {
+        // adapt Coord
+        long geo;
+        do{
+            geo = (long)getEntityManager().createNativeQuery("select count(*) from session s where (s.Latitude between (#latitude - 0.005) and (#latitude + 0.005)) and (s.Longitude between (#longitude -0.005) and (#longitude +0.005))")
+                .setParameter("latitude", entity.getLatitude())
+                .setParameter("longitude", entity.getLongitude()).getSingleResult();
+            if(geo >= 1) {
+                entity.setLatitude(entity.getLatitude() + 0.005f);
+                entity.setLongitude(entity.getLongitude() + 0.005f);
+            }
+        } while(geo >= 1);
+        
         try{
             if(entity.getLatitude() != 0 && entity.getLongitude() != 0) {
                 Client client = javax.ws.rs.client.ClientBuilder.newBuilder().build();
@@ -134,19 +146,4 @@ public class SessionsService extends AbstractDao<Session> {
     public Response findAll() {
         return ResponseBuilder.buildGet(super.getAll());
     }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return ResponseBuilder.buildGet(super.getRange(new int[]{from, to}));
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response countREST() {
-        return ResponseBuilder.buildGet(String.valueOf(super.count()));
-    }
-
 }

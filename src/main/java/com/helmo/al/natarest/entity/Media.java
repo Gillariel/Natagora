@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -58,6 +59,13 @@ public class Media implements Serializable {
     @OneToOne(optional = false)
     private MediaTypeDB mediaType;
 
+    @OneToOne
+    @JoinColumn(
+        name = "Observation_ID",
+        referencedColumnName = "ID"
+    )
+    private Observation observation;
+    
     public Media() {
     }
 
@@ -120,6 +128,14 @@ public class Media implements Serializable {
         this.mediaType = mediaType;
     }
 
+    @XmlTransient
+    public Observation getObservation() {
+        return observation;
+    }
+    public void setObservation(Observation observation) {
+        this.observation = observation;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

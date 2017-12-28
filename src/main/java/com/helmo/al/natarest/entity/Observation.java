@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,23 +55,20 @@ public class Observation implements Serializable {
     @ManyToOne(cascade = CascadeType.DETACH)
     private Bird bird;
     
-    @OneToOne()
-    @JoinTable(name = "media", 
-            joinColumns = @JoinColumn(name = "Observation_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ID")
-    )
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "observation")
     private Media media;
     
     @JoinColumn(name = "Session_ID", referencedColumnName = "ID")
     @OneToOne(optional = false)
     private Session session;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "note",
-            joinColumns = @JoinColumn(name = "Observation_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ID")
-    )
-    private Collection<Note> notes;
+    /*@JoinColumn(name = "ID", referencedColumnName = "Observation_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Note note;*/
+    
+    @Basic(optional = false)
+    @Column(name = "Note")
+    private String note;
     
     public Observation() {
     }
@@ -121,11 +119,11 @@ public class Observation implements Serializable {
     }
 
     
-    public Collection<Note> getNotes() {
-        return notes;
+    public String getNote() {
+        return note;
     }
-    public void setNotes(Collection<Note> notes) {
-        this.notes = notes;
+    public void setNote(String note) {
+        this.note = note;
     }
     
     @Override
