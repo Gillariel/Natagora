@@ -80,12 +80,11 @@ public class SessionManager{
 
                 Observation o = new Observation(lo.getBird(), m, session);
                 Call<Void> call = userService.postObservation(APIUtils.KEYAPI, "application/json",o );
-SystemClock.sleep(10000);
+                SystemClock.sleep(1000);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() >= 200 && response.code() <= 205) {
-
                             status = false;
                         }
                     }
