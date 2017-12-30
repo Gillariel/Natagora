@@ -22,23 +22,17 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.storage.Storage;
 import com.google.api.services.storage.StorageScopes;
-import com.google.api.services.storage.model.Bucket;
-import com.google.api.services.storage.model.StorageObject;
-
 
 public class GoogleStorage {
 
     private static Properties properties;
     private static Storage storage;
-
-    private static final String PROJECT_ID_PROPERTY = "project.id";
     private static final String APPLICATION_NAME_PROPERTY = "application.name";
 
 
-    public void uploadFile(String bucketName, File filePath, Context mContext)throws Exception{
+    public void uploadFile(String username, int sessionId, File filePath, Context mContext)throws Exception{
         try{
             Storage storage = getStorage(mContext);
-
 
             File file = new File(filePath.getAbsolutePath());
             InputStream stream = new FileInputStream(file);
@@ -46,7 +40,7 @@ public class GoogleStorage {
                 String contentType = URLConnection.guessContentTypeFromStream(stream);
                 InputStreamContent content = new InputStreamContent(contentType, stream);
                 Storage.Objects.Insert insert = storage.objects().insert("natamobile", null, content);
-                insert.setName("user/"+file.getName());
+                insert.setName(username+"/"+ sessionId +"/" +file.getName());
                 insert.setPredefinedAcl("publicRead");
                 insert.execute();
             }finally {
@@ -56,17 +50,6 @@ public class GoogleStorage {
             class Local {}; Log.d("","Sub :"+Local.class.getEnclosingMethod().getName() +"Error Code" +e.getMessage());
             e.printStackTrace();
         }
-
-    }
-
-    private static void createBucket(String bucketName, Context mContext)throws Exception {
-        Storage storage = getStorage(mContext);
-
-        Bucket bucket = new Bucket();
-        bucket.setName(bucketName);
-        storage.buckets()
-                .insert(getProperties().getProperty(PROJECT_ID_PROPERTY), bucket)
-                .execute();
 
     }
 

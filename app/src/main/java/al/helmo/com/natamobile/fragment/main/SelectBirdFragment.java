@@ -18,21 +18,18 @@ import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.MainActivity;
 import al.helmo.com.natamobile.model.LocalObservation;
 
-
 public class SelectBirdFragment extends Fragment {
 
     private LocalObservation localObservation;
     private MainActivity mainActivity;
-    private Button nextButton;
     private Spinner primarySpinner, secondarySpinner, lengthSpinner;
     private ListView birdsListView;
-    private ArrayAdapter<String> primarySpinnerAdapter, secondarySpinnerAdapter,lengthSpinnerAdapter,birdsListViewAdapter;
     private int selectedBirdId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_select_bird, container, false);
-        nextButton = (Button)view.findViewById(R.id.saveObservation);
+        Button nextButton = (Button) view.findViewById(R.id.saveObservation);
         primarySpinner = (Spinner)view.findViewById(R.id.primarySpinner);
         secondarySpinner = (Spinner)view.findViewById(R.id.secondarySpinner);
         lengthSpinner = (Spinner)view.findViewById(R.id.lengthSpinner);
@@ -112,16 +109,16 @@ public class SelectBirdFragment extends Fragment {
 
     private void setBirdList() {
         List<String> listBirds = mainActivity.getSessionManager().getBirdsHandler().getBirdsList();
-        birdsListViewAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, listBirds);
+        ArrayAdapter<String> birdsListViewAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, listBirds);
         birdsListView.setAdapter(birdsListViewAdapter);
     }
 
     private void setSpinners() {
         List<String> primaryList = mainActivity.getSessionManager().getBirdsHandler().getPrimaryColorFilter();
-        List<String> lengthList = mainActivity.getSessionManager().getBirdsHandler().getLengthFilter();
-        primarySpinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, primaryList);
-        secondarySpinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, primaryList);
-        lengthSpinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, lengthList);
+        List<String> lengthList = mainActivity.getSessionManager().getBirdsHandler().getWeightFilter();
+        ArrayAdapter<String> primarySpinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, primaryList);
+        ArrayAdapter<String> secondarySpinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, primaryList);
+        ArrayAdapter<String> lengthSpinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, lengthList);
         primarySpinner.setAdapter(primarySpinnerAdapter);
         secondarySpinner.setAdapter(secondarySpinnerAdapter);
         lengthSpinner.setAdapter(lengthSpinnerAdapter);

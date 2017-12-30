@@ -8,10 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.LoginActivity;
-import al.helmo.com.natamobile.model.APIUtils;
-import al.helmo.com.natamobile.model.User;
+import al.helmo.com.natamobile.model.util.APIUtils;
+import al.helmo.com.natamobile.model.entity.User;
 import al.helmo.com.natamobile.model.remote.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,10 +23,12 @@ public class RegisterFragment extends Fragment {
     private EditText edtUsername, edtName, edtForname, edtEmail, edtPassword, edtPasswordRep ;
     private UserService userService;
     private LoginActivity loginActivity;
+    private String name, forname, email;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
+
         Button register = (Button) view.findViewById(R.id.btnRegister);
         edtUsername = (EditText) view.findViewById(R.id.edtRegisterUsername);
         edtName = (EditText) view.findViewById(R.id.edtRegisterName);
@@ -35,6 +38,12 @@ public class RegisterFragment extends Fragment {
         edtPasswordRep = (EditText) view.findViewById(R.id.edtRegisterPasswordCheck);
         userService = APIUtils.getUserService();
         loginActivity = (LoginActivity)getActivity();
+
+        if(name != "" || forname !="" || email !=""){
+            edtName.setText(this.name);
+            edtForname.setText(this.forname);
+            edtEmail.setText(this.email);
+        }
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +55,8 @@ public class RegisterFragment extends Fragment {
                         && !edtForname.getText().toString().equals("")
                         && !edtName.getText().toString().equals("")){
                     if(edtPassword.getText().toString().equals(edtPasswordRep.getText().toString())){
-                        User u = new User(0, edtUsername.getText().toString(), edtName.getText().toString(),edtForname.getText().toString(),edtEmail.getText().toString(),edtPassword.getText().toString());
-                        Call<Void> call = userService.postNewUser(APIUtils.KEYAPI, "application/json", u);
+                        User u = new User(0, edtUsername.getText().toString(), edtName.getText().toString(),edtForname.getText().toString(),edtEmail.getText().toString());
+                        Call<Void> call = userService.postNewUser(APIUtils.KEYAPI, "application/json",edtPassword.getText().toString(), u);
                         call.enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -73,6 +82,18 @@ public class RegisterFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setForname(String forname){
+        this.forname = forname;
+    }
+
+    public void setMail(String email ){
+        this.email = email;
     }
 
 }

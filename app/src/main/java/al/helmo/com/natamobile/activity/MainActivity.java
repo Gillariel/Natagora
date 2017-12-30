@@ -19,7 +19,7 @@ import al.helmo.com.natamobile.fragment.main.SessionFragment;
 import al.helmo.com.natamobile.fragment.main.SettingsFragment;
 import al.helmo.com.natamobile.fragment.FragmentHandler;
 import al.helmo.com.natamobile.model.SessionManager;
-import al.helmo.com.natamobile.model.User;
+import al.helmo.com.natamobile.model.entity.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.replaceFragment(new SelectMediaFragment(), getFragmentManager());
+                if(sessionManager.getStatus() == true) {
+                    fragmentHandler.replaceFragment(new SelectMediaFragment(), getFragmentManager());
+                }else{
+                    Toast.makeText(getBaseContext(), "The Session is not started", Toast.LENGTH_SHORT).show();
+                }
                 drawerLayout.closeDrawer(listView);
             }
         });
@@ -73,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
         galleryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.replaceFragment(new GalleryGridFragment(), getFragmentManager());
+                if(sessionManager.getStatus() == true){
+                    fragmentHandler.replaceFragment(new GalleryGridFragment(), getFragmentManager());
+                }else{
+                    Toast.makeText(getBaseContext(), "The Session is not started", Toast.LENGTH_SHORT).show();
+                }
+
                 drawerLayout.closeDrawer(listView);
             }
         });
@@ -81,7 +90,11 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.replaceFragment(new SettingsFragment(), getFragmentManager());
+                if(sessionManager.getStatus() == false){
+                    fragmentHandler.replaceFragment(new SettingsFragment(), getFragmentManager());
+                }else{
+                    Toast.makeText(getBaseContext(), "End your Session before editing your account", Toast.LENGTH_SHORT).show();
+                }
                 drawerLayout.closeDrawer(listView);
             }
         });

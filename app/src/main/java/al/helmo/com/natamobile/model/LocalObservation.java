@@ -2,6 +2,9 @@ package al.helmo.com.natamobile.model;
 
 import java.io.File;
 
+import al.helmo.com.natamobile.model.entity.Bird;
+import al.helmo.com.natamobile.model.entity.MediaType;
+
 public class LocalObservation {
 
     private File localFile;

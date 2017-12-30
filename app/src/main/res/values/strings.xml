@@ -18,4 +18,7 @@
     <string name="drawer_closed">Closed</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_app_id">2062147864018714</string>
+    <string name="facebook_login_protocol_scheme">fb2062147864018714</string>
+    
 </resources>

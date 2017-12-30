@@ -12,10 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import java.io.File;
+
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.MainActivity;
-import al.helmo.com.natamobile.model.Media;
 import al.helmo.com.natamobile.model.LocalObservation;
 
 public class CommentMediaFragment extends Fragment {

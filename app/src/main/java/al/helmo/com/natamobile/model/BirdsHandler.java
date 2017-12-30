@@ -2,7 +2,11 @@ package al.helmo.com.natamobile.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import al.helmo.com.natamobile.model.entity.Bird;
+import al.helmo.com.natamobile.model.entity.Color;
 import al.helmo.com.natamobile.model.remote.UserService;
+import al.helmo.com.natamobile.model.util.APIUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,7 +17,7 @@ public class BirdsHandler {
     private UserService userService;
     private List<Color> primaryColorFilter;
     private List<Color> secondaryColorFilter;
-    private List<Filter> lengthFilter;
+    private List<Filter> weightFilter;
     private List<Bird> filteredBirds;
 
     public BirdsHandler(){
@@ -47,12 +51,12 @@ public class BirdsHandler {
             }
         });
 
-        lengthFilter = new ArrayList<>();
-        lengthFilter.add(new Filter(0,0,"No Filter"));
-        lengthFilter.add(new Filter(1,10,"1-10 gr"));
-        lengthFilter.add(new Filter(11,20,"11-10 gr"));
-        lengthFilter.add(new Filter(21,30,"21-10 gr"));
-        lengthFilter.add(new Filter(31,40,"31-40 gr"));
+        weightFilter = new ArrayList<>();
+        weightFilter.add(new Filter(0,0,"No Filter"));
+        weightFilter.add(new Filter(1,99,"- 100 gr"));
+        weightFilter.add(new Filter(100,200,"100 - 200 gr"));
+        weightFilter.add(new Filter(201,300,"200 - 300 gr"));
+        weightFilter.add(new Filter(301,9000,"+ 300 gr"));
 
     }
 
@@ -74,26 +78,25 @@ public class BirdsHandler {
         });
     }
 
-    public void filterBirds(int primaryColor, int secondaryColor, int length){
+    public void filterBirds(int primaryColor, int secondaryColor, int weight){
 
-        if(primaryColorFilter.get(primaryColor).getName().equals("No Filter") && secondaryColorFilter.get(secondaryColor).getName().equals("No Filter") && lengthFilter.get(length).getText().equals("No Filter")){
+        if(primaryColorFilter.get(primaryColor).getName().equals("No Filter") && secondaryColorFilter.get(secondaryColor).getName().equals("No Filter") && weightFilter.get(weight).getText().equals("No Filter")){
             filteredBirds = this.birds;
         }else{
             filteredBirds = new ArrayList<>();
             for (Bird b:this.birds) {
                 if(b.getSecondaryColor() != null){
-                    if(primaryColorFilter.get(primaryColor).getName().equals(b.getPrimaryColor())
-                            || secondaryColorFilter.get(secondaryColor).getName().equals(b.getPrimaryColor())
-                            || primaryColorFilter.get(primaryColor).getName().equals(b.getSecondaryColor())
-                            || secondaryColorFilter.get(secondaryColor).getName().equals(b.getSecondaryColor())
-                            && ((b.getLength() >= lengthFilter.get(length).getLimitMin() && b.getLength() <= lengthFilter.get(length).getLimitMax()) || lengthFilter.get(length).getText().equals("No Filter"))){
-                        filteredBirds.add(b);
+                    if(((primaryColorFilter.get(primaryColor).getName().equals(b.getPrimaryColor()) || primaryColorFilter.get(primaryColor).getName().equals(b.getSecondaryColor()) || primaryColorFilter.get(primaryColor).getName().equals("No Filter"))
+                            ||
+                            (secondaryColorFilter.get(secondaryColor).getName().equals(b.getPrimaryColor()) || secondaryColorFilter.get(secondaryColor).getName().equals(b.getSecondaryColor()) || secondaryColorFilter.get(secondaryColor).getName().equals("No Filter"))))
+                        if((b.getWeight() >= weightFilter.get(weight).getLimitMin() && b.getWeight() <= weightFilter.get(weight).getLimitMax()) || weightFilter.get(weight).getText().equals("No Filter")) {
+                            filteredBirds.add(b);
                     }
                 }else{
-                    if(primaryColorFilter.get(primaryColor).getName().equals(b.getPrimaryColor())
-                            || secondaryColorFilter.get(secondaryColor).getName().equals(b.getPrimaryColor())
-                            && ((b.getLength() >= lengthFilter.get(length).getLimitMin() && b.getLength() <= lengthFilter.get(length).getLimitMax()) || lengthFilter.get(length).getText().equals("No Filter"))){
-                        filteredBirds.add(b);
+                    if((primaryColorFilter.get(primaryColor).getName().equals(b.getPrimaryColor()) || primaryColorFilter.get(primaryColor).getName().equals(b.getSecondaryColor()) || primaryColorFilter.get(primaryColor).getName().equals("No Filter"))){
+                        if((b.getWeight() >= weightFilter.get(weight).getLimitMin() && b.getWeight() <= weightFilter.get(weight).getLimitMax()) || weightFilter.get(weight).getText().equals("No Filter")) {
+                            filteredBirds.add(b);
+                        }
                     }
                 }
             }
@@ -108,9 +111,9 @@ public class BirdsHandler {
         return result;
     }
 
-    public List<String> getLengthFilter() {
+    public List<String> getWeightFilter() {
         List<String> result = new ArrayList<>();
-        for (Filter f:lengthFilter) {
+        for (Filter f: weightFilter) {
             result.add(f.getText());
         }
         return result;

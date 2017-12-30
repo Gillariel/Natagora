@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -25,7 +26,7 @@ import java.io.OutputStream;
 import al.helmo.com.natamobile.R;
 import al.helmo.com.natamobile.activity.MainActivity;
 import al.helmo.com.natamobile.model.LocalObservation;
-import al.helmo.com.natamobile.model.MediaType;
+import al.helmo.com.natamobile.model.entity.MediaType;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -72,6 +73,7 @@ public class SelectMediaFragment extends Fragment {
             public void onClick(View view) {
                 Intent takeVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 takeVideo.putExtra("android.intent.extra.durationLimit", 10);
+                takeVideo.putExtra("android.intent.extra.videoQuality",0);
                 if(takeVideo.resolveActivity(getActivity().getPackageManager())!= null){
                     startActivityForResult(takeVideo, CAPTURE_VIDEO_FRAGMENT_REQUEST_CODE);
                 }
@@ -96,7 +98,7 @@ public class SelectMediaFragment extends Fragment {
                 Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_comment);
                 fragment.setBitMap(icon);
                 fragment.setLocalObservation(new LocalObservation(new File(""),new MediaType(4,"Text")));
-                mainActivity.getFragmentHandler().replaceFragment(new CommentMediaFragment(), getFragmentManager());
+                mainActivity.getFragmentHandler().replaceFragment(fragment, getFragmentManager());
             }
         });
         return view;
@@ -130,7 +132,8 @@ public class SelectMediaFragment extends Fragment {
             Uri video = data.getData();
             String path = getRealPathFromURI(video);
             CommentMediaFragment fragment = new CommentMediaFragment();
-            Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_video);
+            Bitmap icon = ThumbnailUtils.createVideoThumbnail(path,MediaStore.Images.Thumbnails.MINI_KIND);
+            //BitmapFactory.decodeResource(getResources(), R.mipmap.ic_video);*/
             fragment.setBitMap(icon);
             fragment.setLocalObservation(new LocalObservation(new File(path),new MediaType(3,"Video")));
             mainActivity.getFragmentHandler().replaceFragment(fragment,getFragmentManager() );
@@ -141,7 +144,7 @@ public class SelectMediaFragment extends Fragment {
 
             CommentMediaFragment fragment = new CommentMediaFragment();
 
-            Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_comment);
+            Bitmap icon =  BitmapFactory.decodeResource(getResources(), R.mipmap.ic_sound);
             fragment.setBitMap(icon);
             fragment.setLocalObservation(new LocalObservation(new File(path),new MediaType(2,"Audio")));
 

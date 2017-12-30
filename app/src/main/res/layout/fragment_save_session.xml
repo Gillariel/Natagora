@@ -4,5 +4,38 @@
     android:layout_height="match_parent"
     tools:context="al.helmo.com.natamobile.fragment.main.SaveSessionFragment">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginBottom="80dp">
 
+        <TextView
+            android:text="Write your final comment for this session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/endComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/endSession"
+            android:text="Save Session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
 </FrameLayout>
