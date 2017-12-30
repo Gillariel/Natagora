@@ -5,10 +5,14 @@
  */
 package com.helmo.al.natarest.service;
 
+import com.helmo.al.natarest.hystrix.HystrixValidator;
 import com.helmo.al.natarest.filter.AuthFilter;
+import com.helmo.al.natarest.util.HystrixReset;
+import com.netflix.hystrix.exception.HystrixRuntimeException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.validation.ValidationException;
 
 /**
  *
@@ -29,7 +33,9 @@ public abstract class AbstractDao<T> extends AuthFilter{
         return EM;
     };
 
-    public T saveAndReturn(T entity){
+    public T saveAndReturn(T entity) {
+        if(hystrixChecker(entity))
+            return null;
         if(isNull(entity))
             return null;
         try{
@@ -45,6 +51,8 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
     
     public boolean save(T entity) {
+        if(hystrixChecker(entity))
+            return false;
         if(isNull(entity))
             return false;
         try{
@@ -60,6 +68,8 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
 
     public boolean update(T entity) {
+        if(hystrixChecker(entity))
+            return false;
         if(isNull(entity))
             return false;
         try{
@@ -75,6 +85,8 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
 
     public boolean delete(T entity) {
+        if(hystrixChecker(entity))
+            return false;
         if(isNull(entity))
             return false;
         try{
@@ -90,13 +102,15 @@ public abstract class AbstractDao<T> extends AuthFilter{
     }
 
     public T get(Object id) {
-        return getEntityManager().find(entityClass, id);
+        T entity = getEntityManager().find(entityClass, id);
+        return (hystrixChecker(entity)) ? entity : null;
     }
 
     public List<T> getAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+        List<T> res = getEntityManager().createQuery(cq).getResultList();
+        return (hystrixListChecker(res)) ? res : null;
     }
 
     public List<T> getRange(int[] range) {
@@ -168,7 +182,32 @@ public abstract class AbstractDao<T> extends AuthFilter{
         return (results.size() == 1);
     }
     
+    private boolean hystrixChecker(T entity) {
+        try{
+            if(new HystrixValidator(entity).execute() == null)
+                throw new ValidationException("Null entity");
+        }catch(HystrixRuntimeException e){
+            if(e.getCause() instanceof InterruptedException)
+                System.out.println((InterruptedException) e.getCause());
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean hystrixListChecker(List<T> entities) {
+        try{
+            if(new HystrixValidator(entities).execute() == null)
+                throw new ValidationException("Null entity");
+        }catch(HystrixRuntimeException e){
+            if(e.getCause() instanceof InterruptedException)
+                System.out.println((InterruptedException) e.getCause());
+            return false;
+        }
+        return true;
+    }
+    
     public void ResetEntityManager() {
+        HystrixReset.reset();
         AbstractDao.EM.close();
         AbstractDao.EM = null;
         AbstractDao.EM = Persistence.createEntityManagerFactory("NataRest").createEntityManager();

@@ -94,7 +94,37 @@ public class SessionsService extends AbstractDao<Session> {
     public Response remove(@PathParam("id") Integer id) {
         return ResponseBuilder.buildDelete(super.delete(super.get(id)));
     }
-
+    
+    @GET
+    @Path("birdsSecondaryColor/{id}")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Response birdsSecondaryColor(@PathParam("id") String id) {
+        List<Object> result = getEntityManager().createNativeQuery("SELECT DISTINCT b.SecondaryColor from session s join observation o on o.Session_ID = s.ID join bird b on b.ID = o.Bird_ID where s.ID = #id and b.SecondaryColor IS NOT NULL")
+                .setParameter("id", id)
+                .getResultList();
+        return ResponseBuilder.buildGet(result);
+    }
+    
+    @GET
+    @Path("birdsColor/{id}")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Response birdsColor(@PathParam("id") String id) {
+        List<Object> result = getEntityManager().createNativeQuery("SELECT DISTINCT b.PrimaryColor from session s join observation o on o.Session_ID = s.ID join bird b on b.ID = o.Bird_ID where s.ID = #id")
+                .setParameter("id", id)
+                .getResultList();
+        return ResponseBuilder.buildGet(result);
+    }
+    
+    @GET
+    @Path("data/{id}")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Response nbBirds(@PathParam("id") String id) {
+        List<Object> result = getEntityManager().createNativeQuery("select * from session_data where SessionID = #id")
+                .setParameter("id", id)
+                .getResultList();
+        return ResponseBuilder.buildGet(result);
+    }
+    
     @GET
     @Path("observationsMedia/pended/{username}")
     @Produces({ MediaType.APPLICATION_JSON})

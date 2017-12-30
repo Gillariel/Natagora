@@ -66,6 +66,10 @@ public class Bird implements Serializable {
     @Column(name = "Url")
     private String url;
     
+    @Basic(optional = true)
+    @Column(name = "Description")
+    private String description;
+    
     @Basic(optional = false)
     @Column(name = "Creation_Date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -141,6 +145,13 @@ public class Bird implements Serializable {
     }
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     @XmlTransient

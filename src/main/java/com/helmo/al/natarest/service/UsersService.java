@@ -92,6 +92,16 @@ public class UsersService extends AbstractDao<User> {
     }
     
     @GET
+    @Path("retrieve/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response retrieve(@PathParam("username") String username){
+        return ResponseBuilder.buildGet(getEntityManager().createQuery(
+            "SELECT u FROM User u WHERE u.pseudo = :username"
+        ).setParameter("username", username)
+        .getSingleResult());
+    }
+    
+    @GET
     @Path("check/{mail}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response check(@PathParam("mail") String mail){

@@ -6,6 +6,7 @@
 package com.helmo.al.natarest.service;
 
 import com.helmo.al.natarest.util.ResponseBuilder;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.ws.rs.GET;
@@ -121,7 +122,33 @@ public class StatisticsService {
         return ResponseBuilder.buildGet(trySearch(StatQueries.SESSIONS_BY_USER, id));
     }
     
+    @GET
+    @Path("users/top5/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response userTop5(@PathParam("username") String username){
+        return ResponseBuilder.buildGet(trySearch(StatQueries.TOP5_BY_USER, username));
+    }
     
+    @GET
+    @Path("users/observations/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response userObs(@PathParam("username") String username){
+        return ResponseBuilder.buildGet(trySearch(StatQueries.OBS_BY_MONTH_PER_USER, username));
+    }
+    
+    @GET
+    @Path("users/sessions/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response userSess(@PathParam("username") String username){
+        return ResponseBuilder.buildGet(trySearch(StatQueries.SESSIONS_BY_MONTH_PER_USER, username));
+    }
+    
+    @GET
+    @Path("users/media/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response userMedia(@PathParam("username") String username){
+        return ResponseBuilder.buildGet(trySearch(StatQueries.MEDIA_BY_TYPE_PER_USER, username));
+    }
     
     private long trySearch(StatQueries query, int id){
         try{
@@ -131,6 +158,17 @@ public class StatisticsService {
             return (long) q.getSingleResult();
         } catch(Exception e){
             return 0;
+        }
+    }
+    
+    private List<Object> trySearch(StatQueries query, String username){
+        try{
+            Query q = (!username.isEmpty()) 
+                    ? em.createNativeQuery(query.getQuery()).setParameter("pseudo", username)
+                    : em.createNativeQuery(query.getQuery());
+            return q.getResultList();
+        } catch(Exception e){
+            return null;
         }
     }
     
@@ -147,8 +185,11 @@ public class StatisticsService {
         SEE_BIRD("SELECT Number FROM count_number_see_bird WHERE Bird_ID = #id"),
         OBSERVATION_BY_SESSION("SELECT Number FROM count_observations_session WHERE Sessions_ID = #id"),
         OBSERVATION_SESSION_BY_USER("SELECT Number FROM count_observations_sessions_User WHERE User_ID = #id"),
-        SESSIONS_BY_USER("SELECT Number FROM count_user_sessions WHERE User_ID = #id");
-        
+        SESSIONS_BY_USER("SELECT Number FROM count_user_sessions WHERE User_ID = #id"),
+        TOP5_BY_USER("SELECT Name, Number FROM top5_bird_by_username WHERE Pseudo = #pseudo limit 5"),
+        OBS_BY_MONTH_PER_USER("SELECT Number, Month_Name FROM obs_by_month_per_user WHERE Pseudo = #pseudo order by Month asc"),
+        SESSIONS_BY_MONTH_PER_USER("SELECT Number, Month_Name FROM sessions_by_month_per_user WHERE Pseudo = #pseudo order by Month asc"),
+        MEDIA_BY_TYPE_PER_USER("SELECT Number, Type from media_by_type_per_user where Pseudo = #pseudo");
         private final String query;
         
         private StatQueries(String query) {
